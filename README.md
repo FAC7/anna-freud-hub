@@ -19,3 +19,15 @@
 * I want to be able to send push notification to users when I update the event.
 * I want a simple interface.
 * I want to see a list of all my events.
+
+## Possible UI details
+
+* Grid system for interest view.
+* Single column lists for events.
+* Splash screen.
+* Bottom aligned navigation bar (preferably with icons).
+
+## Stretchy Stretch
+
+* Link to google maps.
+* Intro sequence after splash screen.
