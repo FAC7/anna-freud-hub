@@ -1,32 +1,32 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react'
 import {
   AppRegistry,
   StyleSheet,
-  Text,
-  View
+  Navigator
 } from 'react-native'
 
+import Login from './App/Views/Login.js'
+import Interests from './App/Views/Interests.js'
+
+
 class AnnaFreudHub extends Component {
+
+  renderScene (route, nav) {
+    switch (route.name) {
+    case 'login':
+      return <Login navigator={nav} />
+    case 'interests':
+      return <Interests navigator={nav} />
+    default:
+      return <Text> Default </ Text>
+    }
+  }
   render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome tosdfjldsakjf dsfadsf!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <Navigator
+        initialRoute={{ name: 'login', index: 0 }}
+        renderScene={this.renderScene.bind(this)}
+      />
     )
   }
 }
