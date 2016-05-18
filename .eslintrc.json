@@ -1,6 +1,7 @@
 {
   "plugins": [
-    "react"
+    "react",
+    "react-native"
   ],
   "parserOptions": {
     "ecmaVersion": 6,
@@ -16,6 +17,9 @@
     "browser": true,
     "node": true,
     "es6": true
+  },
+  "ecmaFeatures": {
+    "jsx": true
   },
   "rules": {
     "comma-dangle": ["error", "only-multiline"],
@@ -90,7 +94,7 @@
 
     "no-delete-var": "error",
     "no-label-var": "error",
-    "no-shadow": ["error", { "builtinGlobals": true, "allow": ["_", "__", "done", "cb", "resolve", "reject"] }],
+    "no-shadow": ["error", { "builtinGlobals": false, "allow": ["_", "__", "done", "cb", "resolve", "reject"] }],
     "no-shadow-restricted-names": "error",
     "no-undef": "error",
     "no-undef-init": "error",
@@ -167,6 +171,9 @@
     "react/jsx-no-undef": 2,
     "react/jsx-pascal-case": 2,
     "react/jsx-uses-react": 2,
-    "react/jsx-uses-vars": 2
+    "react/jsx-uses-vars": 2,
+
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2
   }
 }
