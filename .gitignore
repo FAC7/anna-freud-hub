@@ -66,6 +66,7 @@ local.properties
 #
 node_modules/
 npm-debug.log
+config.env
 
 # BUCK
 buck-out/

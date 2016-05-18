@@ -3,14 +3,22 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "hapi": "nodemon backend/index.js"
   },
   "dependencies": {
+    "bluebird": "^3.4.0",
+    "env2": "^2.0.8",
+    "hapi": "^13.4.0",
+    "inert": "^4.0.0",
     "react": "^0.14.8",
-    "react-native": "^0.25.1"
+    "react-native": "^0.25.1",
+    "redis": "^2.6.0-2"
   },
   "devDependencies": {
     "eslint": "^2.10.2",
-    "eslint-plugin-react": "^5.1.1"
+    "eslint-plugin-react": "^5.1.1",
+    "nodemon": "^1.9.2",
+    "tape": "^4.5.1"
   }
 }
