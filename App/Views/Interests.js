@@ -12,7 +12,7 @@ export default class Interests extends Component {
     return (
       <View>
         <Text style={styles.title}> IN Interests </Text>
-        <TouchableHighlight onPress={() => {console.log('pressed')}}>
+        <TouchableHighlight onPress={() => this.props.navigator.pop()}>
           <Text> Submit </Text>
         </TouchableHighlight>
       </View>
