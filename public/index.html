@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>HUB</title>
-    <link rel="stylesheet" href="style.css" charset="utf-8">
+    <link rel="stylesheet" href="styles/bootstrap.css" charset="utf-8">
+    <link rel="stylesheet" href="styles/style.css" charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
@@ -12,11 +13,35 @@
       <h1 class="title">HUB</h1>
 
       <section class='container'>
-        <form event-form class="event-form">
-          <input event-name type="text" placeholder="event name">
-          <br/>
-          <textarea event-description type="text" placeholder="event description"></textarea>
-        </form>
+        <div class='col-xs-10 col-xs-push-1'>
+          <form event-form class="event-form">
+            <input event-name type="text" placeholder="event name">
+            <br/>
+            <textarea event-description type="text" placeholder="event description"></textarea>
+            <div class='row'>
+              <div class='col-xs-3'>
+                <input type="checkbox" />
+                <br/>
+                <span>fun things to do locally</span>
+              </div>
+              <div class='col-xs-3'>
+                <input type="checkbox" />
+                <br/>
+                <span>Youth Council Events</span>
+              </div>
+              <div class='col-xs-3'>
+                <input type="checkbox" />
+                <br/>
+                <span>Wellness Events</span>
+              </div>
+              <div class='col-xs-3'>
+                <input type="checkbox" />
+                <br/>
+                <span>Local Sports Club</span>
+              </div>
+            </div>
+          </form>
+        </div>
       </section>
 
     </main>

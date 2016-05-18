@@ -1,0 +1,53 @@
+/*-----general styles--------*/
+
+body {
+  font-family: Lucida Grande, Helvetica, Helvetica Neue, Arial;
+  background-color: #257AC4;
+}
+
+
+/*-----text styles--------*/
+
+.title {
+  text-transform: capitalize;
+  text-align: center;
+  color: #fff;
+  font-weight: normal;
+  letter-spacing: 7px;
+  margin: 40px;
+}
+
+/*-----inputs--------*/
+
+input,
+textarea {
+  margin: 0 0 30px;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 2px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  padding: 30px;
+  margin: 0;
+  background: #fff;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+input[type="checkbox"]:checked {
+  background: #3382C4;
+}
+
+span {
+  font-size: 12px;
+  color: #fff;
+}

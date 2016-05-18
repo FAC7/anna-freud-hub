@@ -10,7 +10,7 @@ export default class Interests extends Component {
 
   render () {
     return (
-      <View>
+      <View style={styles.container}>
         <Text style={styles.title}> IN Interests </Text>
         <TouchableHighlight onPress={() => this.props.navigator.pop()}>
           <Text> Submit </Text>
@@ -21,6 +21,9 @@ export default class Interests extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#fff'
+  },
   title: {
     fontSize: 20,
     textAlign: 'center',
