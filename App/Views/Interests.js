@@ -13,9 +13,10 @@ export default class Interests extends Component {
     return (
       <View style={styles.container}>
         <Image
-          style={styles.logo}
-          source={{uri: 'http://www.fillmurray.com/150/150'}}
+          style={styles.image}
+          source={{ uri: 'http://www.fillmurray.com/150/150' }}
         />
+        <Text> Interests </Text>
       </View>
     )
   }
@@ -30,5 +31,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 60,
     color: 'blue'
+  },
+  image: {
+    width: 150,
+    height: 150
   }
 })
