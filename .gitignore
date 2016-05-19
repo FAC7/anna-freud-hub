@@ -76,7 +76,7 @@ buck-out/
 android/app/libs
 android/keystores/debug.keystore
 
-fastlane/screenshots
+fastlane
 *.zip
 *.mobileprovision
 *.cer
