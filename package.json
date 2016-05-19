@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
-    "hapi": "nodemon backend/index.js"
+    "start": "node ./backend/index.js",
+    "dev-native": "node node_modules/react-native/local-cli/cli.js start",
+    "dev-backend": "nodemon backend/index.js"
   },
   "dependencies": {
     "bluebird": "^3.4.0",
