@@ -73,3 +73,12 @@ buck-out/
 \.buckd/
 android/app/libs
 android/keystores/debug.keystore
+
+fastlane/screenshots
+*.zip
+*.mobileprovision
+*.cer
+*.certSigningRequest
+*.p12
+fastlane/report.xml
+ios/main.jsbundle
