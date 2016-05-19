@@ -1,6 +1,8 @@
 import React from 'react'
 import Login from './Login.js'
 import Interests from './Interests.js'
+import Dashboard from './Dashboard.js'
+import MyEvents from './MyEvents.js'
 import routes from './routes.js'
 
 export default (route, nav) => {
@@ -10,9 +12,9 @@ export default (route, nav) => {
   case routes.interests:
     return <Interests navigator={nav} />
   case routes.dashboard:
-    return <Interests navigator={nav} />
+    return <Dashboard navigator={nav} />
   case routes.myEvents:
-    return <Interests navigator={nav} />
+    return <MyEvents navigator={nav} />
   default:
     return <Text> Default </ Text>
   }

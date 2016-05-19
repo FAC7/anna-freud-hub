@@ -6,20 +6,20 @@ import {
   TouchableHighlight
 } from 'react-native'
 
-export default class Interests extends Component {
+export default class EventInfo extends Component {
 
   navTester () {
     this.props.navigator.push({
-      name: 'dashboard'
+      name: 'myEvents'
     })
   }
 
   render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}> IN Interests </Text>
+      <View>
+        <Text style={styles.title}>  EVENT INFO  </Text>
         <TouchableHighlight onPress={this.navTester.bind(this)}>
-          <Text> Go to the dashboard </Text>
+          <Text> MY EVENTS</Text>
         </TouchableHighlight>
       </View>
     )
@@ -27,9 +27,6 @@ export default class Interests extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff'
-  },
   title: {
     fontSize: 20,
     textAlign: 'center',
