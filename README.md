@@ -2,6 +2,8 @@
 
 [![Join the chat at https://gitter.im/FAC7/anna-freud-hub](https://badges.gitter.im/FAC7/anna-freud-hub.svg)](https://gitter.im/FAC7/anna-freud-hub?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+[App can be viewed here](https://annafreudhub.herokuapp.com/)
+
 ## User Stories (Young Person)
 
 * Select my interests.
