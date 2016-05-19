@@ -3,7 +3,8 @@ import {
   Text,
   View,
   StyleSheet,
-  TouchableHighlight
+  TouchableHighlight,
+  Image
 } from 'react-native'
 
 export default class Interests extends Component {
@@ -11,10 +12,10 @@ export default class Interests extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}> IN Interests </Text>
-        <TouchableHighlight onPress={() => this.props.navigator.pop()}>
-          <Text> Submit </Text>
-        </TouchableHighlight>
+        <Image
+          style={styles.logo}
+          source={{uri: 'http://www.fillmurray.com/150/150'}}
+        />
       </View>
     )
   }
