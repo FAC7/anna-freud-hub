@@ -1,4 +1,4 @@
-require('env2')('./config.env')
+require('env2')
 const createServer = require('./server.js')
 const createClient = require('./db/client.js')
 
