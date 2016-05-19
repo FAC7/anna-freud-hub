@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./backend/index.js",
+    "styles": "react-native-css -i App/Styles/style.scss -o App/Styles/style.js -w",
     "dev-native": "node node_modules/react-native/local-cli/cli.js start",
     "dev-backend": "nodemon backend/index.js"
   },
@@ -14,6 +15,7 @@
     "inert": "^4.0.0",
     "react": "^0.14.8",
     "react-native": "^0.25.1",
+    "react-native-css": "^1.2.40",
     "redis": "^2.6.0-2"
   },
   "devDependencies": {

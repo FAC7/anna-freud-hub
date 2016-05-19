@@ -3,11 +3,10 @@ import {
   Text,
   View,
   StyleSheet,
-  TouchableHighlight,
-  Image
+  TouchableHighlight
 } from 'react-native'
 
-export default class Interests extends Component {
+export default class MyEvents extends Component {
 
   navTester () {
     this.props.navigator.push({
@@ -17,29 +16,21 @@ export default class Interests extends Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={{ uri: 'http://www.fillmurray.com/150/150' }}
-        />
-        <Text> Interests </Text>
+      <View>
+        <Text style={styles.title}> MY EVENTS </Text>
+        <TouchableHighlight onPress={this.navTester.bind(this)}>
+          <Text> DISCOVER EVENTS </Text>
+        </TouchableHighlight>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff'
-  },
   title: {
     fontSize: 20,
     textAlign: 'center',
     margin: 60,
     color: 'blue'
-  },
-  image: {
-    width: 150,
-    height: 150
   }
 })
