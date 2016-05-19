@@ -16,6 +16,6 @@ export default (route, nav) => {
   case routes.myEvents:
     return <MyEvents navigator={nav} />
   default:
-    return <Text> Default </ Text>
+    return <Dashboard navigator={nav} />
   }
 }
