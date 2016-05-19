@@ -15,7 +15,7 @@ module.exports = (client) => {
 
   const server = new Hapi.Server()
 
-  server.connection({ port: process.env.PORT || 4000 })
+  server.connection({ port: process.env.PORT  })
   server.register(Plugins, err => {if (err) console.log(err)})
   server.route(Routes)
 
