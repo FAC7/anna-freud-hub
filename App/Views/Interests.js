@@ -1,32 +1,12 @@
 import React, { Component } from 'react'
 import {
-  Text,
-  View,
   StyleSheet,
-  TouchableHighlight,
-  Image,
-  ScrollView
+  ScrollView,
+  View,
+  Text
 } from 'react-native'
 
-const Row = () => {
-  return (
-    <View>
-      <View style={styles.row}>
-        <Image
-          style={styles.tile}
-          source={{ uri: 'http://www.fillmurray.com/150/150' }}
-          />
-        <View style={styles.divider} />
-        <Image
-          style={styles.tile}
-          source={{ uri: 'http://www.fillmurray.com/150/150' }}
-          />
-      </View>
-      <View style={styles.horizontalDiv} />
-    </View>
-  )
-}
-
+import Row from '../Components/InterestsRow.js'
 export default class Interests extends Component {
 
   navTester () {
@@ -35,37 +15,40 @@ export default class Interests extends Component {
     })
   }
 
-  render () {
+  renderInterests () {
     return (
       <ScrollView contentContainerStyle={styles.container}>
         {[ 1, 2, 3, 4, 5 ].map((row, index) => <Row key={index} />)}
       </ScrollView>
     )
   }
+
+  render () {
+    return (
+      <View style={styles.mainContainer}>
+        <Text style={styles.title}>Choose Your Interests</Text>
+        {this.renderInterests()}
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    backgroundColor: '#fff',
+    flex: 1,
+    marginTop: 40
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: 24,
+    color: '#6076C0'
+  },
   container: {
-    backgroundColor: '#444',
+    backgroundColor: '#257AC4',
     flexDirection: 'column',
     justifyContent: 'space-around',
     flexWrap: 'wrap',
-    marginTop: 65
-  },
-  tile: {
-    height: 150,
-    width: 150,
-    flex: 14
-  },
-  row: {
-    flexDirection: 'row'
-  },
-  divider: {
-    flex: 1,
-    backgroundColor: 'white'
-  },
-  horizontalDiv: {
-    height: 2,
-    backgroundColor: 'white'
+    marginTop: 30
   }
 })
