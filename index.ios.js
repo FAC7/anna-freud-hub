@@ -41,12 +41,10 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: 'white',
-    // marginTop: 675
   },
   navBar: {
     backgroundColor: '#96CEFF',
     alignSelf: 'flex-end'
-    // marginTop: 675
   }
 })
 

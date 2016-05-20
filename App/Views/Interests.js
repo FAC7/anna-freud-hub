@@ -6,8 +6,13 @@ import {
   Text
 } from 'react-native'
 
+import { connect } from 'react-redux'
+
 import Row from '../Components/InterestsRow.js'
-export default class Interests extends Component {
+
+import { setInterest } from '../Actions/actions_index.js'
+
+class Interests extends Component {
 
   navTester () {
     this.props.navigator.push({
@@ -16,14 +21,26 @@ export default class Interests extends Component {
   }
 
   renderInterests () {
+
+    const interestArr = [ 'Music', 'Art', 'Cooking', 'Yoga', 'Meditation' ]
+
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        {[ 1, 2, 3, 4, 5 ].map((row, index) => <Row key={index} />)}
+        {interestArr.map((interest, index) => {
+          return (
+            <Row
+              key={index}
+              interest={interest}
+              setInterest={this.props.setInterest.bind(this)}
+            />)}
+          )
+        }
       </ScrollView>
     )
   }
 
   render () {
+    console.log(this.props)
     return (
       <View style={styles.mainContainer}>
         <Text style={styles.title}>Choose Your Interests</Text>
@@ -52,3 +69,11 @@ const styles = StyleSheet.create({
     marginTop: 30
   }
 })
+
+const mapStateToProps = (state) => {
+  return {
+    interests: state.interests
+  }
+}
+
+export default connect(mapStateToProps, { setInterest })(Interests)
