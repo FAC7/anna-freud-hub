@@ -27,10 +27,12 @@ class Interests extends Component {
     return (
       <ScrollView contentContainerStyle={styles.container}>
         {interestArr.map((interest, index) => {
+          console.log(this.props.interests)
           return (
             <Row
               key={index}
               interest={interest}
+              active={this.props.interests}
               setInterest={this.props.setInterest.bind(this)}
             />)}
           )

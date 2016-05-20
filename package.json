@@ -6,7 +6,8 @@
     "start": "node ./backend/index.js",
     "styles": "react-native-css -i App/Styles/style.scss -o App/Styles/style.js -w",
     "dev-native": "node node_modules/react-native/local-cli/cli.js start",
-    "dev-backend": "nodemon backend/index.js"
+    "dev-backend": "nodemon backend/index.js",
+    "test": "babel-tape-runner ./test/runner.js"
   },
   "dependencies": {
     "bluebird": "^3.4.0",
@@ -20,6 +21,8 @@
     "redux": "^3.5.2"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-1": "^6.5.0",
     "eslint": "^2.10.2",
     "eslint-plugin-react": "^5.1.1",
     "eslint-plugin-react-native": "^1.0.2",
