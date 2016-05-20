@@ -10,7 +10,7 @@ export default class EventInfo extends Component {
 
   navTester () {
     this.props.navigator.push({
-      name: 'myEvents'
+      name: 'My Events'
     })
   }
 
@@ -19,7 +19,7 @@ export default class EventInfo extends Component {
       <View>
         <Text style={styles.title}>  EVENT INFO  </Text>
         <TouchableHighlight onPress={this.navTester.bind(this)}>
-          <Text> MY EVENTS</Text>
+          <Text> CLICK TO GO TO MY EVENTS</Text>
         </TouchableHighlight>
       </View>
     )
