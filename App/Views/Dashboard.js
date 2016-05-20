@@ -7,10 +7,9 @@ import {
 } from 'react-native'
 
 export default class Dashboard extends Component {
-
   navTester () {
     this.props.navigator.push({
-      name: 'my events'
+      name: 'Event Info'
     })
   }
 
@@ -19,7 +18,7 @@ export default class Dashboard extends Component {
       <View style={styles.container}>
         <Text style={styles.title}> IN DASHBOARD </Text>
         <TouchableHighlight onPress={this.navTester.bind(this)}>
-          <Text> Go to my events </Text>
+          <Text> Click to go to specific event </Text>
         </TouchableHighlight>
       </View>
     )

@@ -16,7 +16,7 @@ class Interests extends Component {
 
   navTester () {
     this.props.navigator.push({
-      name: 'dashboard'
+      name: 'HUB'
     })
   }
 
