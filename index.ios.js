@@ -12,7 +12,7 @@ class AnnaFreudHub extends Component {
   render () {
     return (
       <Navigator
-        initialRoute={{ name: 'login', index: 0 }}
+        initialRoute={{ name: 'interests', index: 0 }}
         renderScene={renderScene}
       />
     )

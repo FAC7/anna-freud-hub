@@ -3,8 +3,29 @@ import {
   Text,
   View,
   StyleSheet,
-  TouchableHighlight
+  TouchableHighlight,
+  Image,
+  ScrollView
 } from 'react-native'
+
+const Row = () => {
+  return (
+    <View>
+      <View style={styles.row}>
+        <Image
+          style={styles.tile}
+          source={{ uri: 'http://www.fillmurray.com/150/150' }}
+          />
+        <View style={styles.divider} />
+        <Image
+          style={styles.tile}
+          source={{ uri: 'http://www.fillmurray.com/150/150' }}
+          />
+      </View>
+      <View style={styles.horizontalDiv} />
+    </View>
+  )
+}
 
 export default class Interests extends Component {
 
@@ -16,24 +37,35 @@ export default class Interests extends Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}> IN Interests </Text>
-        <TouchableHighlight onPress={this.navTester.bind(this)}>
-          <Text> Go to the dashboard </Text>
-        </TouchableHighlight>
-      </View>
+      <ScrollView contentContainerStyle={styles.container}>
+        {[ 1, 2, 3, 4, 5 ].map((row, index) => <Row key={index} />)}
+      </ScrollView>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff'
+    backgroundColor: '#444',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    flexWrap: 'wrap',
+    marginTop: 65
   },
-  title: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 60,
-    color: 'blue'
+  tile: {
+    height: 150,
+    width: 150,
+    flex: 14
+  },
+  row: {
+    flexDirection: 'row'
+  },
+  divider: {
+    flex: 1,
+    backgroundColor: 'white'
+  },
+  horizontalDiv: {
+    height: 2,
+    backgroundColor: 'white'
   }
 })
