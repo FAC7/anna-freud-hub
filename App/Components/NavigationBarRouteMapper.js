@@ -5,36 +5,45 @@ import {
   TouchableOpacity,
 } from 'react-native'
 
+import routes from '../Views/routes.js'
+
+const getNavRoute = (current, position) => {
+  if (!current) {return null}
+  return navRoutes[current][position]
+}
+
+/*eslint-disable */
+const navRoutes = {
+  'log in':     { left: null, 			  title: null, 			     right: null },
+  'interests':  { left: null, 			  title: 'Submit', 			 right: null },
+  'dashboard':  { left: 'interests',	title: 'dashboard', 	 right: 'myEvents' },
+  'events': 	  { left: 'Back',       title: null, 				   right: null },
+  'my events':  { left: 'interests',  title: 'dashboard', 	 right: 'myEvents' }
+}
+/*eslint-enable */
+
+const navButton = (routeTitle, navigator, position) => {
+  return (
+    <TouchableOpacity
+      onPress={() => navigator.push({ name: routes[routeTitle] })}
+      style={styles['navBar' + position + 'Button']}
+    >
+      <Text style={[ styles.navBarText, styles.navBarButtonText ]} >
+        {routes[routeTitle]}
+      </Text>
+    </TouchableOpacity>
+  )
+}
 
 const NavigationBarRouteMapper = {
   LeftButton: (route, navigator, index, navState) => {
-    if (index === 0) {
-      return null
-    }
-    var previousRoute = navState.routeStack[index - 1]
-    return (
-      <TouchableOpacity
-        onPress={() => navigator.pop()}
-        style={styles.navBarLeftButton}
-      >
-        <Text style={[ styles.navBarText, styles.navBarButtonText ]} >
-          {previousRoute.title}
-        </Text>
-      </TouchableOpacity>
-    )
+    const nextRouteName = getNavRoute(route.name, 'left')
+    return navButton(nextRouteName, navigator, 'Left')
   },
 
   RightButton: (route, navigator, index, navState) => {
-    return (
-      <TouchableOpacity
-        onPress={() => navigator.push({ name: 'my events' })}
-        style={styles.navBarRightButton}
-      >
-        <Text style={[ styles.navBarText, styles.navBarButtonText ]} >
-          My Events
-        </Text>
-      </TouchableOpacity>
-    )
+    const nextRouteName = getNavRoute(route.name, 'right')
+    return navButton(nextRouteName, navigator, 'Right')
   },
 
   Title: (route, navigator, index, navState) => {
