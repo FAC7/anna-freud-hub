@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import {
-  Text,
-  View,
   StyleSheet,
-  TouchableHighlight
+  ScrollView,
+  View,
+  Text
 } from 'react-native'
 
+import Row from '../Components/InterestsRow.js'
 export default class Interests extends Component {
 
   navTester () {
@@ -14,26 +15,40 @@ export default class Interests extends Component {
     })
   }
 
+  renderInterests () {
+    return (
+      <ScrollView contentContainerStyle={styles.container}>
+        {[ 1, 2, 3, 4, 5 ].map((row, index) => <Row key={index} />)}
+      </ScrollView>
+    )
+  }
+
   render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}> IN Interests </Text>
-        <TouchableHighlight onPress={this.navTester.bind(this)}>
-          <Text> Go to the dashboard </Text>
-        </TouchableHighlight>
+      <View style={styles.mainContainer}>
+        <Text style={styles.title}>Choose Your Interests</Text>
+        {this.renderInterests()}
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff'
+  mainContainer: {
+    backgroundColor: '#fff',
+    flex: 1,
+    marginTop: 40
   },
   title: {
-    fontSize: 20,
     textAlign: 'center',
-    margin: 60,
-    color: 'blue'
+    fontSize: 24,
+    color: '#6076C0'
+  },
+  container: {
+    backgroundColor: '#257AC4',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    flexWrap: 'wrap',
+    marginTop: 30
   }
 })

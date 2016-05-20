@@ -5,34 +5,48 @@ import {
   Navigator,
 } from 'react-native'
 
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
 import renderScene from './App/Views/renderScene.js'
 import NavigationBarRouteMapper from './App/Components/NavigationBarRouteMapper.js'
+
+import NavigationBar from './App/Components/NavigationBar.js'
+
+import reducers from './App/Reducers/root_reducer.js'
 
 class AnnaFreudHub extends Component {
 
   render () {
     return (
-      <Navigator
-        initialRoute={{ name: 'Login', index: 0 }}
-        renderScene={renderScene}
-        navigationBar={
-          <Navigator.NavigationBar
-            routeMapper={NavigationBarRouteMapper}
-            style={styles.nav}
-          />
-        }
-      />
+      <Provider store={createStore(reducers)}>
+        <Navigator
+          initialRoute={{ name: 'Login', index: 0 }}
+          renderScene={renderScene}
+          style={styles.nav}
+          navigationBar={
+            <NavigationBar
+              style={styles.navBar}
+              routeMapper={NavigationBarRouteMapper}
+            />
+          }
+        />
+      </Provider>
     )
   }
 }
 
-
 const styles = StyleSheet.create({
   nav: {
-    height: 60,
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: 'white',
+    // marginTop: 675
+  },
+  navBar: {
     backgroundColor: '#96CEFF',
-    marginTop: 675
+    alignSelf: 'flex-end'
+    // marginTop: 675
   }
 })
 
