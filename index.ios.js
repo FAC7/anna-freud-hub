@@ -18,7 +18,7 @@ class AnnaFreudHub extends Component {
         <Navigator
           initialRoute={{ name: 'interests', index: 0 }}
           renderScene={renderScene}
-          />
+        />
       </Provider>
     )
   }

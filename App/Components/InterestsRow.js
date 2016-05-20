@@ -3,30 +3,48 @@ import {
   View,
   Image,
   Text,
-  StyleSheet
+  StyleSheet,
+  TouchableHighlight
 } from 'react-native'
 
-export default () => {
+export default ({ interest, setInterest }) => {
   return (
     <View>
       <View style={styles.row}>
-        <View style={styles.tile}>
-          <Image
-          style={styles.tileImage}
-          source={{ uri: 'http://www.fillmurray.com/150/150' }}
-          />
-          <Text style={styles.subTitle}>Fun things to do Locally</Text>
-        </View>
+
+        <TouchableHighlight
+          style={styles.tile}
+          onPress={() => {
+            console.log('pre')
+            setInterest(interest)
+          }}
+        >
+          <View>
+            <Image
+              style={styles.tileImage}
+              source={{ uri: 'http://www.fillmurray.com/150/150' }}
+            />
+            <Text style={styles.subTitle}>{interest}</Text>
+          </View>
+        </TouchableHighlight>
 
         <View style={styles.divider} />
 
-        <View style={styles.tile}>
-          <Image
-          style={styles.tileImage}
-          source={{ uri: 'http://www.fillmurray.com/150/150' }}
-          />
-          <Text style={styles.subTitle}>Fun things to do Locally</Text>
-        </View>
+        <TouchableHighlight
+          style={styles.tile}
+          onPress={() => {
+            console.log('pre')
+            setInterest(interest)
+          }}
+        >
+          <View>
+            <Image
+              style={styles.tileImage}
+              source={{ uri: 'http://www.fillmurray.com/150/150' }}
+            />
+            <Text style={styles.subTitle}>{interest}</Text>
+          </View>
+        </TouchableHighlight>
 
       </View>
       <View style={styles.horizontalDiv} />
@@ -36,7 +54,8 @@ export default () => {
 
 const styles = StyleSheet.create({
   tile: {
-    flex: 20
+    flex: 20,
+    height: 150
   },
   tileImage: {
     opacity: 0.8,
