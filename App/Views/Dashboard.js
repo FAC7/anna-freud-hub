@@ -9,7 +9,7 @@ import {
 export default class Dashboard extends Component {
   navTester () {
     this.props.navigator.push({
-      name: 'My Events'
+      name: 'Event Info'
     })
   }
 
@@ -18,7 +18,7 @@ export default class Dashboard extends Component {
       <View style={styles.container}>
         <Text style={styles.title}> IN DASHBOARD </Text>
         <TouchableHighlight onPress={this.navTester.bind(this)}>
-          <Text> Click to go to my events </Text>
+          <Text> Click to go to specific event </Text>
         </TouchableHighlight>
       </View>
     )

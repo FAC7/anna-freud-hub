@@ -15,7 +15,6 @@ const getRouteKey = (currentRouteName, position) => {
 }
 
 /*eslint-disable */
-
 const navRoutes = {
   'Login':      { left: null, 			  centre: null, 			     right: null },
   'Interests':  { left: null, 			  centre: 'DASHBOARD', 		 right: null },
@@ -29,13 +28,19 @@ const navRoutes = {
 // routes[routeKey] = routeValue
 // routes[INTERESTS] = Interests
 const navButton = (routeKey, navigator, position) => {
+  const onPress = () => {
+    if (routeKey === 'BACK') {navigator.pop()}
+    else {
+      navigator.push({ name: routes[routeKey] })
+    }
+  }
   return (
     <TouchableOpacity
-      onPress={() => navigator.push({ name: routes[routeKey] })}
+      onPress={onPress}
       style={styles['navBar' + position + 'Button']}
     >
       <Text style={[ styles.navBarText, styles.navBarButtonText ]} >
-        {routes[routeKey]}
+        {routeKey === 'BACK' ? 'BACK' : routes[routeKey]}
       </Text>
     </TouchableOpacity>
   )
@@ -57,15 +62,6 @@ const NavigationBarRouteMapper = {
   Title: (route, navigator, index, navState) => {
     const nextRouteKey = getRouteKey(route.name, 'centre')
     return navButton(nextRouteKey, navigator, 'Centre')
-    // return (
-    //   <TouchableOpacity
-    //     onPress={() => navigator.push({ name: 'Dashboard' })}
-    //   >
-    //     <Text style={[ styles.navBarText, styles.navBarTitleText ]} >
-    //       HUB {index}
-    //     </Text>
-    //   </TouchableOpacity>
-    // )
   },
 
 }

@@ -10,7 +10,7 @@ export default class MyEvents extends Component {
 
   navTester () {
     this.props.navigator.push({
-      name: 'Dashboard'
+      name: 'HUB'
     })
   }
 

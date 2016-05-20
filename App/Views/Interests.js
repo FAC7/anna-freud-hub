@@ -10,7 +10,7 @@ export default class Interests extends Component {
 
   navTester () {
     this.props.navigator.push({
-      name: 'Dashboard'
+      name: 'HUB'
     })
   }
 
