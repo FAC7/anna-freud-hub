@@ -7,7 +7,10 @@ import {
   TouchableHighlight
 } from 'react-native'
 
-export default ({ interest, setInterest }) => {
+export default ({ interest, setInterest, active }) => {
+  const activeClass = active.indexOf(interest) > -1 ?
+  { opacity: 0.8 } :
+  { opacity: 0.4 }
   return (
     <View>
       <View style={styles.row}>
@@ -21,7 +24,7 @@ export default ({ interest, setInterest }) => {
         >
           <View>
             <Image
-              style={styles.tileImage}
+              style={[styles.tileImage, activeClass]}
               source={{ uri: 'http://www.fillmurray.com/150/150' }}
             />
             <Text style={styles.subTitle}>{interest}</Text>
@@ -39,7 +42,7 @@ export default ({ interest, setInterest }) => {
         >
           <View>
             <Image
-              style={styles.tileImage}
+              style={[styles.tileImage, activeClass]}
               source={{ uri: 'http://www.fillmurray.com/150/150' }}
             />
             <Text style={styles.subTitle}>{interest}</Text>
