@@ -10,7 +10,6 @@ import routes from '../Views/routes.js'
 // Returns the Key for the next route based on
 // the current route.name and position that we want (left/centre/right)
 const getRouteKey = (currentRouteName, position) => {
-  if (currentRouteName === 'HUB') {currentRouteName = 'Dashboard'}
   if (!currentRouteName) {return null}
   return navRoutes[currentRouteName][position]
 }
@@ -19,8 +18,8 @@ const getRouteKey = (currentRouteName, position) => {
 
 const navRoutes = {
   'Login':      { left: null, 			  centre: null, 			     right: null },
-  'Interests':  { left: null, 			  centre: 'DASHBOARD', 			 right: null },
-  'Dashboard':  { left: 'INTERESTS',	centre: 'DASHBOARD', 	   right: 'MY_EVENTS' },
+  'Interests':  { left: null, 			  centre: 'DASHBOARD', 		 right: null },
+  'HUB':        { left: 'INTERESTS',	centre: 'DASHBOARD', 	   right: 'MY_EVENTS' },
   'Event Info': { left: 'BACK',       centre: null, 				   right: null },
   'My Events':  { left: 'INTERESTS',  centre: 'DASHBOARD', 	   right: 'MY_EVENTS' }
 }
