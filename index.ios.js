@@ -1,41 +1,27 @@
 import React, { Component } from 'react'
 import {
   AppRegistry,
-  StyleSheet,
   Navigator
 } from 'react-native'
 
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+
 import renderScene from './App/Views/renderScene.js'
+import reducers from './App/Reducers/root_reducer.js'
 
 class AnnaFreudHub extends Component {
 
   render () {
     return (
-      <Navigator
-        initialRoute={{ name: 'interests', index: 0 }}
-        renderScene={renderScene}
-      />
+      <Provider store={createStore(reducers)}>
+        <Navigator
+          initialRoute={{ name: 'interests', index: 0 }}
+          renderScene={renderScene}
+          />
+      </Provider>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-})
 
 AppRegistry.registerComponent('AnnaFreudHub', () => AnnaFreudHub)
