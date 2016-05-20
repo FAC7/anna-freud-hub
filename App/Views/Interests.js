@@ -4,8 +4,24 @@ import {
   View,
   StyleSheet,
   TouchableHighlight,
-  Image
+  Image,
+  ScrollView
 } from 'react-native'
+
+const Row = () => {
+  return (
+    <View style={styles.row}>
+      <Image
+        style={styles.tile}
+        source={{ uri: 'http://www.fillmurray.com/150/150' }}
+      />
+      <Image
+        style={styles.tile}
+        source={{ uri: 'http://www.fillmurray.com/150/150' }}
+      />
+    </View>
+  )
+}
 
 export default class Interests extends Component {
 
@@ -17,29 +33,27 @@ export default class Interests extends Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={{ uri: 'http://www.fillmurray.com/150/150' }}
-        />
-        <Text> Interests </Text>
-      </View>
+      <ScrollView contentContainerStyle={styles.container}>
+        {[ 1, 2, 3, 4, 5 ].map((row, index) => <Row key={index} />)}
+      </ScrollView>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff'
+    backgroundColor: '#444',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    flexWrap: 'wrap',
+    marginTop: 65
   },
-  title: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 60,
-    color: 'blue'
-  },
-  image: {
+  tile: {
+    height: 150,
     width: 150,
-    height: 150
+    flex: 1
+  },
+  row: {
+    flexDirection: 'row'
   }
 })
