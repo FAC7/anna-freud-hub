@@ -5,17 +5,19 @@ import Dashboard from './Dashboard.js'
 import MyEvents from './MyEvents.js'
 import routes from './routes.js'
 
+import { Text } from 'react-native'
+
 export default (route, nav) => {
-  switch (route.name) {
-  case routes.login:
+  switch (route.name) { //
+  case routes.LOGIN:
     return <Login navigator={nav} />
-  case routes.interests:
+  case routes.INTERESTS:
     return <Interests navigator={nav} />
-  case routes.dashboard:
+  case routes.DASHBOARD:
     return <Dashboard navigator={nav} />
-  case routes.myEvents:
+  case routes.MY_EVENTS:
     return <MyEvents navigator={nav} />
   default:
-    return <Dashboard navigator={nav} />
+    return <Text navigator={nav} >Default page (route is incorrect) {route.name}</Text>
   }
 }

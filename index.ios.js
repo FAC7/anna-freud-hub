@@ -14,7 +14,7 @@ class AnnaFreudHub extends Component {
   render () {
     return (
       <Navigator
-        initialRoute={{ name: 'dashboard', index: 0 }} //change back to 'login'
+        initialRoute={{ name: 'Login', index: 0 }}
         renderScene={renderScene}
         navigationBar={
           <Navigator.NavigationBar

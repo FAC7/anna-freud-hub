@@ -10,7 +10,7 @@ export default class Login extends Component {
 
   navTester () {
     this.props.navigator.push({
-      name: 'interests'
+      name: 'Interests'
     })
   }
 
@@ -19,7 +19,7 @@ export default class Login extends Component {
       <View>
         <Text style={styles.title}> IN LOGIN </Text>
         <TouchableHighlight onPress={this.navTester.bind(this)}>
-          <Text> Submit </Text>
+          <Text> CLICKS SUBMIT TO GOTO INTERESTS </Text>
         </TouchableHighlight>
       </View>
     )

@@ -7,56 +7,66 @@ import {
 
 import routes from '../Views/routes.js'
 
-const getNavRoute = (current, position) => {
-  if (!current) {return null}
-  return navRoutes[current][position]
+// Returns the Key for the next route based on
+// the current route.name and position that we want (left/centre/right)
+const getRouteKey = (currentRouteName, position) => {
+  if (currentRouteName === 'HUB') {currentRouteName = 'Dashboard'}
+  if (!currentRouteName) {return null}
+  return navRoutes[currentRouteName][position]
 }
 
 /*eslint-disable */
+
 const navRoutes = {
-  'log in':     { left: null, 			  title: null, 			     right: null },
-  'interests':  { left: null, 			  title: 'Submit', 			 right: null },
-  'dashboard':  { left: 'interests',	title: 'dashboard', 	 right: 'myEvents' },
-  'events': 	  { left: 'Back',       title: null, 				   right: null },
-  'my events':  { left: 'interests',  title: 'dashboard', 	 right: 'myEvents' }
+  'Login':      { left: null, 			  centre: null, 			     right: null },
+  'Interests':  { left: null, 			  centre: 'DASHBOARD', 			 right: null },
+  'Dashboard':  { left: 'INTERESTS',	centre: 'DASHBOARD', 	   right: 'MY_EVENTS' },
+  'Event Info': { left: 'BACK',       centre: null, 				   right: null },
+  'My Events':  { left: 'INTERESTS',  centre: 'DASHBOARD', 	   right: 'MY_EVENTS' }
 }
 /*eslint-enable */
 
-const navButton = (routeTitle, navigator, position) => {
+// Returns a nav button
+// routes[routeKey] = routeValue
+// routes[INTERESTS] = Interests
+const navButton = (routeKey, navigator, position) => {
   return (
     <TouchableOpacity
-      onPress={() => navigator.push({ name: routes[routeTitle] })}
+      onPress={() => navigator.push({ name: routes[routeKey] })}
       style={styles['navBar' + position + 'Button']}
     >
       <Text style={[ styles.navBarText, styles.navBarButtonText ]} >
-        {routes[routeTitle]}
+        {routes[routeKey]}
       </Text>
     </TouchableOpacity>
   )
 }
 
+// This object is required by Navigator.NavigationBar
+// functions LeftButton, RightButton & Title are required
 const NavigationBarRouteMapper = {
   LeftButton: (route, navigator, index, navState) => {
-    const nextRouteName = getNavRoute(route.name, 'left')
-    return navButton(nextRouteName, navigator, 'Left')
+    const nextRouteKey = getRouteKey(route.name, 'left')
+    return navButton(nextRouteKey, navigator, 'Left')
   },
 
   RightButton: (route, navigator, index, navState) => {
-    const nextRouteName = getNavRoute(route.name, 'right')
-    return navButton(nextRouteName, navigator, 'Right')
+    const nextRouteKey = getRouteKey(route.name, 'right')
+    return navButton(nextRouteKey, navigator, 'Right')
   },
 
   Title: (route, navigator, index, navState) => {
-    return (
-      <TouchableOpacity
-        onPress={() => navigator.push({ name: 'dashboard' })}
-        style={styles.navBarRightButton}
-      >
-        <Text style={[ styles.navBarText, styles.navBarTitleText ]} >
-          HUB {index}
-        </Text>
-      </TouchableOpacity>
-    )
+    const nextRouteKey = getRouteKey(route.name, 'centre')
+    return navButton(nextRouteKey, navigator, 'Centre')
+    // return (
+    //   <TouchableOpacity
+    //     onPress={() => navigator.push({ name: 'Dashboard' })}
+    //   >
+    //     <Text style={[ styles.navBarText, styles.navBarTitleText ]} >
+    //       HUB {index}
+    //     </Text>
+    //   </TouchableOpacity>
+    // )
   },
 
 }
@@ -76,6 +86,8 @@ const styles = StyleSheet.create({
   },
   navBarRightButton: {
     paddingRight: 10,
+  },
+  navBarCentreButton: {
   },
   navBarButtonText: {
     color: '#5890FF',
