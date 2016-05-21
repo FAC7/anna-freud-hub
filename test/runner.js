@@ -1,1 +1,1 @@
-require('./native/redux.test.js')
+// require('./native/redux.test.js')
