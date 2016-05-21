@@ -8,16 +8,20 @@ import {
 } from 'react-native'
 
 import Divider from '../Components/Divider.js'
+import { connect } from 'react-redux'
+import { userLogin } from '../Actions/actions_index.js'
 
-export default class Login extends Component {
+class Login extends Component {
 
   navTester () {
+    // this.props.userLogin('jmurphyweb')
     this.props.navigator.push({
       name: 'Interests'
     })
   }
 
   render () {
+    console.log(this.props.loggedIn)
     return (
       <View style={styles.container}>
         <Text style={styles.title}>HUB</Text>
@@ -49,6 +53,12 @@ export default class Login extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return { loggedIn: state.loggedIn }
+}
+
+export default connect(mapStateToProps, { userLogin })(Login)
 
 const styles = StyleSheet.create({
   container: {
