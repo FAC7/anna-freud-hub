@@ -5,23 +5,23 @@ import {
   Navigator,
 } from 'react-native'
 
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import promise from 'redux-promise'
+
+const createStoreWithMiddleWare = applyMiddleware(promise)(createStore)
 
 import renderScene from './App/Views/renderScene.js'
 import NavigationBarRouteMapper from './App/Components/NavigationBarRouteMapper.js'
-
 import NavigationBar from './App/Components/NavigationBar.js'
-
 import reducers from './App/Reducers/root_reducer.js'
 
 class AnnaFreudHub extends Component {
-
   render () {
     return (
-      <Provider store={createStore(reducers)}>
+      <Provider store={createStoreWithMiddleWare(reducers)}>
         <Navigator
-          initialRoute={{ name: 'HUB', index: 0 }}
+          initialRoute={{ name: 'Login', index: 0 }}
           renderScene={renderScene}
           style={styles.nav}
           navigationBar={
