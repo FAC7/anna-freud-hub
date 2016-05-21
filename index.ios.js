@@ -21,7 +21,7 @@ class AnnaFreudHub extends Component {
     return (
       <Provider store={createStore(reducers)}>
         <Navigator
-          initialRoute={{ name: 'HUB', index: 0 }}
+          initialRoute={{ name: 'Login', index: 0 }}
           renderScene={renderScene}
           style={styles.nav}
           navigationBar={

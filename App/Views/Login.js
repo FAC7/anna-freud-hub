@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   Text,
+  TextInput,
   View,
   StyleSheet,
   TouchableHighlight
@@ -16,10 +17,17 @@ export default class Login extends Component {
 
   render () {
     return (
-      <View>
-        <Text style={styles.title}> IN LOGIN </Text>
+      <View style={styles.container}>
+        <Text style={styles.title}>HUB</Text>
+        <View style={styles.form}>
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>name</Text>
+            <TextInput style={styles.input} placeholder='enter name' />
+          </View>
+          <TextInput style={styles.input} placeholder='*******' />
+        </View>
         <TouchableHighlight onPress={this.navTester.bind(this)}>
-          <Text> CLICKS SUBMIT TO GOTO INTERESTS </Text>
+          <Text style={styles.arrow}> ></Text>
         </TouchableHighlight>
       </View>
     )
@@ -27,10 +35,45 @@ export default class Login extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#2378C1',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   title: {
-    fontSize: 20,
+    fontSize: 40,
+    letterSpacing: 7,
+    marginTop: -120,
     textAlign: 'center',
+    fontFamily: 'Helvetica',
     margin: 60,
-    color: 'blue'
+    color: '#fff'
+  },
+  arrow: {
+    color: '#fff',
+    borderColor: '#fff',
+    borderWidth: 2,
+    paddingLeft: 25,
+    paddingRight: 25,
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderRadius: 10,
+    fontSize: 15,
+    fontWeight: 'bold'
+  },
+  inputContainer: {
+    backgroundColor: '#fff'
+  },
+  label: {
+    color: '#122664',
+    fontSize: 20,
+  },
+  input: {
+    backgroundColor: '#fff',
+    fontSize: 10,
+    padding: 20,
+    height: 50,
+    width: 150
   }
 })

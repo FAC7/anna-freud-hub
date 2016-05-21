@@ -29,13 +29,14 @@ export default class Hub extends Component {
             linkRoute={this.navTester.bind(this)}
           />
 
-          <TouchableHighlight style={styles.container} onPress={this.navTester.bind(this)}>
-            <Text>This is a tile</Text>
-          </TouchableHighlight>
+          <Tile
+            title={'Bowling'}
+            imageSource={'http://www.fillmurray.com/g/200/300'}
+            attending={43}
+            distance={15}
+            linkRoute={this.navTester.bind(this)}
+          />
 
-          <TouchableHighlight style={styles.container} onPress={this.navTester.bind(this)}>
-            <Text>This is a tile</Text>
-          </TouchableHighlight>
         </ScrollView>
       </View>
     )
