@@ -26,6 +26,7 @@ export default class Hub extends Component {
             imageSource={'http://www.fillmurray.com/g/200/300'}
             attending={33}
             distance={10}
+            linkRoute={this.navTester.bind(this)}
           />
 
           <TouchableHighlight style={styles.container} onPress={this.navTester.bind(this)}>

@@ -10,26 +10,28 @@ import {
 const icon = require('../Assets/Icons/attending.png')
 
 export default (props) => (
-  <TouchableHighlight style={styles.mainContainer}>
-    <View>
-      <Image source={{ uri: props.imageSource }} style={styles.image} />
+  <View style={styles.mainContainer}>
+    <Image source={{ uri: props.imageSource }} style={styles.image} />
 
-      <View style={styles.topInfoContainer}>
-        <Text style={styles.eventTitle}>{props.title}</Text>
-        <View style={styles.attendingContainer}>
-          <Image source={icon} style={styles.icon} />
-          <Text style={styles.attending}>{props.attending}</Text>
-        </View>
-      </View>
-
-      <View style={styles.bottomInfoContainer}>
-        <Text style={styles.distance}>{props.distance} km away</Text>
-        <TouchableHighlight style={styles.detailsButton}>
-          <Text style={styles.detailsButtonText}>Details</Text>
-        </TouchableHighlight>
+    <View style={styles.topInfoContainer}>
+      <Text style={styles.eventTitle}>{props.title}</Text>
+      <View style={styles.attendingContainer}>
+        <Image source={icon} style={styles.icon} />
+        <Text style={styles.attending}>{props.attending}</Text>
       </View>
     </View>
-  </TouchableHighlight>
+
+    <View style={styles.bottomInfoContainer}>
+      <Text style={styles.distance}>{props.distance} km away</Text>
+      <TouchableHighlight
+        onPress={props.linkRoute}
+        style={styles.detailsButton}
+        underlayColor={'#17c7ff'}
+      >
+        <Text style={styles.detailsButtonText}>Details</Text>
+      </TouchableHighlight>
+    </View>
+  </View>
 )
 
 const styles = StyleSheet.create({
@@ -51,14 +53,14 @@ const styles = StyleSheet.create({
   eventTitle: {
     color: '#fff',
     fontSize: 24,
-    marginLeft: 10,
+    marginLeft: 18,
     backgroundColor: 'transparent'
   },
   attendingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'transparent',
-    marginRight: 10,
+    marginRight: 18,
     height: 24
   },
   image: {
@@ -78,20 +80,27 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent'
   },
   bottomInfoContainer: {
-    marginLeft: 10,
-    marginTop: 11,
+    marginLeft: 18,
+    marginTop: 12,
+    height: 80,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
   },
   distance: {
-    marginTop: -20,
     fontSize: 24,
     color: '#fff'
   },
   detailsButton: {
     width: 100,
     height: 80,
-    backgroundColor: '#96CEFF'
+    backgroundColor: '#cee8fe',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  detailsButtonText: {
+    color: '#04396c',
+    fontSize: 18,
+    fontWeight: '500'
   }
 })
