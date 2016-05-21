@@ -25,6 +25,7 @@ export default class Hub extends Component {
             title={'Band Camp'}
             imageSource={'http://www.fillmurray.com/g/200/300'}
             attending={33}
+            distance={10}
           />
 
           <TouchableHighlight style={styles.container} onPress={this.navTester.bind(this)}>
