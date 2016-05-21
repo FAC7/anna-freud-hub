@@ -7,6 +7,8 @@ import {
   TouchableHighlight
 } from 'react-native'
 
+import Divider from '../Components/Divider.js'
+
 export default class Login extends Component {
 
   navTester () {
@@ -20,13 +22,27 @@ export default class Login extends Component {
       <View style={styles.container}>
         <Text style={styles.title}>HUB</Text>
         <View style={styles.form}>
-          <View style={styles.inputContainer}>
-            <Text style={styles.label}>name</Text>
-            <TextInput style={styles.input} placeholder='enter name' />
-          </View>
-          <TextInput style={styles.input} placeholder='*******' />
+          <Text style={styles.label}>name</Text>
+          <TextInput
+            style={styles.input}
+            placeholder='enter name'
+            autoCorrect={false}
+            keyboardAppearance={'dark'}
+          />
+          <Divider />
+          <Text style={styles.label}>password</Text>
+          <TextInput
+            style={styles.input}
+            placeholder='*******'
+            autoCorrect={false}
+            secureTextEntry
+            keyboardAppearance={'dark'}
+          />
         </View>
-        <TouchableHighlight onPress={this.navTester.bind(this)}>
+        <TouchableHighlight
+          style={styles.submit}
+          onPress={this.navTester.bind(this)}
+        >
           <Text style={styles.arrow}> ></Text>
         </TouchableHighlight>
       </View>
@@ -39,7 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#2378C1',
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   title: {
     fontSize: 40,
@@ -62,18 +78,24 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold'
   },
-  inputContainer: {
-    backgroundColor: '#fff'
+  form: {
+    justifyContent: 'space-around'
   },
   label: {
     color: '#122664',
-    fontSize: 20,
+    fontSize: 15,
+    paddingLeft: 10,
+    paddingTop: 10,
+    backgroundColor: '#fff'
   },
   input: {
     backgroundColor: '#fff',
     fontSize: 10,
-    padding: 20,
-    height: 50,
+    padding: 10,
+    height: 30,
     width: 150
+  },
+  submit: {
+    marginTop: 50
   }
 })
