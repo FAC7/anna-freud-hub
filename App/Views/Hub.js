@@ -21,7 +21,11 @@ export default class Hub extends Component {
       <View style={styles.mainContainer}>
         <Text style={styles.title}>Events Near You</Text>
         <ScrollView>
-          <Tile />
+          <Tile
+            title={'Band Camp'}
+            imageSource={'http://www.fillmurray.com/g/200/300'}
+            attending={33}
+          />
 
           <TouchableHighlight style={styles.container} onPress={this.navTester.bind(this)}>
             <Text>This is a tile</Text>
