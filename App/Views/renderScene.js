@@ -1,7 +1,7 @@
 import React from 'react'
 import Login from './Login.js'
 import Interests from './Interests.js'
-import Dashboard from './Dashboard.js'
+import Hub from './Hub.js'
 import MyEvents from './MyEvents.js'
 import EventInfo from './EventInfo.js'
 
@@ -17,7 +17,7 @@ export default (route, nav) => {
   case routes.INTERESTS:
     return <Interests navigator={nav} />
   case routes.DASHBOARD:
-    return <Dashboard navigator={nav} />
+    return <Hub navigator={nav} />
   case routes.MY_EVENTS:
     return <MyEvents navigator={nav} />
   case routes.EVENT_INFO:
