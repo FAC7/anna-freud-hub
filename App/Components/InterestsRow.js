@@ -7,10 +7,16 @@ import {
   TouchableHighlight
 } from 'react-native'
 
-export default ({ interest, setInterest, active }) => {
-  const activeClass = active.indexOf(interest) > -1 ?
+export default ({ interestPair, setInterest, active }) => {
+
+  const firstTileActiveClass = active.indexOf(interestPair[0]) > -1 ?
   { opacity: 0.8 } :
   { opacity: 0.4 }
+
+  const secondTileActiveClass = active.indexOf(interestPair[1]) > -1 ?
+  { opacity: 0.8 } :
+  { opacity: 0.4 }
+
   return (
     <View>
       <View style={styles.row}>
@@ -18,16 +24,15 @@ export default ({ interest, setInterest, active }) => {
         <TouchableHighlight
           style={styles.tile}
           onPress={() => {
-            console.log('pre')
-            setInterest(interest)
+            setInterest(interestPair[0])
           }}
         >
           <View>
             <Image
-              style={[styles.tileImage, activeClass]}
+              style={[ styles.tileImage, firstTileActiveClass ]}
               source={{ uri: 'http://www.fillmurray.com/150/150' }}
             />
-            <Text style={styles.subTitle}>{interest}</Text>
+            <Text style={styles.subTitle}>{interestPair[0]}</Text>
           </View>
         </TouchableHighlight>
 
@@ -36,16 +41,15 @@ export default ({ interest, setInterest, active }) => {
         <TouchableHighlight
           style={styles.tile}
           onPress={() => {
-            console.log('pre')
-            setInterest(interest)
+            setInterest(interestPair[1])
           }}
         >
           <View>
             <Image
-              style={[styles.tileImage, activeClass]}
+              style={[ styles.tileImage, secondTileActiveClass ]}
               source={{ uri: 'http://www.fillmurray.com/150/150' }}
             />
-            <Text style={styles.subTitle}>{interest}</Text>
+            <Text style={styles.subTitle}>{interestPair[1]}</Text>
           </View>
         </TouchableHighlight>
 

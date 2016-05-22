@@ -21,17 +21,20 @@ class Interests extends Component {
   }
 
   renderInterests () {
-
-    const interestArr = [ 'Music', 'Art', 'Cooking', 'Yoga', 'Meditation' ]
+    const interestArr = [ [ 'Music', 'Art' ],
+                          [ 'Cooking', 'Yoga' ],
+                          [ 'Meditation', 'Ultimate Frisbee' ],
+                          [ 'Running', 'Book Club' ],
+                          [ 'Dance', 'Coding' ]
+                        ]
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        {interestArr.map((interest, index) => {
-          console.log(this.props.interests)
+        {interestArr.map((interestPair, index) => {
           return (
             <Row
               key={index}
-              interest={interest}
+              interestPair={interestPair}
               active={this.props.interests}
               setInterest={this.props.setInterest.bind(this)}
             />)}
