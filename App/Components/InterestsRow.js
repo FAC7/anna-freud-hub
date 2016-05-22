@@ -9,11 +9,11 @@ import {
 
 export default ({ interestPair, setInterest, active }) => {
 
-  const firstTileActiveClass = active.indexOf(interestPair[0]) > -1 ?
+  const firstTileActiveClass = active.indexOf(interestPair[0].title) > -1 ?
   { opacity: 0.8 } :
   { opacity: 0.4 }
 
-  const secondTileActiveClass = active.indexOf(interestPair[1]) > -1 ?
+  const secondTileActiveClass = active.indexOf(interestPair[1].title) > -1 ?
   { opacity: 0.8 } :
   { opacity: 0.4 }
 
@@ -24,15 +24,15 @@ export default ({ interestPair, setInterest, active }) => {
         <TouchableHighlight
           style={styles.tile}
           onPress={() => {
-            setInterest(interestPair[0])
+            setInterest(interestPair[0].title)
           }}
         >
           <View>
             <Image
               style={[ styles.tileImage, firstTileActiveClass ]}
-              source={{ uri: 'http://www.fillmurray.com/150/150' }}
+              source={{ uri: interestPair[0].picUrl }}
             />
-            <Text style={styles.subTitle}>{interestPair[0]}</Text>
+            <Text style={styles.subTitle}>{interestPair[0].title}</Text>
           </View>
         </TouchableHighlight>
 
@@ -41,15 +41,15 @@ export default ({ interestPair, setInterest, active }) => {
         <TouchableHighlight
           style={styles.tile}
           onPress={() => {
-            setInterest(interestPair[1])
+            setInterest(interestPair[1].title)
           }}
         >
           <View>
             <Image
               style={[ styles.tileImage, secondTileActiveClass ]}
-              source={{ uri: 'http://www.fillmurray.com/150/150' }}
+              source={{ uri: interestPair[1].picUrl }}
             />
-            <Text style={styles.subTitle}>{interestPair[1]}</Text>
+            <Text style={styles.subTitle}>{interestPair[1].title}</Text>
           </View>
         </TouchableHighlight>
 
