@@ -21,21 +21,14 @@ class Interests extends Component {
   }
 
   renderInterests () {
-    const interestArr = [ [ 'Music', 'Art' ],
-                          [ 'Cooking', 'Yoga' ],
-                          [ 'Meditation', 'Ultimate Frisbee' ],
-                          [ 'Running', 'Book Club' ],
-                          [ 'Dance', 'Coding' ]
-                        ]
-
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        {interestArr.map((interestPair, index) => {
+        {this.props.interestsOptions.map((interestPair, index) => {
           return (
             <Row
               key={index}
               interestPair={interestPair}
-              active={this.props.interests}
+              active={this.props.chosenInterests}
               setInterest={this.props.setInterest.bind(this)}
             />)}
           )
@@ -77,7 +70,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    interests: state.interests
+    chosenInterests: state.chosenInterests,
+    interestsOptions: state.interestsOptions
   }
 }
 
