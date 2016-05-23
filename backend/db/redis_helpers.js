@@ -24,7 +24,7 @@ helpers.parseArrayKeys = (keys, data) => {
 // returns a fresh copy of data object with updated array value
 helpers.updateArrayKey = (key, id, data) => {
   const i = data[key].indexOf(id)
-  return (i > -1) ? removeArrayItem(key, data, i) : addArrayItem(key, data, id)
+  return i > -1 ? removeArrayItem(key, data, i) : addArrayItem(key, data, id)
 }
 
 // updates the array of all eventIds
