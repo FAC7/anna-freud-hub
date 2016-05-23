@@ -10,7 +10,7 @@ const mockUser = {
   DOB: '23-03-89',
   postCode: 'SW9  ',
   interests: [ 'Music', 'Yoga' ],
-  eventsAttending: [ 'Football', 'Basketball' ]
+  eventsAttending: [ 'event:12345', 'event:67890' ]
 }
 
 const mockEvent = {
@@ -27,14 +27,14 @@ const mockEvent = {
 
 const mockEvent2 = {
   eventId: 'event:67890',
-  title: 'Codingforeveryone',
-  description: 'FAC Mondays!',
+  title: 'Codingforwomen',
+  description: 'FAC Tuesdays!',
   address: '14 palmers road',
-  postCode: 'E2',
-  time: '5345',
-  imageUrl: 'jfdsfjk',
-  attending: [ 'user:12345', 'user:67890' ],
-  categories: [ 'Coding', 'Fun' ]
+  postCode: 'E2 0SY',
+  time: '5346',
+  imageUrl: 'KJSDFKDJSFH',
+  attending: [ 'user:12345', 'user:67890', 'user:56789' ],
+  categories: [ 'Javascript', 'Functions' ]
 }
 
 tape('testing adding a new YSU', (t) => {
@@ -103,16 +103,81 @@ tape('getEvent succesfully fetches event with right info', (t) => {
     })
 })
 
-// tape('getAllEvents', (t) => {
-//   t.plan(1)
-//   db.addEvent(client, mockEvent2)
-//     .then(() => db.getAllEvents(client))
-//     .then((data) => {
-//       let actual = data.length
-//       let expected = 2
-//       t.equal(actual, expected, 'getAllEvents returns correct number of events')
-//     })
-// })
+tape('getEventIds', (t) => {
+  t.plan(1)
+  db.getEventIds(client)
+    .then((data) => {
+      const actual = data[0]
+      const expected = 'event:12345'
+      t.equal(actual, expected, 'returns an array of eventIds')
+    })
+})
+
+tape('getEvents', (t) => {
+  t.plan(3)
+  db.addEvent(client, mockEvent2)
+    .then(() => db.getEventIds(client))
+    .then((data) => db.getEvents(client, data))
+    .then((data) => {
+      let actual = data.length
+      let expected = 2
+      t.equal(actual, expected, 'getEvents returns correct number of events')
+
+      actual = data[1].eventId
+      expected = mockEvent.eventId
+      t.equal(actual, expected, 'getEvents returns correct eventIds')
+
+      actual = data[0].attending
+      expected = mockEvent2.attending
+      t.deepEquals(actual, expected, 'getEvents returns correct array of attendees')
+    })
+})
+
+tape('updateAttending should change the users attending events', (t) => {
+  t.plan(3)
+  db.toggleUserAttending(client, 'user:12345', 'event:12345')
+    .then((response) => {
+      const actual = response
+      const expected = 'OK'
+      t.equal(actual, expected, 'response ok from redis server')
+    })
+    .then(() => db.getUser(client, 'user:12345'))
+    .then((updatedUser) => {
+      const actual = updatedUser.eventsAttending.indexOf('event:12345') > -1
+      const expected = false
+      t.equal(actual, expected, 'eventsAttending has removed event')
+    })
+    .then(() => db.toggleUserAttending(client, 'user:12345', 'event:12345'))
+    .then(() => db.getUser(client, 'user:12345'))
+    .then((updatedUser) => {
+      const actual = updatedUser.eventsAttending.indexOf('event:12345') > -1
+      const expected = true
+      t.equal(actual, expected, 'eventsAttending has re added event')
+    })
+})
+
+tape('toggleEventAttendingList', (t) => {
+  t.plan(3)
+  db.toggleEventAttendingList(client, 'event:12345', 'user:44444')
+    .then((response) => {
+      const actual = response
+      const expected = 'OK'
+      t.equal(actual, expected, 'response ok from redis')
+    })
+    .then(() => db.getEvent(client, 'event:12345'))
+    .then((updatedEvent) => {
+      const actual = updatedEvent.attending.indexOf('user:44444') > -1
+      const expected = true
+      t.equal(actual, expected, 'user has been added to event attending list')
+    })
+    .then(() => db.toggleEventAttendingList(client, 'event:12345', 'user:44444'))
+    .then(() => db.getEvent(client, 'event:12345'))
+    .then((updatedEvent) => {
+      const actual = updatedEvent.attending.indexOf('user:44444') > -1
+      const expected = false
+      t.equal(actual, expected, 'user has been removed from event attending list')
+    })
+})
 
 tape('teardown', (t) => {
   client.FLUSHDBAsync() // eslint-disable-line
@@ -120,11 +185,3 @@ tape('teardown', (t) => {
     .then(() => t.end())
 
 })
-
-
-// module.exports= {
-//   addMockUser,
-//   getUser,
-//   addUser,
-//   addEvents
-// }
