@@ -7,9 +7,24 @@ const Inert = require('inert')
 // server routes
 const Dashboard = require('./routes/nhsViews/Dashboard.js')
 const ResourceHandler = require('./routes/nhsViews/ResourceHandler.js')
+const BookEvent = require('./routes/YSU-routes/book_event.js')
+const BookedEvents = require('./routes/YSU-routes/booked_events.js')
+const setInterests = require('./routes/YSU-routes/set_interests.js')
+const signUp = require('./routes/YSU-routes/sign_up.js')
+const userEvents = require('./routes/YSU-routes/user_events.js')
+const addMockUser = require('./routes/YSU-routes/add_mock_user.js')
 
 const Plugins = [ Inert ]
-const Routes = [ Dashboard, ResourceHandler ]
+const Routes = [
+  Dashboard,
+  ResourceHandler,
+  BookEvent,
+  BookedEvents,
+  setInterests,
+  signUp,
+  userEvents,
+  addMockUser
+]
 
 module.exports = (client) => {
 
