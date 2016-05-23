@@ -1,5 +1,6 @@
 // const createClient = require('./client.js')
 // const client = createClient()
+// const Bluebird = require('bluebird')
 
 const db = {} = module.exports
 
@@ -65,6 +66,9 @@ db.getEvent = (client, eventId) => {
     )
 }
 
-db.getAllEvents = (client) => {
-  // return client.
+db.getEventIds = (client) => client.LRANGEAsync('eventsList', 0, -1)
+
+db.getEvents = (client, eventIds) => {
+  const events = eventIds.map(id => db.getEvent(client, id))
+  return Promise.all(events)
 }
