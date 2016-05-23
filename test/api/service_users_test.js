@@ -25,6 +25,18 @@ const mockEvent = {
   categories: [ 'Coding', 'Fun' ]
 }
 
+const mockEvent2 = {
+  eventId: 'event:67890',
+  title: 'Codingforeveryone',
+  description: 'FAC Mondays!',
+  address: '14 palmers road',
+  postCode: 'E2',
+  time: '5345',
+  imageUrl: 'jfdsfjk',
+  attending: [ 'user:12345', 'user:67890' ],
+  categories: [ 'Coding', 'Fun' ]
+}
+
 tape('testing adding a new YSU', (t) => {
   t.plan(1)
   db.addUser(client, mockUser)
@@ -43,12 +55,12 @@ tape('getUser function returns the current user with correct arguments', (t) => 
       const expected = 8
       t.equal(actual, expected, 'getUser returns correct number of arguments')
 
-      t.equal(data.userId, 'user:12345', 'returns correct Id')
-      t.equal(data.email, 'ivan@fac.com', 'returns correct email')
-      t.deepEqual(data.interests, [ 'Music', 'Yoga' ], 'returns interests in correct format')
+      t.equal(data.userId, mockUser.userId, 'returns correct Id')
+      t.equal(data.email, mockUser.email, 'returns correct email')
+      t.deepEqual(data.interests, mockUser.interests, 'returns interests in correct format')
       t.deepEqual(
         data.eventsAttending,
-        [ 'Football', 'Basketball' ],
+        mockUser.eventsAttending,
         'returns eventsAttending in correct format'
       )
     })
@@ -59,25 +71,54 @@ tape('addEvents adds an event', (t) => {
   db.addEvent(client, mockEvent)
     .then((response) => {
       const actual = response
-      const expected = 'OK'
+      const expected = 1
       t.equal(actual, expected, 'assert addEvent to db')
     })
 })
 
 tape('getEvent succesfully fetches event with right info', (t) => {
-  t.plan(1)
+  t.plan(5)
   db.getEvent(client, 'event:12345')
     .then((data) => {
       let actual = Object.keys(data).length
-      let expected = 7
+      let expected = 9
       t.equal(actual, expected, 'getEvent gets event with correct number of keys')
+
+      const { eventId, title, attending, categories } = data
+      actual = eventId
+      expected = mockEvent.eventId
+      t.equal(actual, expected, 'getEvent returns the correct eventId')
+
+      actual = title
+      expected = mockEvent.title
+      t.equal(actual, expected, 'getEvent returns the correct event title')
+
+      actual = attending
+      expected = mockEvent.attending
+      t.deepEquals(actual, expected, 'getEvent returns parsed array of users attending event')
+
+      actual = categories
+      expected = mockEvent.categories
+      t.deepEquals(actual, expected, 'getEvent returns parsed array of event categories')
     })
 })
 
+// tape('getAllEvents', (t) => {
+//   t.plan(1)
+//   db.addEvent(client, mockEvent2)
+//     .then(() => db.getAllEvents(client))
+//     .then((data) => {
+//       let actual = data.length
+//       let expected = 2
+//       t.equal(actual, expected, 'getAllEvents returns correct number of events')
+//     })
+// })
+
 tape('teardown', (t) => {
-  // client.FLUSHDB() // eslint-disable-line
-  client.QUIT() // eslint-disable-line
-  t.end()
+  client.FLUSHDBAsync() // eslint-disable-line
+    .then(() => client.QUITAsync()) // eslint-disable-line
+    .then(() => t.end())
+
 })
 
 

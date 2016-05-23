@@ -69,6 +69,7 @@ local.properties
 node_modules/
 npm-debug.log
 config.env
+dump.rdb
 
 # BUCK
 buck-out/
