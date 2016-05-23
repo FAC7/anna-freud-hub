@@ -12,7 +12,6 @@ const BookedEvents = require('./routes/YSU-routes/booked_events.js')
 const setInterests = require('./routes/YSU-routes/set_interests.js')
 const signUp = require('./routes/YSU-routes/sign_up.js')
 const userEvents = require('./routes/YSU-routes/user_events.js')
-const addMockUser = require('./routes/YSU-routes/add_mock_user.js')
 
 const Plugins = [ Inert ]
 const Routes = [
@@ -22,8 +21,7 @@ const Routes = [
   BookedEvents,
   setInterests,
   signUp,
-  userEvents,
-  addMockUser
+  userEvents
 ]
 
 module.exports = (client) => {

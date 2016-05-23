@@ -1,17 +1,6 @@
-// const createClient = require('./client.js')
-// const client = createClient()
-// const Bluebird = require('bluebird')
-
 const db = {} = module.exports
 
-db.addMockUser = (user) => {
-  return client.HMSETAsync(user.firstName,  //eslint-disable-line
-    'firstName', user.firstName,
-    'lastName', user.lastName,
-    'email', user.email
-  )
-}
-
+// adds a user object to the DB
 db.addUser = (client, userObj) => {
   return client.HMSETAsync(userObj.userId,  //eslint-disable-line
     'userId', userObj.userId,
@@ -25,6 +14,7 @@ db.addUser = (client, userObj) => {
   )
 }
 
+// adds an event object to the DB
 db.addEvent = (client, eventObj) => {
   return client.HMSETAsync(eventObj.eventId,  //eslint-disable-line
     'eventId', eventObj.eventId,
@@ -40,6 +30,7 @@ db.addEvent = (client, eventObj) => {
   .then(() => client.LPUSHAsync('eventsList', eventObj.eventId))
 }
 
+// gets a single user object from a userId
 db.getUser = (client, userId) => {
   return client.HGETALLAsync(userId) //eslint-disable-line
     .then((data) => Object.assign(
@@ -53,6 +44,7 @@ db.getUser = (client, userId) => {
     )
 }
 
+// get a single event object from an eventId
 db.getEvent = (client, eventId) => {
   return client.HGETALLAsync(eventId) // eslint-disable-line
     .then((data) => Object.assign(
@@ -66,14 +58,19 @@ db.getEvent = (client, eventId) => {
     )
 }
 
+// gets an array of all the eventIds in the DB
 db.getEventIds = (client) => client.LRANGEAsync('eventsList', 0, -1)
 
+// getEvents gets a custom list of events (from an array of eventIds)
 db.getEvents = (client, eventIds) => {
   const events = eventIds.map(id => db.getEvent(client, id))
   return Promise.all(events)
 }
 
-db.updateAttending = (client, userId, eventId) => {
+// updates a single users's list of events attending
+// if the user is already attending the event passed ---- it removes it
+// is the user is not attending the event passed     ---- it adds it
+db.toggleUserAttending = (client, userId, eventId) => {
   return db.getUser(client, userId)
     .then((data) => {
       const eventIndex = data.eventsAttending.indexOf(eventId)
