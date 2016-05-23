@@ -1,5 +1,5 @@
 const helpers = require('./redis_helpers.js')
-const db = {} = module.exports
+const db = {}
 
 // adds a user object to the DB
 db.addUser = (client, userObj) => {
@@ -70,3 +70,5 @@ db.toggleEventAttendingList = (client, eventId, userId) => {
     .then((data) => helpers.updateArrayKey('attending', userId, data))
     .then((updatedData) => db.addEvent(client, updatedData))
 }
+
+module.exports = db

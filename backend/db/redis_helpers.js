@@ -1,4 +1,4 @@
-const helpers = {} = module.exports
+const helpers = {}
 
 const removeArrayItem = (key, data, index) => {
   const updatedArr = {}
@@ -33,3 +33,5 @@ helpers.updateEventsList = (client, events, id) => {
     'OK' :
     client.LPUSHAsync('eventsList', id)
 }
+
+module.exports = helpers
