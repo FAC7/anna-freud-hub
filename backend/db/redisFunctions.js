@@ -11,6 +11,7 @@ const addMockUser = (user) => {
 
 const addUser = (client, userObj) => {
   return client.HMSETAsync(userObj.userId,  //eslint-disable-line
+    'userId', userObj.userId,
     'firstName', userObj.firstName,
     'lastName', userObj.lastName,
     'email', userObj.email,
@@ -21,7 +22,7 @@ const addUser = (client, userObj) => {
   )
 }
 
-const addEvents = (eventObj) => {
+const addEvents = (client, eventObj) => {
   return client.HMSETAsync(eventObj.eventId,  //eslint-disable-line
     'title', eventObj.title,
     'description', eventObj.description,
@@ -34,8 +35,13 @@ const addEvents = (eventObj) => {
   )
 }
 
-const getUser = (userId) => {
-  return client.HGETALLAsync(userId)  //eslint-disable-line
+const getUser = (client, userId) => {
+  return client.HGETALLAsync(userId) //eslint-disable-line
+    // .then(data => Object.keys(data).map(field => {
+    //
+    //   if (field === 'interests' || field === 'eventsAttending') return { JSON.parse(data.field) }
+    // })
+    }
 }
 
 module.exports= {
