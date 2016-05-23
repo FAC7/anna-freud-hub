@@ -15,32 +15,32 @@ const getRouteKey = (currentRouteName, position) => {
 }
 
 /*eslint-disable */
+// if array length is 2, the second custom string will be displayed
 const navRoutes = {
-  'Login':      { left: null, 			  centre: null, 			     right: null },
-  'Interests':  { left: null, 			  centre: 'DASHBOARD', 		 right: null },
-  'HUB':        { left: 'INTERESTS',	centre: 'DASHBOARD', 	   right: 'MY_EVENTS' },
-  'Event Info': { left: 'BACK',       centre: null, 				   right: null },
-  'My Events':  { left: 'INTERESTS',  centre: 'DASHBOARD', 	   right: 'MY_EVENTS' }
+  'Login':      { left: ['DASHBOARD'], 			   centre: [null], 			               right: [null] },
+  'Interests':  { left: [null], 			         centre: ['DASHBOARD', 'Submit'],    right: [null] },
+  'HUB':        { left: ['INTERESTS'],	       centre: ['DASHBOARD'], 	           right: ['MY_EVENTS'] },
+  'Event Info': { left: ['DASHBOARD', 'Back'], centre: [null], 				             right: [null] },
+  'My Events':  { left: ['INTERESTS'],         centre: ['DASHBOARD'], 	           right: ['MY_EVENTS'] }
 }
 /*eslint-enable */
 
 // Returns a nav button
 // routes[routeKey] = routeValue
-// routes[INTERESTS] = Interests
-const navButton = (routeKey, navigator, position) => {
+// routes['INTERESTS'] = Interests
+const navButton = (routeKey, navigator, position, customStyles) => {
   const onPress = () => {
-    if (routeKey === 'BACK') {navigator.pop()}
-    else {
-      navigator.push({ name: routes[routeKey] })
-    }
+    navigator.push({ name: routes[routeKey[0]] })
   }
+  // debugger
+
   return (
     <TouchableOpacity
       onPress={onPress}
       style={styles['navBar' + position + 'Button']}
     >
-      <Text style={[ styles.navBarText, styles.navBarButtonText ]} >
-        {routeKey === 'BACK' ? 'BACK' : routes[routeKey]}
+      <Text style={[ styles.navBarText, styles.navBarButtonText, customStyles ]} >
+        {routeKey.length === 2 ? routeKey[1] : routes[routeKey[0]]}
       </Text>
     </TouchableOpacity>
   )
@@ -61,20 +61,20 @@ const NavigationBarRouteMapper = {
 
   Title: (route, navigator, index, navState) => {
     const nextRouteKey = getRouteKey(route.name, 'centre')
-    return navButton(nextRouteKey, navigator, 'Centre')
+    return navButton(nextRouteKey, navigator, 'Centre', styles.navBarTitleText)
   },
 
 }
 
 const styles = StyleSheet.create({
   navBarText: {
-    fontSize: 16,
-    marginVertical: 10,
+    fontSize: 18,
   },
   navBarTitleText: {
-    color: '#373E4D',
-    fontWeight: '500',
-    marginVertical: 9,
+    fontSize: 25,
+    fontWeight: '400',
+    letterSpacing: 2,
+    fontFamily: 'Helvetica',
   },
   navBarLeftButton: {
     paddingLeft: 10,
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   navBarCentreButton: {
   },
   navBarButtonText: {
-    color: '#5890FF',
+    color: '#00498F',
   }
 })
 
