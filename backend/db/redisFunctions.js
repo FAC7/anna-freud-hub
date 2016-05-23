@@ -1,5 +1,5 @@
-const createClient = require('./client.js')
-const client = createClient()
+// const createClient = require('./client.js')
+// const client = createClient()
 
 const addMockUser = (user) => {
   return client.HMSETAsync(user.firstName,  //eslint-disable-line
@@ -9,15 +9,15 @@ const addMockUser = (user) => {
   )
 }
 
-const addUser = (userObj) => {
+const addUser = (client, userObj) => {
   return client.HMSETAsync(userObj.userId,  //eslint-disable-line
     'firstName', userObj.firstName,
     'lastName', userObj.lastName,
     'email', userObj.email,
     'DOB', userObj.DOB,
     'postCode', userObj.postCode,
-    'interests', userObj.interests,  //TODO Do I need to stringify here?
-    'eventsAttending', userObj.eventsAttending //TODO stringify here?
+    'interests', JSON.stringify(userObj.interests),
+    'eventsAttending', JSON.stringify(userObj.eventsAttending)
   )
 }
 
@@ -29,14 +29,14 @@ const addEvents = (eventObj) => {
     'time', eventObj.time,
     'postCode', eventObj.postCode,
     'imageUrl', eventObj.imageUrl,
-    'attending', eventObj.attending,  //TODO Do I need to stringify here?
-    'categories', eventObj.categories //TODO stringify here?
+    'attending', JSON.stringify(eventObj.attending),
+    'categories', JSON.stringify(eventObj.categories)
   )
 }
 
 const getUser = (userId) => {
   return client.HGETALLAsync(userId)  //eslint-disable-line
-} 
+}
 
 module.exports= {
   addMockUser,
