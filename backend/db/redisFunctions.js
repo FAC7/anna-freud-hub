@@ -27,7 +27,12 @@ db.addEvent = (client, eventObj) => {
     'attending', JSON.stringify(eventObj.attending),
     'categories', JSON.stringify(eventObj.categories)
   )
-  .then(() => client.LPUSHAsync('eventsList', eventObj.eventId))
+  .then(() => client.LRANGEAsync('eventsList', 0, -1))
+  .then((data) => {
+    return data.indexOf(eventObj.eventId) > -1 ?
+          'OK' :
+          client.LPUSHAsync('eventsList', eventObj.eventId)
+  })
 }
 
 // gets a single user object from a userId
@@ -84,4 +89,20 @@ db.toggleUserAttending = (client, userId, eventId) => {
       }
     })
     .then((updatedData) => db.addUser(client, updatedData))
+}
+
+db.toggleEventAttendingList = (client, eventId, userId) => {
+  return db.getEvent(client, eventId)
+    .then((data) => {
+      const userIndex = data.attending.indexOf(userId)
+      if (userIndex > -1) {
+        const updatedArr = data.attending.slice(0, userIndex)
+          .concat(data.attending.slice(userIndex + 1))
+        return Object.assign({}, data, { attending: updatedArr })
+      } else {
+        const updatedArr = data.attending.concat([ userId ])
+        return Object.assign({}, data, { attending: updatedArr })
+      }
+    })
+    .then((updatedData) => db.addEvent(client, updatedData))
 }

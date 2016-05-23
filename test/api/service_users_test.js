@@ -156,6 +156,29 @@ tape('updateAttending should change the users attending events', (t) => {
     })
 })
 
+tape('toggleEventAttendingList', (t) => {
+  t.plan(3)
+  db.toggleEventAttendingList(client, 'event:12345', 'user:44444')
+    .then((response) => {
+      const actual = response
+      const expected = 'OK'
+      t.equal(actual, expected, 'response ok from redis')
+    })
+    .then(() => db.getEvent(client, 'event:12345'))
+    .then((updatedEvent) => {
+      const actual = updatedEvent.attending.indexOf('user:44444') > -1
+      const expected = true
+      t.equal(actual, expected, 'user has been added to event attending list')
+    })
+    .then(() => db.toggleEventAttendingList(client, 'event:12345', 'user:44444'))
+    .then(() => db.getEvent(client, 'event:12345'))
+    .then((updatedEvent) => {
+      const actual = updatedEvent.attending.indexOf('user:44444') > -1
+      const expected = false
+      t.equal(actual, expected, 'user has been removed from event attending list')
+    })
+})
+
 tape('teardown', (t) => {
   client.FLUSHDBAsync() // eslint-disable-line
     .then(() => client.QUITAsync()) // eslint-disable-line
