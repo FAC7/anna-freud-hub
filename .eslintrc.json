@@ -55,7 +55,6 @@
     "dot-notation": "error",
     "eqeqeq": ["error", "smart"],
     "no-caller": "error",
-    "no-empty-pattern": "error",
     "no-eval": "error",
     "no-extend-native": "error",
     "no-fallthrough": "error",

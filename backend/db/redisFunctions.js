@@ -1,7 +1,9 @@
 // const createClient = require('./client.js')
 // const client = createClient()
 
-const addMockUser = (user) => {
+const db = {} = module.exports
+
+db.addMockUser = (user) => {
   return client.HMSETAsync(user.firstName,  //eslint-disable-line
     'firstName', user.firstName,
     'lastName', user.lastName,
@@ -9,7 +11,7 @@ const addMockUser = (user) => {
   )
 }
 
-const addUser = (client, userObj) => {
+db.addUser = (client, userObj) => {
   return client.HMSETAsync(userObj.userId,  //eslint-disable-line
     'userId', userObj.userId,
     'firstName', userObj.firstName,
@@ -22,8 +24,9 @@ const addUser = (client, userObj) => {
   )
 }
 
-const addEvent = (client, eventObj) => {
+db.addEvent = (client, eventObj) => {
   return client.HMSETAsync(eventObj.eventId,  //eslint-disable-line
+    'eventId', eventObj.eventId,
     'title', eventObj.title,
     'description', eventObj.description,
     'address', eventObj.address,
@@ -33,21 +36,35 @@ const addEvent = (client, eventObj) => {
     'attending', JSON.stringify(eventObj.attending),
     'categories', JSON.stringify(eventObj.categories)
   )
+  .then(() => client.LPUSHAsync('eventsList', eventObj.eventId))
 }
 
-const getUser = (client, userId) => {
+db.getUser = (client, userId) => {
   return client.HGETALLAsync(userId) //eslint-disable-line
-    .then((data) => {
-      data.interests = JSON.parse(data.interests)
-      data.eventsAttending = JSON.parse(data.eventsAttending)
-      return data
-    })
+    .then((data) => Object.assign(
+        // parses stringified arrays from redis
+        // returns in a fresh object
+        {},
+        data,
+        { interests: JSON.parse(data.interests),
+          eventsAttending: JSON.parse(data.eventsAttending)
+        })
+    )
 }
 
+db.getEvent = (client, eventId) => {
+  return client.HGETALLAsync(eventId) // eslint-disable-line
+    .then((data) => Object.assign(
+        // parses stringified arrays from redis
+        // returns in a fresh object
+        {},
+        data,
+        { attending: JSON.parse(data.attending),
+          categories: JSON.parse(data.categories)
+        })
+    )
+}
 
-module.exports= {
-  addMockUser,
-  getUser,
-  addUser,
-  addEvent
+db.getAllEvents = (client) => {
+  // return client.
 }
