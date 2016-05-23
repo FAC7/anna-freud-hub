@@ -72,3 +72,19 @@ db.getEvents = (client, eventIds) => {
   const events = eventIds.map(id => db.getEvent(client, id))
   return Promise.all(events)
 }
+
+db.updateAttending = (client, userId, eventId) => {
+  return db.getUser(client, userId)
+    .then((data) => {
+      const eventIndex = data.eventsAttending.indexOf(eventId)
+      if (eventIndex > -1) {
+        const updatedArr = data.eventsAttending.slice(0, eventIndex)
+          .concat(data.eventsAttending.slice(eventIndex + 1))
+        return Object.assign({}, data, { eventsAttending: updatedArr })
+      } else {
+        const updatedArr = data.eventsAttending.concat([ eventId ])
+        return Object.assign({}, data, { eventsAttending: updatedArr })
+      }
+    })
+    .then((updatedData) => db.addUser(client, updatedData))
+}

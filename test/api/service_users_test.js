@@ -10,7 +10,7 @@ const mockUser = {
   DOB: '23-03-89',
   postCode: 'SW9  ',
   interests: [ 'Music', 'Yoga' ],
-  eventsAttending: [ 'Football', 'Basketball' ]
+  eventsAttending: [ 'event:12345', 'event:67890' ]
 }
 
 const mockEvent = {
@@ -130,6 +130,22 @@ tape('getEvents', (t) => {
       actual = data[0].attending
       expected = mockEvent2.attending
       t.deepEquals(actual, expected, 'getEvents returns correct array of attendees')
+    })
+})
+
+tape('updateAttending should change the users attending events', (t) => {
+  t.plan(2)
+  db.updateAttending(client, 'user:12345', 'event:12345')
+    .then((response) => {
+      const actual = response
+      const expected = 'OK'
+      t.equal(actual, expected, 'response ok from redis server')
+    })
+    .then(() => db.getUser(client, 'user:12345'))
+    .then((updatedUser) => {
+      const actual = updatedUser.eventsAttending.indexOf('event:12345') > -1
+      const expected = false
+      t.equal(actual, expected, 'eventsAttending has removed event')
     })
 })
 
