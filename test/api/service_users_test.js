@@ -134,8 +134,8 @@ tape('getEvents', (t) => {
 })
 
 tape('updateAttending should change the users attending events', (t) => {
-  t.plan(2)
-  db.updateAttending(client, 'user:12345', 'event:12345')
+  t.plan(3)
+  db.toggleUserAttending(client, 'user:12345', 'event:12345')
     .then((response) => {
       const actual = response
       const expected = 'OK'
@@ -146,6 +146,13 @@ tape('updateAttending should change the users attending events', (t) => {
       const actual = updatedUser.eventsAttending.indexOf('event:12345') > -1
       const expected = false
       t.equal(actual, expected, 'eventsAttending has removed event')
+    })
+    .then(() => db.toggleUserAttending(client, 'user:12345', 'event:12345'))
+    .then(() => db.getUser(client, 'user:12345'))
+    .then((updatedUser) => {
+      const actual = updatedUser.eventsAttending.indexOf('event:12345') > -1
+      const expected = true
+      t.equal(actual, expected, 'eventsAttending has re added event')
     })
 })
 
