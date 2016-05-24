@@ -1,6 +1,6 @@
 const tape = require('tape')
 
-const interestsReducer = require('../../App/Reducers/interests_reducer.js')
+const interestsReducer = require('../../App/Reducers/chosen_interests_reducer.js')
 
 tape('interest reducer returns [] as default', (t) => {
   const expected = []

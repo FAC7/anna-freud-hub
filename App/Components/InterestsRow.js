@@ -1,76 +1,41 @@
 import React from 'react'
 import {
   View,
-  Image,
-  Text,
-  StyleSheet,
-  TouchableHighlight
+  StyleSheet
 } from 'react-native'
 
-export default ({ interest, setInterest, active }) => {
-  const activeClass = active.indexOf(interest) > -1 ?
-  { opacity: 0.8 } :
-  { opacity: 0.4 }
+import Tile from './InterestsTile.js'
+
+export default ({ interestPair, setInterest, active }) => {
+
   return (
     <View>
+
       <View style={styles.row}>
 
-        <TouchableHighlight
-          style={styles.tile}
-          onPress={() => {
-            console.log('pre')
-            setInterest(interest)
-          }}
-        >
-          <View>
-            <Image
-              style={[styles.tileImage, activeClass]}
-              source={{ uri: 'http://www.fillmurray.com/150/150' }}
-            />
-            <Text style={styles.subTitle}>{interest}</Text>
-          </View>
-        </TouchableHighlight>
+        <Tile
+          setInterest={setInterest}
+          interest={interestPair[0]}
+          active={active}
+        />
 
         <View style={styles.divider} />
 
-        <TouchableHighlight
-          style={styles.tile}
-          onPress={() => {
-            console.log('pre')
-            setInterest(interest)
-          }}
-        >
-          <View>
-            <Image
-              style={[styles.tileImage, activeClass]}
-              source={{ uri: 'http://www.fillmurray.com/150/150' }}
-            />
-            <Text style={styles.subTitle}>{interest}</Text>
-          </View>
-        </TouchableHighlight>
+        <Tile
+          setInterest={setInterest}
+          interest={interestPair[1]}
+          active={active}
+        />
 
       </View>
+
       <View style={styles.horizontalDiv} />
+
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  tile: {
-    flex: 20,
-    height: 150
-  },
-  tileImage: {
-    opacity: 0.8,
-    height: 150
-  },
-  subTitle: {
-    color: '#fff',
-    position: 'absolute',
-    bottom: 10,
-    left: 10,
-    backgroundColor: 'transparent'
-  },
   row: {
     flexDirection: 'row'
   },

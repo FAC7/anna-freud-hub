@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux'
-import interests from './interests_reducer.js'
+import chosenInterests from './chosen_interests_reducer.js'
+import interestsOptions from './interests_options_reducer.js'
 import loggedIn from './login_reducer.js'
 
 const rootReducer = combineReducers({
-  interests,
-  loggedIn
+  chosenInterests,
+  loggedIn,
+  interestsOptions
 })
 
 export default rootReducer
