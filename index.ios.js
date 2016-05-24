@@ -21,7 +21,7 @@ class AnnaFreudHub extends Component {
     return (
       <Provider store={createStoreWithMiddleWare(reducers)}>
         <Navigator
-          initialRoute={{ name: 'Login', index: 0 }}
+          initialRoute={{ name: 'Interests', index: 0 }}
           renderScene={renderScene}
           style={styles.nav}
           navigationBar={

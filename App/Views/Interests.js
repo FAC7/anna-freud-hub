@@ -11,6 +11,7 @@ import { connect } from 'react-redux'
 import Row from '../Components/InterestsRow.js'
 
 import { setInterest } from '../Actions/actions_index.js'
+import ListViewTest from '../Components/ListViewTest.js'
 
 class Interests extends Component {
 
@@ -20,30 +21,36 @@ class Interests extends Component {
     })
   }
 
-  renderInterests () {
-    return (
-      <ScrollView contentContainerStyle={styles.container}>
-        {this.props.interestsOptions.map((interestPair, index) => {
-          return (
-            <Row
-              key={index}
-              interestPair={interestPair}
-              active={this.props.chosenInterests}
-              setInterest={this.props.setInterest.bind(this)}
-            />)}
-          )
-        }
-      </ScrollView>
-    )
-  }
+  // renderInterests () {
+  //   return (
+  //     <ScrollView contentContainerStyle={styles.container}>
+  //       {this.props.interestsOptions.map((interestPair, index) => {
+  //         return (
+  //           <Row
+  //             key={index}
+  //             interestPair={interestPair}
+  //             active={this.props.chosenInterests}
+  //             setInterest={this.props.setInterest.bind(this)}
+  //           />)}
+  //         )
+  //       }
+  //     </ScrollView>
+  //   )
+  // }
+
+  // render () {
+  //   console.log(this.props)
+  //   return (
+  //     <View style={styles.mainContainer}>
+  //       <Text style={styles.title}>Choose Your Interests</Text>
+  //       {this.renderInterests()}
+  //     </View>
+  //   )
+  // }
 
   render () {
-    console.log(this.props)
     return (
-      <View style={styles.mainContainer}>
-        <Text style={styles.title}>Choose Your Interests</Text>
-        {this.renderInterests()}
-      </View>
+      <ListViewTest />
     )
   }
 }
