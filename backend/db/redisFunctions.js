@@ -1,4 +1,5 @@
-const db = {} = module.exports
+const helpers = require('./redis_helpers.js')
+const db = {}
 
 // adds a user object to the DB
 db.addUser = (client, userObj) => {
@@ -28,39 +29,19 @@ db.addEvent = (client, eventObj) => {
     'categories', JSON.stringify(eventObj.categories)
   )
   .then(() => client.LRANGEAsync('eventsList', 0, -1))
-  .then((data) => {
-    return data.indexOf(eventObj.eventId) > -1 ?
-          'OK' :
-          client.LPUSHAsync('eventsList', eventObj.eventId)
-  })
+  .then((events) => helpers.updateEventsList(client, events, eventObj.eventId))
 }
 
 // gets a single user object from a userId
 db.getUser = (client, userId) => {
   return client.HGETALLAsync(userId) //eslint-disable-line
-    .then((data) => Object.assign(
-        // parses stringified arrays from redis
-        // returns in a fresh object
-        {},
-        data,
-        { interests: JSON.parse(data.interests),
-          eventsAttending: JSON.parse(data.eventsAttending)
-        })
-    )
+    .then((data) => helpers.parseArrayKeys([ 'interests', 'eventsAttending' ], data))
 }
 
 // get a single event object from an eventId
 db.getEvent = (client, eventId) => {
   return client.HGETALLAsync(eventId) // eslint-disable-line
-    .then((data) => Object.assign(
-        // parses stringified arrays from redis
-        // returns in a fresh object
-        {},
-        data,
-        { attending: JSON.parse(data.attending),
-          categories: JSON.parse(data.categories)
-        })
-    )
+    .then((data) => helpers.parseArrayKeys([ 'attending', 'categories' ], data))
 }
 
 // gets an array of all the eventIds in the DB
@@ -77,32 +58,17 @@ db.getEvents = (client, eventIds) => {
 // is the user is not attending the event passed     ---- it adds it
 db.toggleUserAttending = (client, userId, eventId) => {
   return db.getUser(client, userId)
-    .then((data) => {
-      const eventIndex = data.eventsAttending.indexOf(eventId)
-      if (eventIndex > -1) {
-        const updatedArr = data.eventsAttending.slice(0, eventIndex)
-          .concat(data.eventsAttending.slice(eventIndex + 1))
-        return Object.assign({}, data, { eventsAttending: updatedArr })
-      } else {
-        const updatedArr = data.eventsAttending.concat([ eventId ])
-        return Object.assign({}, data, { eventsAttending: updatedArr })
-      }
-    })
+    .then((data) => helpers.updateArrayKey('eventsAttending', eventId, data))
     .then((updatedData) => db.addUser(client, updatedData))
 }
 
+// updates and event's list of users attending
+// if a user is already attending -------- user is removed from list
+// if the user is not already attending -- user is added to the list
 db.toggleEventAttendingList = (client, eventId, userId) => {
   return db.getEvent(client, eventId)
-    .then((data) => {
-      const userIndex = data.attending.indexOf(userId)
-      if (userIndex > -1) {
-        const updatedArr = data.attending.slice(0, userIndex)
-          .concat(data.attending.slice(userIndex + 1))
-        return Object.assign({}, data, { attending: updatedArr })
-      } else {
-        const updatedArr = data.attending.concat([ userId ])
-        return Object.assign({}, data, { attending: updatedArr })
-      }
-    })
+    .then((data) => helpers.updateArrayKey('attending', userId, data))
     .then((updatedData) => db.addEvent(client, updatedData))
 }
+
+module.exports = db
