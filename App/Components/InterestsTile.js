@@ -7,15 +7,16 @@ import {
   Image
 } from 'react-native'
 
-export default ({ setInterest, interest, active }) => {
+export default ({ setInterest, interest, chosenInterests }) => {
 
-  const ActiveClass = active.indexOf(interest.title) > -1 ?
+  const ActiveClass = chosenInterests.indexOf(interest.title) > -1 ?
   { opacity: 0.8 } :
   { opacity: 0.4 }
 
+  console.log(chosenInterests)
   return (
     <TouchableHighlight
-      style={styles.tile}
+      style={styles.row}
       onPress={() => {
         setInterest(interest.title)
       }}
@@ -34,12 +35,7 @@ export default ({ setInterest, interest, active }) => {
 }
 
 const styles = StyleSheet.create({
-  tile: {
-    flex: 20,
-    height: 150
-  },
   tileImage: {
-    opacity: 0.8,
     height: 150
   },
   subTitle: {
@@ -49,4 +45,10 @@ const styles = StyleSheet.create({
     left: 10,
     backgroundColor: 'transparent'
   },
+  row: {
+    width: 180,
+    margin: 5,
+    height: 150,
+    backgroundColor: '#257AC4'
+  }
 })
