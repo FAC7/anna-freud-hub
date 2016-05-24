@@ -25,6 +25,10 @@ db.getEvent = (client, eventId) => {
     .then((data) => helpers.parseArrayKeys([ 'attending', 'categories' ], data))
 }
 
+db.deleteEvent = (client, eventId) => {
+  return client.DELAsync(eventId)
+}
+
 // gets an array of all the eventIds in the DB
 db.getEventIds = (client) => client.LRANGEAsync('eventsList', 0, -1)
 

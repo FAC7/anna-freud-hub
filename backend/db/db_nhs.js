@@ -18,11 +18,20 @@ db.getAdmin = (client, adminId) => {
     .then((data) => helpers.parseArrayKeys([ 'eventsCreated' ], data))
 }
 
-db.updateAdminEventsCreated = (client, eventId, adminId) => {
+db.toggleAdminEventsCreated = (client, eventId, adminId) => {
   return client.HGETAsync(adminId, 'eventsCreated')
     .then(data => {
-      const updatedEventList = JSON.parse(data).concat([ eventId ])
-      return client.HSETAsync(adminId, 'eventsCreated', JSON.stringify(updatedEventList))
+      const eventList = JSON.parse(data)
+      const eventIndex = eventList.indexOf(eventId)
+      if (eventIndex > -1) {
+        const updatedEventList = eventList
+                                 .slice(0, eventIndex)
+                                 .concat(eventList.slice(eventIndex + 1))
+        return client.HSETAsync(adminId, 'eventsCreated', JSON.stringify(updatedEventList))
+      } else {
+        const updatedEventList = eventList.concat([ eventId ])
+        return client.HSETAsync(adminId, 'eventsCreated', JSON.stringify(updatedEventList))
+      }
     })
 }
 

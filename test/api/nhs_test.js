@@ -36,9 +36,9 @@ tape('getAdmin gets parsed admin object back', (t) => {
     })
 })
 
-tape('updateAdminEventsCreated updates the list of events admin has created', (t) => {
+tape('toggleAdminEventsCreated updates the list of events admin has created', (t) => {
   t.plan(2)
-  nhsDB.updateAdminEventsCreated(client, mockEvent3.eventId, mockAdmin.adminId)
+  nhsDB.toggleAdminEventsCreated(client, mockEvent3.eventId, mockAdmin.adminId)
     .then((response) => {
       const actual = response
       const expected = 0
@@ -50,6 +50,17 @@ tape('updateAdminEventsCreated updates the list of events admin has created', (t
       t.ok(actual, 'event has been added to the nhs admin object')
     })
 })
+
+tape('toggleAdminEventsCreated removes an event id if it already exists', (t) => {
+  t.plan(1)
+  nhsDB.toggleAdminEventsCreated(client, mockEvent3.eventId, mockAdmin.adminId)
+    .then(() => nhsDB.getAdmin(client, mockAdmin.adminId))
+    .then((data) => {
+      const actual = data.eventsCreated.indexOf(mockEvent3.eventId) === -1
+      t.ok(actual, 'event has been deleted from nhs admin object')
+    })
+})
+
 
 
 tape('teardown', (t) => {
