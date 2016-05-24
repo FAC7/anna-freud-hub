@@ -14,32 +14,42 @@
 
       <section class='container'>
         <div class='col-xs-10 col-xs-push-1'>
-          <form event-form class="event-form">
-            <input event-name type="text" placeholder="event name">
+          <form event-form class="event-form" action='/testingForm' method='POST'>
+
+            <input name='title' type="text" placeholder="event name">
+            <input name='address' type="text" placeholder="event address">
+            <input name='postCode' type="text" placeholder="event Postcode">
+            <input name='date' type="text" placeholder="event date">
+            <input name='time' type="text" placeholder="event time">
+            <input name='imageUrl' type="text" placeholder="event image">
             <br/>
-            <textarea event-description type="text" placeholder="event description"></textarea>
+            <textarea name='eventDescription' type="text" placeholder="event description"></textarea>
+
             <div class='row'>
               <div class='col-xs-3'>
-                <input type="checkbox" />
+                <input name='cooking' type="checkbox" />
                 <br/>
-                <span>fun things to do locally</span>
+                <span>Cooking</span>
               </div>
               <div class='col-xs-3'>
-                <input type="checkbox" />
+                <input name='health' type="checkbox" />
                 <br/>
-                <span>Youth Council Events</span>
+                <span>Health</span>
               </div>
               <div class='col-xs-3'>
-                <input type="checkbox" />
+                <input name='wellness' type="checkbox" />
                 <br/>
-                <span>Wellness Events</span>
+                <span>Wellness</span>
               </div>
               <div class='col-xs-3'>
-                <input type="checkbox" />
+                <input name='sports' type="checkbox" />
                 <br/>
-                <span>Local Sports Club</span>
+                <span>Sports</span>
               </div>
             </div>
+
+            <input type="submit" value="Submit">
+
           </form>
         </div>
       </section>
