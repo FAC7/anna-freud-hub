@@ -16,7 +16,7 @@ export default class MyEvents extends Component {
 
   render () {
     return (
-      <View>
+      <View style={styles.container}>
         <Text style={styles.title}> MY EVENTS </Text>
         <TouchableHighlight onPress={this.navTester.bind(this)}>
           <Text> Click to see dashoard </Text>
@@ -27,10 +27,14 @@ export default class MyEvents extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff'
+  },
   title: {
     fontSize: 20,
     textAlign: 'center',
     margin: 60,
-    color: 'blue'
+    color: '#6076C0'
   }
 })

@@ -29,12 +29,5 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: '#6076C0',
     marginBottom: 20
-  },
-  container: {
-    backgroundColor: '#257AC4',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    flexWrap: 'wrap',
-    marginTop: 30
   }
 })
