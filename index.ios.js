@@ -22,6 +22,7 @@ class AnnaFreudHub extends Component {
       <Provider store={createStoreWithMiddleWare(reducers)}>
         <Navigator
           initialRoute={{ name: 'Interests', index: 0 }}
+          configureScene={() => Navigator.SceneConfigs.HorizontalSwipeJump}
           renderScene={renderScene}
           style={styles.nav}
           navigationBar={
