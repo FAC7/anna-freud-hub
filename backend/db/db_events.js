@@ -9,8 +9,10 @@ db.addEvent = (client, eventObj) => {
     'title', eventObj.title,
     'description', eventObj.description,
     'address', eventObj.address,
+    'data', eventObj.date,
     'time', eventObj.time,
     'postCode', eventObj.postCode,
+    'geoLocation', JSON.stringify(eventObj.geoLocation),
     'imageUrl', eventObj.imageUrl,
     'creatorId', eventObj.creatorId,
     'creatorFirstName', eventObj.creatorFirstName,
@@ -27,7 +29,7 @@ db.addEvent = (client, eventObj) => {
 db.getEvent = (client, eventId) => {
   return client.HGETALLAsync(eventId) // eslint-disable-line
     .then((data) => data === null ? Promise.reject() : data)
-    .then((data) => helpers.parseArrayKeys([ 'attending', 'categories' ], data))
+    .then((data) => helpers.parseArrayKeys([ 'attending', 'categories', 'geoLocation' ], data))
     .catch(() => null)
 }
 
