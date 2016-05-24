@@ -27,6 +27,7 @@ class InterestsList extends React.Component {
         contentContainerStyle={styles.container}
         dataSource={this.state.dataSource}
         renderRow={(rowData) => {
+          console.log('chosenInterests')
           return (
             <Tile
               interest={rowData}
@@ -50,7 +51,7 @@ export default connect(mapStateToProps, { setInterest })(InterestsList)
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
