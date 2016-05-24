@@ -34,3 +34,12 @@ mock.mockEvent2 = {
   attending: [ 'user:12345', 'user:67890', 'user:56789' ],
   categories: [ 'Javascript', 'Functions' ]
 }
+
+mock.mockAdmin = {
+  adminId: 'admin:12345',
+  firstName: 'Jane',
+  lastName: 'Doe',
+  email: 'Jane@hotmail.com',
+  password: '1234',
+  eventsCreated: [ 'event:12345', 'event:67890' ]
+}

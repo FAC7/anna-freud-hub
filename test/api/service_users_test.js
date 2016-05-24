@@ -1,11 +1,21 @@
 const tape = require('tape')
-const db = require('../../backend/db/redisFunctions.js')
 const client = require('../../backend/db/client.js')({ env: 'TEST' })
 const { mockUser, mockEvent, mockEvent2 } = require('./mock_data.js')
 
+const eventsDB = require('../../backend/db/db_events.js')
+const ysuDB = require('../../backend/db/db_ysu.js')
+
+tape('flush database before tests run', (t) => {
+  t.plan(1)
+  client.FLUSHDBAsync()
+    .then(() => {
+      t.ok(true, 'db has been flushed')
+    })
+})
+
 tape('testing adding a new YSU', (t) => {
   t.plan(1)
-  db.addUser(client, mockUser)
+  ysuDB.addUser(client, mockUser)
     .then(response => {
       const actual = response
       const expected = 'OK'
@@ -15,7 +25,7 @@ tape('testing adding a new YSU', (t) => {
 
 tape('getUser function returns the current user with correct arguments', (t) => {
   t.plan(5)
-  db.getUser(client, 'user:12345')
+  ysuDB.getUser(client, 'user:12345')
     .then(data => {
       const actual = Object.keys(data).length
       const expected = 8
@@ -34,7 +44,7 @@ tape('getUser function returns the current user with correct arguments', (t) => 
 
 tape('addEvents adds an event', (t) => {
   t.plan(1)
-  db.addEvent(client, mockEvent)
+  eventsDB.addEvent(client, mockEvent)
     .then((response) => {
       const actual = response
       const expected = 1
@@ -44,7 +54,7 @@ tape('addEvents adds an event', (t) => {
 
 tape('getEvent succesfully fetches event with right info', (t) => {
   t.plan(5)
-  db.getEvent(client, 'event:12345')
+  eventsDB.getEvent(client, 'event:12345')
     .then((data) => {
       let actual = Object.keys(data).length
       let expected = 9
@@ -71,7 +81,7 @@ tape('getEvent succesfully fetches event with right info', (t) => {
 
 tape('getEventIds', (t) => {
   t.plan(1)
-  db.getEventIds(client)
+  eventsDB.getEventIds(client)
     .then((data) => {
       const actual = data[0]
       const expected = 'event:12345'
@@ -81,9 +91,9 @@ tape('getEventIds', (t) => {
 
 tape('getEvents', (t) => {
   t.plan(3)
-  db.addEvent(client, mockEvent2)
-    .then(() => db.getEventIds(client))
-    .then((data) => db.getEvents(client, data))
+  eventsDB.addEvent(client, mockEvent2)
+    .then(() => eventsDB.getEventIds(client))
+    .then((data) => eventsDB.getEvents(client, data))
     .then((data) => {
       let actual = data.length
       let expected = 2
@@ -101,20 +111,20 @@ tape('getEvents', (t) => {
 
 tape('updateAttending should change the users attending events', (t) => {
   t.plan(3)
-  db.toggleUserAttending(client, 'user:12345', 'event:12345')
+  ysuDB.toggleUserAttending(client, 'user:12345', 'event:12345')
     .then((response) => {
       const actual = response
       const expected = 'OK'
       t.equal(actual, expected, 'response ok from redis server')
     })
-    .then(() => db.getUser(client, 'user:12345'))
+    .then(() => ysuDB.getUser(client, 'user:12345'))
     .then((updatedUser) => {
       const actual = updatedUser.eventsAttending.indexOf('event:12345') > -1
       const expected = false
       t.equal(actual, expected, 'eventsAttending has removed event')
     })
-    .then(() => db.toggleUserAttending(client, 'user:12345', 'event:12345'))
-    .then(() => db.getUser(client, 'user:12345'))
+    .then(() => ysuDB.toggleUserAttending(client, 'user:12345', 'event:12345'))
+    .then(() => ysuDB.getUser(client, 'user:12345'))
     .then((updatedUser) => {
       const actual = updatedUser.eventsAttending.indexOf('event:12345') > -1
       const expected = true
@@ -124,20 +134,20 @@ tape('updateAttending should change the users attending events', (t) => {
 
 tape('toggleEventAttendingList', (t) => {
   t.plan(3)
-  db.toggleEventAttendingList(client, 'event:12345', 'user:44444')
+  eventsDB.toggleEventAttendingList(client, 'event:12345', 'user:44444')
     .then((response) => {
       const actual = response
       const expected = 'OK'
       t.equal(actual, expected, 'response ok from redis')
     })
-    .then(() => db.getEvent(client, 'event:12345'))
+    .then(() => eventsDB.getEvent(client, 'event:12345'))
     .then((updatedEvent) => {
       const actual = updatedEvent.attending.indexOf('user:44444') > -1
       const expected = true
       t.equal(actual, expected, 'user has been added to event attending list')
     })
-    .then(() => db.toggleEventAttendingList(client, 'event:12345', 'user:44444'))
-    .then(() => db.getEvent(client, 'event:12345'))
+    .then(() => eventsDB.toggleEventAttendingList(client, 'event:12345', 'user:44444'))
+    .then(() => eventsDB.getEvent(client, 'event:12345'))
     .then((updatedEvent) => {
       const actual = updatedEvent.attending.indexOf('user:44444') > -1
       const expected = false
@@ -149,5 +159,4 @@ tape('teardown', (t) => {
   client.FLUSHDBAsync() // eslint-disable-line
     .then(() => client.QUITAsync()) // eslint-disable-line
     .then(() => t.end())
-
 })
