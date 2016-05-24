@@ -17,7 +17,7 @@ const getRouteKey = (currentRouteName, position) => {
 /*eslint-disable */
 // if array length is 2, the second custom string will be displayed
 const navRoutes = {
-  'Login':      { left: ['DASHBOARD'], 			   centre: [null], 			               right: [null] },
+  'Login':      { left: [null], 			         centre: [null], 			               right: [null] },
   'Interests':  { left: [null], 			         centre: ['DASHBOARD', 'Submit'],    right: [null] },
   'HUB':        { left: ['INTERESTS'],	       centre: ['DASHBOARD'], 	           right: ['MY_EVENTS'] },
   'Event Info': { left: ['DASHBOARD', 'Back'], centre: [null], 				             right: [null] },
