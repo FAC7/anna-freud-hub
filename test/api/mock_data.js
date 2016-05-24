@@ -34,3 +34,24 @@ mock.mockEvent2 = {
   attending: [ 'user:12345', 'user:67890', 'user:56789' ],
   categories: [ 'Javascript', 'Functions' ]
 }
+
+mock.mockEvent3 = {
+  eventId: 'event:90876',
+  title: 'FP with Andre',
+  description: 'Functional Tuesdays!',
+  address: '14 palmers road',
+  postCode: 'E2 0SY',
+  time: '9874',
+  imageUrl: 'JKHJKHJAKSKA',
+  attending: [ 'user:12345', 'user:67890' ],
+  categories: [ 'FP' ]
+}
+
+mock.mockAdmin = {
+  adminId: 'admin:12345',
+  firstName: 'Jane',
+  lastName: 'Doe',
+  email: 'Jane@hotmail.com',
+  password: '1234',
+  eventsCreated: [ 'event:12345', 'event:67890' ]
+}
