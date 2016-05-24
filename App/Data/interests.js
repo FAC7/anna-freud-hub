@@ -28,5 +28,5 @@ export default [
   },
   { title: 'Coding',
     picUrl: 'http://www.fillmurray.com/300/350'
-  },
+  }
 ]
