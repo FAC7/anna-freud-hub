@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   navBarTitleText: {
-    fontSize: 25,
+    fontSize: 22,
     fontWeight: '400',
     letterSpacing: 2,
     fontFamily: 'Helvetica',
