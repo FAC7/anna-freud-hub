@@ -14,41 +14,47 @@
 
       <section class='container'>
         <div class='col-xs-10 col-xs-push-1'>
-          <form event-form class="event-form" action='/testingForm' method='POST'>
+          <form event-form class="event-form" action='/api/events/nhs/addEvent' method='POST'>
 
-            <input name='title' type="text" placeholder="event name">
-            <input name='address' type="text" placeholder="event address">
-            <input name='postCode' type="text" placeholder="event Postcode">
-            <input name='date' type="text" placeholder="event date">
-            <input name='time' type="text" placeholder="event time">
-            <input name='imageUrl' type="text" placeholder="event image">
+            <input title type="text" placeholder="event name" value="event1">
+            <input address type="text" placeholder="event address" value="14 palmers road">
+            <input postCode type="text" placeholder="event Postcode" value="E2 0SY">
+            <input date type="text" placeholder="event date" value="10th March">
+            <input time type="text" placeholder="event time" value="14:00">
+            <input imageUrl type="text" placeholder="event image" value="url.com">
+            <!-- <input title type="text" placeholder="event name">
+            <input address type="text" placeholder="event address">
+            <input postCode type="text" pl value=""aceholder="event Postcode">
+            <input date type="text" placeholder="event date">
+            <input time type="text" placeholder="event time">
+            <input imageUrl type="text" placeholder="event image"> -->
             <br/>
-            <textarea name='description' type="text" placeholder="event description"></textarea>
+            <textarea description type="text" placeholder="event description">Really fun event</textarea>
+            <!-- <textarea description type="text" placeholder="event description"></textarea> -->
 
             <div class='row'>
               <div class='col-xs-3'>
-                <input name='cooking' type="checkbox" />
+                <!-- <input cooking id='cooking' type="checkbox" /> -->
+                <input cooking type="checkbox" checked='true' />
                 <br/>
                 <span>Cooking</span>
               </div>
               <div class='col-xs-3'>
-                <input name='health' type="checkbox" />
+                <input health type="checkbox" checked='true' />
                 <br/>
                 <span>Health</span>
               </div>
               <div class='col-xs-3'>
-                <input name='wellness' type="checkbox" />
+                <input wellness type="checkbox" />
                 <br/>
                 <span>Wellness</span>
               </div>
               <div class='col-xs-3'>
-                <input name='sports' type="checkbox" />
+                <input sports type="checkbox" />
                 <br/>
                 <span>Sports</span>
               </div>
             </div>
-
-            <input type="submit" value="Submit">
 
           </form>
         </div>

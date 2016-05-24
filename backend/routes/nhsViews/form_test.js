@@ -5,7 +5,7 @@ const client = require('../../db/client.js')()
 const interestsArray = [ 'cooking', 'health', 'wellness', 'sports' ]
 
 module.exports = {
-  path: '/testingForm',
+  path: '/api/events/nhs/addEvent',  // could use instead '/api/events/nhs/addEvent/{adminId}'
   method: 'POST',
   handler: (request, reply) => {
     const receivedEvent = request.payload
