@@ -57,7 +57,7 @@ tape('getEvent succesfully fetches event with right info', (t) => {
   eventsDB.getEvent(client, 'event:12345')
     .then((data) => {
       let actual = Object.keys(data).length
-      let expected = 9
+      let expected = 13
       t.equal(actual, expected, 'getEvent gets event with correct number of keys')
 
       const { eventId, title, attending, categories } = data

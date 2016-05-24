@@ -14,13 +14,25 @@ tape('flush database before tests run', (t) => {
 })
 
 tape('deleteEvent removes from eventsList and removes the event hash', (t) => {
-  t.plan(1)
+  t.plan(3)
   eventsDB.addEvent(client, mockEvent)
     .then(() => eventsDB.deleteEvent(client, mockEvent.eventId))
     .then((response) => {
       const actual = response
       const expected = 1
       t.equal(actual, expected, 'response from redis is aaaalright')
+    })
+    .then(() => eventsDB.getEvent(client, mockEvent.eventId))
+    .then((data) => {
+      const actual = data
+      const expected = null
+      t.equal(actual, expected, 'key has been deleted')
+    })
+    .then(() => eventsDB.getEventIds(client))
+    .then((data) => {
+      const actual = data.indexOf(mockEvent.eventId) === -1
+      const expected = true
+      t.equal(actual, expected, 'key has been deteded from eventsList')
     })
 })
 

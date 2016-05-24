@@ -19,6 +19,10 @@ mock.mockEvent = {
   postCode: 'E2',
   time: '5345',
   imageUrl: 'jfdsfjk',
+  creatorId: 'admin:12345',
+  creatorFirstName: 'Jane',
+  creatorLastName: 'Doe',
+  creatorEmail: 'Jane@hotmail.com',
   attending: [ 'user:12345', 'user:67890' ],
   categories: [ 'Coding', 'Fun' ]
 }
@@ -31,6 +35,10 @@ mock.mockEvent2 = {
   postCode: 'E2 0SY',
   time: '5346',
   imageUrl: 'KJSDFKDJSFH',
+  creatorId: 'admin:12345',
+  creatorFirstName: 'Jane',
+  creatorLastName: 'Doe',
+  creatorEmail: 'Jane@hotmail.com',
   attending: [ 'user:12345', 'user:67890', 'user:56789' ],
   categories: [ 'Javascript', 'Functions' ]
 }
@@ -43,6 +51,10 @@ mock.mockEvent3 = {
   postCode: 'E2 0SY',
   time: '9874',
   imageUrl: 'JKHJKHJAKSKA',
+  creatorId: 'admin:12345',
+  creatorFirstName: 'Jane',
+  creatorLastName: 'Doe',
+  creatorEmail: 'Jane@hotmail.com',
   attending: [ 'user:12345', 'user:67890' ],
   categories: [ 'FP' ]
 }
