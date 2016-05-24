@@ -6,6 +6,8 @@ import {
   Text,
   Image
 } from 'react-native'
+import Dimensions from 'Dimensions'
+const { width } = Dimensions.get('window')
 
 export default ({ setInterest, interest, chosenInterests }) => {
 
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent'
   },
   row: {
-    width: 180,
+    width: width / 2.2,
     margin: 5,
     height: 150,
     backgroundColor: '#257AC4'
