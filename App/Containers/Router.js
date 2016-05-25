@@ -6,6 +6,7 @@ import componentLoader from '../Utils/componentLoader.js'
 
 class Router extends Component {
   render () {
+    console.log(this.props.history)
     const DisplayComponent = componentLoader[this.props.route].component
     const Navbar = componentLoader[this.props.route].Navbar
     console.log(DisplayComponent)

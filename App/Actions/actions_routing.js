@@ -7,3 +7,10 @@ export const newRoute = (routeName) => {
     }
   }
 }
+
+export const GO_BACK = 'GO_BACK'
+export const goBack = () => {
+  return {
+    type: GO_BACK
+  }
+}

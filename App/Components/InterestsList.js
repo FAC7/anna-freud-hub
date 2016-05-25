@@ -20,6 +20,7 @@ class InterestsList extends React.Component {
       dataSource: this.ds.cloneWithRows(interests)
     }
   }
+
   render () {
     return (
       <ListView
@@ -27,7 +28,6 @@ class InterestsList extends React.Component {
         contentContainerStyle={styles.container}
         dataSource={this.state.dataSource}
         renderRow={(rowData) => {
-          console.log('chosenInterests')
           return (
             <Tile
               interest={rowData}
