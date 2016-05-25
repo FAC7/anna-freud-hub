@@ -1,15 +1,16 @@
-<p class="subtitle">Add some details about your event with some data</p>
+<p class="subtitle">Add some details about your event</p>
 <section class='container'>
   <div class='col-xs-10 col-xs-push-1'>
     <form event-form class="event-form" action='/api/events/nhs/addEvent' method='POST'>
       {{> inputs}}
       </br>
+      <p>Click any of the boxes which describe your event</p>
       <div class='row'>
         {{#each categories}}
           {{> checkbox this}}
         {{/each}}
       </div>
+      <button submitButton class='submit-btn' type="submit">Post Your Event</button>
     </form>
-    <button submitButton type="submit">Submit</button>
   </div>
 </section>

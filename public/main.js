@@ -35,5 +35,6 @@ UI.formSubmit = function () {
 }
 
 document.querySelector('[submitButton]').addEventListener('click', (e) => {
+  e.preventDefault()
   UI.formSubmit()
 })
