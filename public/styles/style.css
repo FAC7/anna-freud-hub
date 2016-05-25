@@ -69,6 +69,31 @@ button {
   text-align: center;
 }
 
+.message {
+  transition: 0.3s ease;
+  opacity: 1;
+  margin: 0 20px;
+  display: inline-block;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  padding: 18px 18px;
+  border-radius: 7px;
+}
+
+.error {
+  background-color: #B63434;
+  border: 2px solid #FFD4D4;
+}
+
+.success {
+  background-color: #47cf49;
+  border: 2px solid #e8feea;
+}
+
+.hidden {
+  opacity: 0;
+}
+
 .checkbox-container {
   padding-right: 0;
   margin-bottom: 20px;
