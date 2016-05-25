@@ -70,8 +70,3 @@ const styles = StyleSheet.create({
     flex: 1
   }
 })
-
-// setRoute (route) {
-//   LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
-// }
-//

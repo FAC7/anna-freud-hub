@@ -3,28 +3,32 @@ import {
   Text,
   View,
   StyleSheet,
-  TouchableHighlight
+  TouchableHighlight,
+  LayoutAnimation
 } from 'react-native'
 
-export default class EventInfo extends Component {
+import { connect } from 'react-redux'
+import { goBack } from '../Actions/actions_routing.js'
 
-  navTester () {
-    this.props.navigator.push({
-      name: 'My Events'
-    })
+class EventInfo extends Component {
+  setRoute () {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+    this.props.goBack()
   }
 
   render () {
     return (
       <View>
-        <Text style={styles.title}>  EVENT INFO  </Text>
-        <TouchableHighlight onPress={this.navTester.bind(this)}>
+        <Text style={styles.title}>  EVENT INFO </Text>
+        <TouchableHighlight onPress={this.setRoute.bind(this)}>
           <Text> CLICK TO GO TO MY EVENTS</Text>
         </TouchableHighlight>
       </View>
     )
   }
 }
+
+export default connect(null, { goBack })(EventInfo)
 
 const styles = StyleSheet.create({
   title: {

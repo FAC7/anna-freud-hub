@@ -28,7 +28,6 @@ class InterestsList extends React.Component {
         contentContainerStyle={styles.container}
         dataSource={this.state.dataSource}
         renderRow={(rowData) => {
-          console.log('chosenInterests')
           return (
             <Tile
               interest={rowData}

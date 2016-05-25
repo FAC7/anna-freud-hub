@@ -1,6 +1,7 @@
 
 // components
 import Splash from '../Components/Splash.js'
+import NoNavbar from '../Components/NoNavbar.js'
 // containers
 import Interests from '../Views/Interests.js'
 import Login from '../Views/Login.js'
@@ -16,7 +17,8 @@ const componentList = {
   Hub,
   MyEvents,
   EventInfo,
-  Navbar
+  Navbar,
+  NoNavbar
 }
 
 import routes from './routes.js'
@@ -25,13 +27,13 @@ const componentLoader = {}
 
 componentLoader[routes.SPLASH] = {
   component: componentList.Splash,
-  Navbar: componentList.Navbar,
+  Navbar: componentList.NoNavbar,
   authRequired: false
 }
 
 componentLoader[routes.LOGIN] = {
   component: componentList.Login,
-  Navbar: componentList.Navbar,
+  Navbar: componentList.NoNavbar,
   authRequired: false
 }
 
@@ -49,7 +51,7 @@ componentLoader[routes.MY_EVENTS] = {
 
 componentLoader[routes.EVENT_INFO] = {
   component: componentList.EventInfo,
-  Navbar: componentList.Navbar,
+  Navbar: componentList.NoNavbar,
   authRequired: false
 }
 
