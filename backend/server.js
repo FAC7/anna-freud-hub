@@ -12,7 +12,8 @@ const BookedEvents = require('./routes/YSU-routes/booked_events.js')
 const setInterests = require('./routes/YSU-routes/set_interests.js')
 const signUp = require('./routes/YSU-routes/sign_up.js')
 const userEvents = require('./routes/YSU-routes/user_events.js')
-const formTester = require('./routes/nhsViews/form_test.js')
+const addEvent = require('./routes/nhsViews/add_event.js')
+const getEvents = require('./routes/nhsViews/get_events.js')
 
 const Plugins = [ Inert ]
 const Routes = [
@@ -23,10 +24,11 @@ const Routes = [
   setInterests,
   signUp,
   userEvents,
-  formTester
+  addEvent,
+  getEvents
 ]
 
-module.exports = (client) => {
+module.exports = (client) => { //eslint-disable-line
 
   const server = new Hapi.Server()
 

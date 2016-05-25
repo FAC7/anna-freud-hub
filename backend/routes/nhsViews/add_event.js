@@ -1,9 +1,6 @@
 const db = require('../../db/db_events.js')
 const client = require('../../db/client.js')()
 
-// We are going to have a set amount of interests so I am mocking them here
-const interestsArray = [ 'cooking', 'health', 'wellness', 'sports' ]
-
 module.exports = {
   path: '/api/events/nhs/addEvent',  // could use instead '/api/events/nhs/addEvent/{adminId}'
   method: 'POST',
