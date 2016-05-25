@@ -9,9 +9,15 @@ db.addEvent = (client, eventObj) => {
     'title', eventObj.title,
     'description', eventObj.description,
     'address', eventObj.address,
+    'data', eventObj.date,
     'time', eventObj.time,
     'postCode', eventObj.postCode,
+    'geoLocation', JSON.stringify(eventObj.geoLocation),
     'imageUrl', eventObj.imageUrl,
+    'creatorId', eventObj.creatorId,
+    'creatorFirstName', eventObj.creatorFirstName,
+    'creatorLastName', eventObj.creatorLastName,
+    'creatorEmail', eventObj.creatorEmail,
     'attending', JSON.stringify(eventObj.attending),
     'categories', JSON.stringify(eventObj.categories)
   )
@@ -22,11 +28,16 @@ db.addEvent = (client, eventObj) => {
 // get a single event object from an eventId
 db.getEvent = (client, eventId) => {
   return client.HGETALLAsync(eventId) // eslint-disable-line
-    .then((data) => helpers.parseArrayKeys([ 'attending', 'categories' ], data))
+    .then((data) => data === null ? Promise.reject() : data)
+    .then((data) => helpers.parseArrayKeys([ 'attending', 'categories', 'geoLocation' ], data))
+    .catch(() => null)
 }
 
+// delete event hash and id from eventslist
 db.deleteEvent = (client, eventId) => {
   return client.DELAsync(eventId)
+    .then(() => db.getEventIds(client))
+    .then(() => client.LREMAsync('eventsList', 0, eventId))
 }
 
 // gets an array of all the eventIds in the DB
