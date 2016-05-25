@@ -1,3 +1,3 @@
 module.exports = (category) => {
-  return category.split(' ').join('-')
+  return category.split(' ').join('_')
 }

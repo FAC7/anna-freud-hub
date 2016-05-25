@@ -29,7 +29,6 @@ p {
   /*font-family: Helvetica, Helvetica Neue, Arial;*/
 }
 
-
 /*-----inputs--------*/
 
 input,
@@ -47,6 +46,8 @@ textarea {
   min-height: 120px;
 }
 
+/*-------checkboxes---------*/
+
 input[type="checkbox"] {
   -webkit-appearance: none;
   padding: 35% 48%;
@@ -57,14 +58,27 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-  background: #3382C4;
+  background: #022D51;
 }
 
-span {
-  font-size: 12px;
+input[type="checkbox"]:checked ~ .checkbox-title {
   color: #fff;
 }
 
 button {
   text-align: center;
+}
+
+.checkbox-container {
+  padding-right: 0;
+  margin-bottom: 20px;
+}
+
+.checkbox-title {
+  font-size: 12px;
+  color: #2364BA;
+  position: absolute;
+  bottom: 15px;
+  z-index: 1;
+  left: 30px;
 }
