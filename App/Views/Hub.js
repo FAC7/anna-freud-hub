@@ -4,16 +4,18 @@ import {
   View,
   StyleSheet,
   ScrollView,
-  TouchableHighlight
+  LayoutAnimation
 } from 'react-native'
+
+import { connect } from 'react-redux'
+import { newRoute } from '../Actions/actions_routing.js'
 
 import Tile from '../Components/Tile.js'
 
-export default class Hub extends Component {
-  navTester () {
-    this.props.navigator.push({
-      name: 'Event Info'
-    })
+class Hub extends Component {
+  setRoute (route) {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+    this.props.newRoute(route)
   }
 
   render () {
@@ -26,7 +28,7 @@ export default class Hub extends Component {
             imageSource={'http://www.fillmurray.com/g/200/300'}
             attending={33}
             distance={10}
-            linkRoute={this.navTester.bind(this)}
+            linkRoute={() => {this.setRoute('Event Info')}}
           />
 
           <Tile
@@ -34,7 +36,6 @@ export default class Hub extends Component {
             imageSource={'http://www.fillmurray.com/g/200/300'}
             attending={43}
             distance={15}
-            linkRoute={this.navTester.bind(this)}
           />
 
         </ScrollView>
@@ -42,6 +43,8 @@ export default class Hub extends Component {
     )
   }
 }
+
+export default connect(null, { newRoute })(Hub)
 
 const styles = StyleSheet.create({
   mainContainer: {
