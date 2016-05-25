@@ -1,9 +1,10 @@
 const routes = {
   INTERESTS: 'Interests',
   LOGIN: 'Login',
-  DASHBOARD: 'HUB',
+  HUB: 'HUB',
   MY_EVENTS: 'My Events',
-  EVENT_INFO: 'Event Info'
+  EVENT_INFO: 'Event Info',
+  SPLASH: 'Splash'
 }
 
 export default routes
