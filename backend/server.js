@@ -3,6 +3,7 @@ const Hapi = require('hapi')
 
 // server plugins
 const Inert = require('inert')
+const Vision = require('vision')
 
 // server routes
 const Dashboard = require('./routes/nhsViews/Dashboard.js')
@@ -14,7 +15,7 @@ const signUp = require('./routes/YSU-routes/sign_up.js')
 const userEvents = require('./routes/YSU-routes/user_events.js')
 const formTester = require('./routes/nhsViews/form_test.js')
 
-const Plugins = [ Inert ]
+const Plugins = [ Inert, Vision ]
 const Routes = [
   Dashboard,
   ResourceHandler,
@@ -32,6 +33,7 @@ module.exports = (client) => {
 
   server.connection({ port: process.env.PORT || 4000 })
   server.register(Plugins, err => {if (err) console.log(err)})
+  server.views(require('./viewSettings.js'))
   server.route(Routes)
 
   return server

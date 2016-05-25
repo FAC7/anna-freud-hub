@@ -11,7 +11,7 @@
     <main>
 
       <h1 class="title">HUB</h1>
-
+      <p class="subtitle">Add some details about your event</p>
       <section class='container'>
         <div class='col-xs-10 col-xs-push-1'>
           <form event-form class="event-form" action='/api/events/nhs/addEvent' method='POST'>
@@ -33,28 +33,90 @@
             <textarea description type="text" placeholder="event description"></textarea>
 
             <div class='row'>
-              <div class='col-xs-3'>
-                <input cooking id='cooking' type="checkbox" />
+              <div class='col-xs-2'>
+                <input fun-activities type="checkbox" />
                 <!-- <input cooking type="checkbox" checked='true' /> -->
                 <br/>
-                <span>Cooking</span>
+                <span>Fun Activites</span>
               </div>
-              <div class='col-xs-3'>
-                <input health type="checkbox" />
+              <div class='col-xs-2'>
+                <input youth-council type="checkbox" />
                 <!-- <input health type="checkbox" checked='true' /> -->
                 <br/>
-                <span>Health</span>
+                <span>Youth Council</span>
               </div>
-              <div class='col-xs-3'>
+              <div class='col-xs-2'>
                 <input wellness type="checkbox" />
                 <br/>
                 <span>Wellness</span>
               </div>
-              <div class='col-xs-3'>
-                <input sports type="checkbox" />
+              <div class='col-xs-2'>
+                <input sports-clubs type="checkbox" />
                 <br/>
-                <span>Sports</span>
+                <span>Sports Clubs</span>
               </div>
+              <div class='col-xs-2'>
+                <input youth-groups type="checkbox" />
+                <br/>
+                <span>Youth Groups</span>
+              </div>
+              <div class='col-xs-2'>
+                <input physical-health type="checkbox" />
+                <br/>
+                <span>Physical Health</span>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-xs-2'>
+                <input mental-health type="checkbox" />
+                <br/>
+                <span>Mental Health</span>
+              </div>
+              <div class='col-xs-2'>
+                <input volunteering type="checkbox" />
+                <br/>
+                <span>Volunteering</span>
+              </div>
+              <div class='col-xs-2'>
+                <input outdoors type="checkbox" />
+                <br/>
+                <span>Outdoors</span>
+              </div>
+              <div class='col-xs-2'>
+                <input cooking type="checkbox" />
+                <br/>
+                <span>Cooking</span>
+              </div>
+              <div class='col-xs-2'>
+                <input media type="checkbox" />
+                <br/>
+                <span>Cooking</span>
+              </div>
+              <div class='col-xs-2'>
+                <input art type="checkbox" />
+                <br/>
+                <span>Art</span>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='col-xs-2'>
+                <input educational type="checkbox" />
+                <br/>
+                <span>Educational</span>
+              </div>
+            </div>
+
+              <!--
+              Fun things to do locally
+              Youth Council events
+              Wellness events
+              Local sports clubs
+              Local youth Groups
+              Council events
+              Physical health
+              Mental health
+              Volunteering
+            -->
             </div>
 
           </form>

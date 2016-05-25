@@ -5,6 +5,10 @@ body {
   background-color: #257AC4;
 }
 
+p {
+  color: #fff;
+}
+
 
 /*-----text styles--------*/
 
@@ -14,8 +18,17 @@ body {
   color: #fff;
   font-weight: normal;
   letter-spacing: 7px;
-  margin: 40px;
+  margin: 40px 0 20px;
 }
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 14px;
+  font-weight: lighter;
+  /*font-family: Helvetica, Helvetica Neue, Arial;*/
+}
+
 
 /*-----inputs--------*/
 
@@ -36,7 +49,7 @@ textarea {
 
 input[type="checkbox"] {
   -webkit-appearance: none;
-  padding: 30px;
+  padding: 35% 48%;
   margin: 0;
   background: #fff;
   outline: none;
