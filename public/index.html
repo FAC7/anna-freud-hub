@@ -14,33 +14,51 @@
 
       <section class='container'>
         <div class='col-xs-10 col-xs-push-1'>
-          <form event-form class="event-form">
-            <input event-name type="text" placeholder="event name">
+          <form event-form class="event-form" action='/api/events/nhs/addEvent' method='POST'>
+
+            <!-- <input title type="text" placeholder="event name" value="event1">
+            <input address type="text" placeholder="event address" value="14 palmers road">
+            <input postCode type="text" placeholder="event Postcode" value="E2 0SY">
+            <input date type="text" placeholder="event date" value="10th March">
+            <input time type="text" placeholder="event time" value="14:00">
+            <input imageUrl type="text" placeholder="event image" value="url.com"> -->
+            <input title type="text" placeholder="event name">
+            <input address type="text" placeholder="event address">
+            <input postCode type="text" placeholder="event Postcode">
+            <input date type="text" placeholder="event date">
+            <input time type="text" placeholder="event time">
+            <input imageUrl type="text" placeholder="event image">
             <br/>
-            <textarea event-description type="text" placeholder="event description"></textarea>
+            <!-- <textarea description type="text" placeholder="event description">Really fun event</textarea> -->
+            <textarea description type="text" placeholder="event description"></textarea>
+
             <div class='row'>
               <div class='col-xs-3'>
-                <input type="checkbox" />
+                <input cooking id='cooking' type="checkbox" />
+                <!-- <input cooking type="checkbox" checked='true' /> -->
                 <br/>
-                <span>fun things to do locally</span>
+                <span>Cooking</span>
               </div>
               <div class='col-xs-3'>
-                <input type="checkbox" />
+                <input health type="checkbox" />
+                <!-- <input health type="checkbox" checked='true' /> -->
                 <br/>
-                <span>Youth Council Events</span>
+                <span>Health</span>
               </div>
               <div class='col-xs-3'>
-                <input type="checkbox" />
+                <input wellness type="checkbox" />
                 <br/>
-                <span>Wellness Events</span>
+                <span>Wellness</span>
               </div>
               <div class='col-xs-3'>
-                <input type="checkbox" />
+                <input sports type="checkbox" />
                 <br/>
-                <span>Local Sports Club</span>
+                <span>Sports</span>
               </div>
             </div>
+
           </form>
+          <button submitButton type="submit">Submit</button>
         </div>
       </section>
 

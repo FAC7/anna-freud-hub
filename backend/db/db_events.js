@@ -9,7 +9,7 @@ db.addEvent = (client, eventObj) => {
     'title', eventObj.title,
     'description', eventObj.description,
     'address', eventObj.address,
-    'data', eventObj.date,
+    'date', eventObj.date,
     'time', eventObj.time,
     'postCode', eventObj.postCode,
     'geoLocation', JSON.stringify(eventObj.geoLocation),
