@@ -1,6 +1,15 @@
 var UI = {}
 
-var categories = [
+UI.inputs = [
+  'title',
+  'address',
+  'postCode',
+  'date',
+  'time',
+  'imageUrl'
+]
+
+UI.categories = [
   'Fun_Activites',
   'Youth_Council',
   'Wellness',
@@ -19,11 +28,11 @@ var categories = [
 UI.formSubmit = function () {
 
   var eventObject = {}
-  categories.forEach(category => {
-    eventObject[category] = document.querySelector('[' + category + ']').value
+  UI.inputs.forEach(input => {
+    eventObject[input] = document.querySelector('[' + input + ']').value
   })
 
-  eventObject.categories = categories
+  eventObject.categories = UI.categories
     .filter((category) => document.querySelector('[' + category + ']').checked)
     .map((category) => category.replace('[', ''))
     .map((category) => category.replace(']', ''))
@@ -32,8 +41,9 @@ UI.formSubmit = function () {
     method: 'POST',
     body: JSON.stringify(eventObject)
   })
+  .then(console.log, eventObject)
 }
 
-document.querySelector('[submitButton]').addEventListener('click', (e) => {
+document.querySelector('[submitButton]').addEventListener('click', () => {
   UI.formSubmit()
 })
