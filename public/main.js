@@ -15,9 +15,13 @@ UI.formSubmit = function () {
 
   eventObject.categories = categoriesArray
                            .filter((category) => document.querySelector(category).checked)
+                           .map((category) => category.replace('[', ''))
+                           .map((category) => category.replace(']', ''))
 
-
-  console.log(eventObject)
+  fetch('/api/events/nhs/addEvent', {
+    method: 'POST',
+    body: JSON.stringify(eventObject)
+  })
 }
 
 UI.formSubmit()

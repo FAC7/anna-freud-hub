@@ -8,22 +8,17 @@ module.exports = {
   path: '/api/events/nhs/addEvent',  // could use instead '/api/events/nhs/addEvent/{adminId}'
   method: 'POST',
   handler: (request, reply) => {
-    const receivedEvent = request.payload
-
+    const receivedEvent = JSON.parse(request.payload)
     const initialAttendingArray = []
     const eventId = receivedEvent.title + ':' + (Math.floor(Math.random()*90000) + 10000)
-    const eventCategories = interestsArray
-                            .filter((interest) => Object.keys(receivedEvent).indexOf(interest) > -1)
     const missingKeysObject = {
       eventId: eventId,
       attending: initialAttendingArray,
-      categories: eventCategories
     }
 
     const eventToStore = Object.assign({}, receivedEvent, missingKeysObject)
 
     // This deletes the category keys that came in the receivedEvent with values of 'on'
-    eventCategories.forEach((category) => delete eventToStore[category])
     console.log(eventToStore)
     db.addEvent(client, eventToStore)
       .then(() => {
