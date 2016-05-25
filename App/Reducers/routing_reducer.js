@@ -4,7 +4,7 @@ export default (state = {}, action) => {
   case NEW_ROUTE:
     const { history } = state
     return {
-      route: action.route,
+      name: action.route.name,
       history: history.concat(action.route.name)
     }
   default:
@@ -13,6 +13,6 @@ export default (state = {}, action) => {
 }
 
 // let state = {
-//   route: { name: 'login', payload: 'anything' },
+//   route: { name: 'login' },
 //   history: [ 'name1', 'name2' ]
 // }

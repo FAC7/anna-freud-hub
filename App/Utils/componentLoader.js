@@ -1,34 +1,54 @@
-import componentList from './componentList.js'
+
+// components
+import Splash from '../Components/Splash.js'
+// containers
+import Interests from '../Views/Interests.js'
+import Login from '../Views/Login.js'
+import Hub from '../Views/Hub.js'
+import MyEvents from '../Views/MyEvents.js'
+import EventInfo from '../Views/EventInfo.js'
+import Navbar from '../Containers/Navbar.js'
+
+const componentList = {
+  Splash,
+  Interests,
+  Login,
+  Hub,
+  MyEvents,
+  EventInfo,
+  Navbar
+}
+
 
 const componentLoader = {
   'Splash': {
     component: componentList.Splash,
-    nav: 'emptyNav',
-    authRequiredRequired: false
+    Navbar: 'emptyNav',
+    authRequired: false
   },
   'Login': {
     component: componentList.Login,
-    nav: 'emptyNav',
+    Navbar: 'emptyNav',
     authRequired: false
   },
   'Interests': {
     component: componentList.Interests,
-    nav: 'emptyNav',
+    Navbar: 'emptyNav',
     authRequired: true
   },
   'Dashboad': {
     component: componentList.Hub,
-    nav: 'defaultNav props: left: , right: ',
+    Navbar: 'defaultNav props: left: , right: ',
     authRequired: true
   },
   'My Events': {
     component: componentList.MyEvents,
-    nav: 'defaultNav props: left: , right: ',
+    Navbar: 'defaultNav props: left: , right: ',
     authRequired: true
   },
   'Event Info': {
     component: componentList.EventInfo,
-    nav: '<defaultNav />',
+    Navbar: '<defaultNav />',
     authRequired: true
   }
 }

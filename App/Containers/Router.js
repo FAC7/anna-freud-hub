@@ -1,33 +1,34 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
-import { newRoute } from '../Actions/actions_routing.js'
+import { View, StyleSheet } from 'react-native'
 
 import componentLoader from '../Utils/componentLoader.js'
 
 class Router extends Component {
   render () {
-    const routeObj = componentLoader[this.props.route.name]
-    const component = routeObj.component
-    const Navbar = routeObj.
-    const authorized = this.props.isLoggedIn || !routeObj.authRequired
-    if (!authorized) {
-      newRoute('Login')
-    }
+    const DisplayComponent = componentLoader[this.props.route].component
+    const Navbar = componentLoader[this.props.route].Navbar
+    console.log(DisplayComponent)
     return (
-      <View>
-        <component />
-        <
+      <View style={styles.mainContainer}>
+        <DisplayComponent />
+        <Navbar />
+      </View>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    route: state.router.route,
-    history: state.router.history,
-    isLoggedIn: state.isLoggedIn
+    route: state.router.name,
+    history: state.router.history
   }
 }
 
-export default connect(mapStateToProps, { newRoute })(Router)
+export default connect(mapStateToProps)(Router)
+
+const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1
+  }
+})
