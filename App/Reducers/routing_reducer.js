@@ -1,5 +1,12 @@
 import { NEW_ROUTE } from '../Actions/actions_routing.js'
-export default (state = {}, action) => {
+import routes from '../Utils/routes.js'
+
+const initialState = {
+  name: routes.INTERESTS,
+  history: []
+}
+
+export default (state = initialState, action) => {
   switch (action.type) {
   case NEW_ROUTE:
     const { history } = state

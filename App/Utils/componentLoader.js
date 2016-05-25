@@ -19,38 +19,44 @@ const componentList = {
   Navbar
 }
 
+import routes from './routes.js'
 
-const componentLoader = {
-  'Splash': {
-    component: componentList.Splash,
-    Navbar: 'emptyNav',
-    authRequired: false
-  },
-  'Login': {
-    component: componentList.Login,
-    Navbar: 'emptyNav',
-    authRequired: false
-  },
-  'Interests': {
-    component: componentList.Interests,
-    Navbar: 'emptyNav',
-    authRequired: true
-  },
-  'Dashboad': {
-    component: componentList.Hub,
-    Navbar: 'defaultNav props: left: , right: ',
-    authRequired: true
-  },
-  'My Events': {
-    component: componentList.MyEvents,
-    Navbar: 'defaultNav props: left: , right: ',
-    authRequired: true
-  },
-  'Event Info': {
-    component: componentList.EventInfo,
-    Navbar: '<defaultNav />',
-    authRequired: true
-  }
+const componentLoader = {}
+
+componentLoader[routes.SPLASH] = {
+  component: componentList.Splash,
+  Navbar: componentList.Navbar,
+  authRequired: false
+}
+
+componentLoader[routes.LOGIN] = {
+  component: componentList.Login,
+  Navbar: componentList.Navbar,
+  authRequired: false
+}
+
+componentLoader[routes.HUB] = {
+  component: componentList.Hub,
+  Navbar: componentList.Navbar,
+  authRequired: false
+}
+
+componentLoader[routes.MY_EVENTS] = {
+  component: componentList.MyEvents,
+  Navbar: componentList.Navbar,
+  authRequired: false
+}
+
+componentLoader[routes.EVENT_INFO] = {
+  component: componentList.EventInfo,
+  Navbar: componentList.Navbar,
+  authRequired: false
+}
+
+componentLoader[routes.INTERESTS] = {
+  component: componentList.Interests,
+  Navbar: componentList.Navbar,
+  authRequired: false
 }
 
 export default componentLoader

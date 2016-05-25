@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 
 import { newRoute } from '../Actions/actions_routing.js'
 
@@ -10,19 +10,19 @@ class Navbar extends Component {
       <View style={styles.menu}>
         <Text
           style={styles.menuItem}
-          onPress={() => this.setRoute('interests')}
+          onPress={() => this.props.newRoute('Interests')}
         >
           Interests
         </Text>
         <Text
           style={styles.menuItem}
-          onPress={() => this.setRoute('hub')}
+          onPress={() => this.props.newRoute('HUB')}
         >
           HUB
         </Text>
         <Text
           style={styles.menuItem}
-          onPress={() => this.setRoute('myEvents')}
+          onPress={() => this.props.newRoute('My Events')}
         >
           My Events
         </Text>
