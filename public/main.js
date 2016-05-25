@@ -24,4 +24,6 @@ UI.formSubmit = function () {
   })
 }
 
-UI.formSubmit()
+document.querySelector('[submitButton]').addEventListener('click', (e) => {
+  UI.formSubmit()
+})
