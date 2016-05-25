@@ -16,3 +16,19 @@ export const userLogin = username => {
     }
   })
 }
+
+export const GET_EVENTS = 'GET_EVENTS'
+export const getEvents = () => {
+  console.log('get events action called')
+  const url = 'http://localhost:4000/api/events' //TODO change to herokes
+  return fetch(url)
+    .then(response => response.json())
+    .then(events => {
+      console.log(events, 'events received')
+      return {
+        type: GET_EVENTS,
+        payload: events
+      }
+    })
+    .catch(err => console.log(err))
+}

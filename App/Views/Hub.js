@@ -19,6 +19,7 @@ class Hub extends Component {
   }
 
   render () {
+    console.log(this.props.allEvents)
     return (
       <View style={styles.mainContainer}>
         <Text style={styles.title}>Events Near You</Text>
@@ -44,7 +45,13 @@ class Hub extends Component {
   }
 }
 
-export default connect(null, { newRoute })(Hub)
+const mapStateToProps = (state) => {
+  return {
+    allEvents: state.allEvents
+  }
+}
+
+export default connect(mapStateToProps, { newRoute })(Hub)
 
 const styles = StyleSheet.create({
   mainContainer: {
