@@ -3,34 +3,37 @@ import {
   Text,
   View,
   StyleSheet,
-  TouchableHighlight
+  ScrollView
 } from 'react-native'
+import Tile from '../Components/Tile.js'
 
 export default class MyEvents extends Component {
-
-  navTester () {
-    this.props.navigator.push({
-      name: 'HUB'
-    })
-  }
-
   render () {
     return (
-      <View>
-        <Text style={styles.title}> MY EVENTS </Text>
-        <TouchableHighlight onPress={this.navTester.bind(this)}>
-          <Text> Click to see dashoard </Text>
-        </TouchableHighlight>
+      <View style={styles.container}>
+        <Text style={styles.title}> My Events </Text>
+        <ScrollView>
+          <Tile
+            title={'Bowling'}
+            imageSource={'http://www.fillmurray.com/g/200/300'}
+            attending={43}
+            distance={15}
+          />
+        </ScrollView>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#fff',
+    flex: 1,
+    marginTop: 40
+  },
   title: {
-    fontSize: 20,
     textAlign: 'center',
-    margin: 60,
-    color: 'blue'
+    fontSize: 24,
+    color: '#6076C0'
   }
 })

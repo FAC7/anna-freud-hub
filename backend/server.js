@@ -12,6 +12,7 @@ const BookedEvents = require('./routes/YSU-routes/booked_events.js')
 const setInterests = require('./routes/YSU-routes/set_interests.js')
 const signUp = require('./routes/YSU-routes/sign_up.js')
 const userEvents = require('./routes/YSU-routes/user_events.js')
+const formTester = require('./routes/nhsViews/form_test.js')
 
 const Plugins = [ Inert ]
 const Routes = [
@@ -21,7 +22,8 @@ const Routes = [
   BookedEvents,
   setInterests,
   signUp,
-  userEvents
+  userEvents,
+  formTester
 ]
 
 module.exports = (client) => {

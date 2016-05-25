@@ -6,6 +6,8 @@ import {
   Text,
   Image
 } from 'react-native'
+import Dimensions from 'Dimensions'
+const { width } = Dimensions.get('window')
 
 export default ({ setInterest, interest, chosenInterests }) => {
 
@@ -13,7 +15,7 @@ export default ({ setInterest, interest, chosenInterests }) => {
   { opacity: 0.8 } :
   { opacity: 0.4 }
 
-  console.log(chosenInterests)
+  // console.log(chosenInterests)
   return (
     <TouchableHighlight
       style={styles.row}
@@ -46,8 +48,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent'
   },
   row: {
-    width: 180,
-    margin: 5,
+    width: width / 2.03,
+    marginBottom: 5,
     height: 150,
     backgroundColor: '#257AC4'
   }

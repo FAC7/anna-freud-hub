@@ -63,7 +63,7 @@ platform :ios do
     end
 
     # Reminder of testers
-    sh "pilot list"
+    # sh "pilot list"
 
   end
 
