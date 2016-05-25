@@ -1,28 +1,40 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, StyleSheet, Text } from 'react-native'
+import {
+  View,
+  StyleSheet,
+  Text,
+  LayoutAnimation
+} from 'react-native'
 
 import { newRoute } from '../Actions/actions_routing.js'
+import routes from '../Utils/routes.js'
 
 class Navbar extends Component {
+
+  setRoute (route) {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+    this.props.newRoute(route)
+  }
+
   render () {
     return (
       <View style={styles.menu}>
         <Text
           style={styles.menuItem}
-          onPress={() => this.props.newRoute('Interests')}
+          onPress={() => this.setRoute(routes.INTERESTS)}
         >
           Interests
         </Text>
         <Text
           style={styles.menuItem}
-          onPress={() => this.props.newRoute('HUB')}
+          onPress={() => this.setRoute(routes.HUB)}
         >
           HUB
         </Text>
         <Text
           style={styles.menuItem}
-          onPress={() => this.props.newRoute('My Events')}
+          onPress={() => this.setRoute(routes.MY_EVENTS)}
         >
           My Events
         </Text>

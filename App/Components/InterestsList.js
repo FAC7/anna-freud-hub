@@ -20,6 +20,7 @@ class InterestsList extends React.Component {
       dataSource: this.ds.cloneWithRows(interests)
     }
   }
+
   render () {
     return (
       <ListView
