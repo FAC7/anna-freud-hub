@@ -9,12 +9,15 @@ class Router extends Component {
   render () {
     const routeObj = componentLoader[this.props.route.name]
     const component = routeObj.component
+    const Navbar = routeObj.
     const authorized = this.props.isLoggedIn || !routeObj.authRequired
     if (!authorized) {
       newRoute('Login')
     }
     return (
-      <component />
+      <View>
+        <component />
+        <
     )
   }
 }
