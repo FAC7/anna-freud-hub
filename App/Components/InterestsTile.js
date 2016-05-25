@@ -4,8 +4,12 @@ import {
   TouchableHighlight,
   View,
   Text,
-  Image
+  Image,
+  Dimensions
 } from 'react-native'
+
+const { width } = Dimensions.get('window')
+const imageWidth = Math.floor(width/2) - 20
 
 export default ({ setInterest, interest, chosenInterests }) => {
 
@@ -13,7 +17,7 @@ export default ({ setInterest, interest, chosenInterests }) => {
   { opacity: 0.8 } :
   { opacity: 0.4 }
 
-  console.log(chosenInterests)
+
   return (
     <TouchableHighlight
       style={styles.row}
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent'
   },
   row: {
-    width: 180,
+    width: imageWidth,
     margin: 5,
     height: 150,
     backgroundColor: '#257AC4'
