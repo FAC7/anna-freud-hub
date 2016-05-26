@@ -12,7 +12,6 @@ import { connect } from 'react-redux'
 import { newRoute } from '../Actions/actions_routing.js'
 
 import Tile from '../Components/Tile.js'
-import eventData from '../Data/test_events_data.js'
 
 class Hub extends Component {
 
