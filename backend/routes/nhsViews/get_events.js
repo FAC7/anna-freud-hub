@@ -7,11 +7,9 @@ module.exports = {
   handler: (request, reply) => {
     db.getEventIds(client)
       .then((eventArray) => {
-        console.log(eventArray)
         return db.getEvents(client, eventArray)
       })
       .then((allEvents) => {
-        console.log(allEvents)
         reply(allEvents)
       })
       .catch(() => reply('error'))
