@@ -21,7 +21,6 @@ class Login extends Component {
   }
 
   render () {
-    console.log(this.props.loggedIn)
     return (
       <View style={styles.container}>
         <Text style={styles.title}>HUB</Text>

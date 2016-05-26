@@ -15,7 +15,6 @@ export default ({ setInterest, interest, chosenInterests }) => {
   { opacity: 0.8 } :
   { opacity: 0.4 }
 
-  // console.log(chosenInterests)
   return (
     <TouchableHighlight
       style={styles.row}

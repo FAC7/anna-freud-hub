@@ -21,7 +21,7 @@ class EventInfo extends Component {
       <View>
         <Text style={styles.title}>  EVENT INFO </Text>
         <TouchableHighlight onPress={this.setRoute.bind(this)}>
-          <Text> CLICK TO GO TO MY EVENTS</Text>
+          <Text> CLICK TO GO BACK </Text>
         </TouchableHighlight>
       </View>
     )
