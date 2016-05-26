@@ -6,7 +6,7 @@ import {
 } from 'react-native'
 
 import { connect } from 'react-redux'
-import { setInterest } from '../Actions/actions_index.js'
+import { setInterest, getEvents } from '../Actions/actions_index.js'
 
 import Tile from './InterestsTile.js'
 import interests from '../Data/interests.js'
@@ -22,6 +22,7 @@ class InterestsList extends React.Component {
   }
 
   render () {
+    this.props.getEvents() //TODO Move this somewhere better
     return (
       <ListView
         renderFooter={() => <View style={styles.footer} />}
@@ -47,7 +48,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setInterest })(InterestsList)
+export default connect(mapStateToProps, { setInterest, getEvents })(InterestsList)
 
 const styles = StyleSheet.create({
   container: {

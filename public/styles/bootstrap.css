@@ -761,12 +761,6 @@ html {
 .pull-left {
   float: left !important;
 }
-.hide {
-  display: none !important;
-}
-.show {
-  display: block !important;
-}
 .invisible {
   visibility: hidden;
 }
@@ -776,9 +770,6 @@ html {
   text-shadow: none;
   background-color: transparent;
   border: 0;
-}
-.hidden {
-  display: none !important;
 }
 .affix {
   position: fixed;
