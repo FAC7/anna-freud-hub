@@ -3,6 +3,7 @@ const Hapi = require('hapi')
 
 // server plugins
 const Inert = require('inert')
+const Vision = require('vision')
 
 // server routes
 const Dashboard = require('./routes/nhsViews/Dashboard.js')
@@ -15,7 +16,7 @@ const userEvents = require('./routes/YSU-routes/user_events.js')
 const addEvent = require('./routes/nhsViews/add_event.js')
 const getEvents = require('./routes/nhsViews/get_events.js')
 
-const Plugins = [ Inert ]
+const Plugins = [ Inert, Vision ]
 const Routes = [
   Dashboard,
   ResourceHandler,
@@ -34,6 +35,7 @@ module.exports = (client) => { //eslint-disable-line
 
   server.connection({ port: process.env.PORT || 4000 })
   server.register(Plugins, err => {if (err) console.log(err)})
+  server.views(require('./viewSettings.js'))
   server.route(Routes)
 
   return server
