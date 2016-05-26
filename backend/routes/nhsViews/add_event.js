@@ -16,7 +16,6 @@ module.exports = {
     const eventToStore = Object.assign({}, receivedEvent, missingKeysObject)
 
     // This deletes the category keys that came in the receivedEvent with values of 'on'
-    console.log(eventToStore)
     db.addEvent(client, eventToStore)
       .then(() => {
         reply.file('./public/success.html')
