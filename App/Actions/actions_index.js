@@ -17,6 +17,15 @@ export const userLogin = username => {
   })
 }
 
+// this is just here until we think of better place to put network request
+
+const errorObj = {
+  imageUrl: 'http://memargaret.com/wp-content/uploads/2014/09/fail.jpg',
+  attending: [],
+  title: 'DB request fail, refresh!',
+  postCode: 'Failville'
+}
+
 export const GET_EVENTS = 'GET_EVENTS'
 export const getEvents = () => {
   const url = 'http://localhost:4000/api/events' //TODO change to herokes
@@ -32,7 +41,7 @@ export const getEvents = () => {
       console.log(err)
       return {
         type: GET_EVENTS,
-        payload: []
+        payload: [ errorObj ]
       }
     })
 }
