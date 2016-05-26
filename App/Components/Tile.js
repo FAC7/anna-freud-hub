@@ -9,30 +9,32 @@ import {
 
 const icon = require('../Assets/Icons/attending.png')
 
-export default (props) => (
-  <View style={styles.mainContainer}>
-    <Image source={{ uri: props.imageSource }} style={styles.image} />
+export default (props) => {
+  return (
+    <View style={styles.mainContainer}>
+      <Image source={{ uri: props.event.imageUrl }} style={styles.image} />
 
-    <View style={styles.topInfoContainer}>
-      <Text style={styles.eventTitle}>{props.title}</Text>
-      <View style={styles.attendingContainer}>
-        <Image source={icon} style={styles.icon} />
-        <Text style={styles.attending}>{props.attending}</Text>
+      <View style={styles.topInfoContainer}>
+        <Text style={styles.eventTitle}>{props.event.title}</Text>
+        <View style={styles.attendingContainer}>
+          <Image source={icon} style={styles.icon} />
+          <Text style={styles.attending}>{props.event.attending.length}</Text>
+        </View>
+      </View>
+
+      <View style={styles.bottomInfoContainer}>
+        <Text style={styles.distance}>{props.event.geoLocation}</Text>
+        <TouchableHighlight
+          onPress={props.linkRoute}
+          style={styles.detailsButton}
+          underlayColor={'#17c7ff'}
+        >
+          <Text style={styles.detailsButtonText}>Details</Text>
+        </TouchableHighlight>
       </View>
     </View>
-
-    <View style={styles.bottomInfoContainer}>
-      <Text style={styles.distance}>{props.distance} km away</Text>
-      <TouchableHighlight
-        onPress={props.linkRoute}
-        style={styles.detailsButton}
-        underlayColor={'#17c7ff'}
-      >
-        <Text style={styles.detailsButtonText}>Details</Text>
-      </TouchableHighlight>
-    </View>
-  </View>
-)
+  )
+}
 
 const styles = StyleSheet.create({
   mainContainer: {
