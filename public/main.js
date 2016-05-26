@@ -42,7 +42,8 @@ uI.submitForm = function () {
     if (event.postCode === '') return error.postCode
     if (event.date === '') return error.date
     if (event.time === '') return error.time
-    if (event.imageUrl === '' || event.imageUrl.indexOf('www') === -1) return error.imageUrl
+    // if (event.imageUrl === '' || event.imageUrl.indexOf('www') === -1) return error.imageUrl
+    if (event.imageUrl === '') return error.imageUrl
     if (event.categories.length === 0) return error.categories
     return 'VALID'
   }

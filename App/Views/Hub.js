@@ -16,11 +16,11 @@ import eventData from '../Data/test_events_data.js'
 
 class Hub extends Component {
 
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
     this.state = {
-      dataSource: this.ds.cloneWithRows(eventData)
+      dataSource: this.ds.cloneWithRows(props.allEvents)
     }
   }
 
@@ -32,7 +32,7 @@ class Hub extends Component {
   // TODO make each event go to correct event info with setRoute()
 
   render () {
-    console.log(this.props.allEvents)
+    console.log('allevents------', this.props.allEvents)
     return (
       <View style={styles.mainContainer}>
         <Text style={styles.title}>Events Near You</Text>

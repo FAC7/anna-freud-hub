@@ -28,5 +28,11 @@ export const getEvents = () => {
         payload: events
       }
     })
-    .catch(err => console.log(err))
+    .catch((err) => {
+      console.log(err)
+      return {
+        type: GET_EVENTS,
+        payload: []
+      }
+    })
 }

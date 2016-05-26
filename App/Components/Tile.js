@@ -23,7 +23,7 @@ export default (props) => {
       </View>
 
       <View style={styles.bottomInfoContainer}>
-        <Text style={styles.distance}>{props.event.geoLocation}</Text>
+        <Text style={styles.distance}>{props.event.postCode}</Text>
         <TouchableHighlight
           onPress={props.linkRoute}
           style={styles.detailsButton}
