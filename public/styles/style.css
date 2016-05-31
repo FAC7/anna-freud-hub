@@ -184,3 +184,39 @@ button {
 .blue:hover {
   background-color: #0959b8;
 }
+
+
+
+
+/*--------event dashboard styles---------*/
+.event-tile {
+  border: 2px solid white;
+  margin-top: 20px;
+  color: #fff;
+
+}
+.event-title {
+  font-size: 15px;
+}
+.event-date {
+  font-size: 13px;
+}
+.event-time {
+  font-size: 13px;
+}
+.event-attending {
+  right: 0px;
+  float: right;
+  margin-bottom: 14px;
+}
+.plus-sign {
+  font-size: 50px;
+  color: white;
+  text-decoration: none;
+  width: 60px;
+  height: 60px;
+}
+.plus-sign:hover {
+  background-color: white;
+  color: #3790f9
+}
