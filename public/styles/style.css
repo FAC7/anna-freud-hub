@@ -129,3 +129,58 @@ button {
     padding: 29% 48%;
   }
 }
+
+
+/*--------buttons---------*/
+
+.btn {
+  padding: 15px 30px;
+  font-size: 15px;
+  text-decoration: none;
+  box-sizing: border-box;
+  margin: 0 20px;
+  border-radius: 3px;
+  font-weight: 100;
+  letter-spacing: 2.7px;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  box-shadow: 0px 2px 8px 0px rgb(220, 220, 220);
+}
+
+.small {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.red {
+  background-color: #FF695E;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.red:hover {
+  background-color: #EF2E2E;
+}
+
+.purple {
+  background-color: #9268FB;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.purple:hover {
+  background-color: #6416b3;
+}
+
+.blue {
+  background-color: #3790f9;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.blue:hover {
+  background-color: #0959b8;
+}
