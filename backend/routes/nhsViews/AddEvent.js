@@ -1,30 +1,43 @@
-const db = require('../../db/db_events.js')
-const client = require('../../db/client.js')()
-
-
 // first route: get view for adding a new events
 // second route: posting a new event
 
 exports.register = (server, options, next) => {
+
+  const client = server.app.client
+  const events = server.app.events
+
   server.route([ {
-    path: '/api/events/nhs/addEvent',  // could use instead '/api/events/nhs/addEvent/{adminId}'
+    path: '/addevent',
     method: 'POST',
-    handler: (request, reply) => {
-      const receivedEvent = JSON.parse(request.payload)
-      const initialAttendingArray = []
-      const eventId = receivedEvent.title + ':' + (Math.floor(Math.random()*90000) + 10000)
-      const missingKeysObject = {
-        eventId: eventId,
-        attending: initialAttendingArray,
+    config: {
+      description: 'formats the payload and adds a new event to db',
+      auth: 'nhs',
+      handler: (request, reply) => {
+        const eventData = request.payload
+        const eventDataKeys = Object.keys(eventData)
+        const categories = eventDataKeys.filter(key => eventData[key] === 'on')
+        const otherData = eventDataKeys.filter(key => eventData[key] !== 'on')
+          .reduce((prev, curr) => {
+            prev[curr] = eventData[curr]
+            return prev
+          }, {})
+        const eventId = eventData.title + ':' + (Math.floor(Math.random()*90000) + 10000)
+        const adminDetails = request.auth.credentials.details
+        const missingKeysObject = {
+          eventId: eventId,
+          attending: [],
+          creatorEmail: adminDetails.adminId,
+          creatorId: adminDetails.adminId,
+          creatorFirstName: adminDetails.firstName,
+          creatorLastName: adminDetails.lastName,
+          categories: categories,
+          geoLocation: [ '0.48574985798', '0.33454478' ]
+        }
+        const eventToStore = Object.assign({}, otherData, missingKeysObject)
+
+        events.addEvent(client, eventToStore)
+        .then(() => reply.file('./public/success.html'))
       }
-
-      const eventToStore = Object.assign({}, receivedEvent, missingKeysObject)
-
-      // This deletes the category keys that came in the receivedEvent with values of 'on'
-      db.addEvent(client, eventToStore)
-        .then(() => {
-          reply.file('./public/success.html')
-        })
     }
   }, {
     path: '/addevent',
