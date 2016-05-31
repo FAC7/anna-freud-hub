@@ -7,11 +7,18 @@ const user = {
 
 exports.register = (server, options, next) => {
 
-  server.auth.strategy('session', 'cookie', {
+  server.auth.strategy('nhs', 'cookie', {
     password: process.env.COOKIE_PASSWORD,
     redirectTo: '/login',
     cookie: 'session',
-    isSecure: false
+    isSecure: false,
+    validateFunc: (request, session, cb) => {
+      if (user.username === 'ivan') {
+        cb(null, true)
+      } else {
+        cb(null, false)
+      }
+    }
   })
 
   server.route([ {

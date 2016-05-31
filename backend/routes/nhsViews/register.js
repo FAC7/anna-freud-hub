@@ -29,7 +29,8 @@ exports.register = (server, options, next) => {
       description: 'register a new nhs user',
       auth: 'admin',
       handler: (request, reply) => {
-        reply(request.payload)
+        request.cookieAuth.set({ details: { username: request.payload.username } })
+        reply.redirect('/')
       }
     }
   } ])
