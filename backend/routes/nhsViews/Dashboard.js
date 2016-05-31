@@ -40,6 +40,7 @@ exports.register = (server, options, next) => {
     path: '/',
     method: 'GET',
     config: {
+      auth: 'nhs',
       handler: (request, reply) => {
         // get all events by this userEvents -> adminsDB[adminId]eventsCreated
         // can access email (adminId) from cookie
