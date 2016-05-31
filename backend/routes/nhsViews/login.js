@@ -1,7 +1,7 @@
 // const bcrypt = require('bcrypt')
 
 const user = {
-  username: 'ivan',
+  adminId: 'ivan',
   password: 'slack'
 }
 
@@ -13,7 +13,7 @@ exports.register = (server, options, next) => {
     cookie: 'session',
     isSecure: false,
     validateFunc: (request, session, cb) => {
-      if (user.username === 'ivan') {
+      if (user.adminId === 'ivan') {
         cb(null, true)
       } else {
         cb(null, false)
@@ -37,10 +37,10 @@ exports.register = (server, options, next) => {
     config: {
       description: 'submit login details',
       handler: (request, reply) => {
-        const username = request.payload.username
+        const adminId = request.payload.adminId
         const password = request.payload.password
-        if (username === user.username && password === user.password) {
-          request.cookieAuth.set({ details: { username: username } })
+        if (adminId === user.adminId && password === user.password) {
+          request.cookieAuth.set({ details: { adminId: adminId } })
           reply.redirect('/')
         } else {
           reply('error')
