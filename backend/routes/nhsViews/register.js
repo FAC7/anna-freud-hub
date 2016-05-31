@@ -1,10 +1,12 @@
 require('env2')('config.env')
 const Bcrypt = require('bcrypt')
+const client = require('../../db/client.js')
+const db = require('../../db/db_nhs.js')
 
 exports.register = (server, options, next) => {
 
-  const validateAdmin = (request, username, password, callback) => {
-    //check username exists, return callback(null, false) if they dont
+  const validateAdmin = (request, adminId, password, callback) => {
+    //check adminId exists, return callback(null, false) if they dont
     const hashedPassword = process.env.ADMIN_PASSWORD
     Bcrypt.compare(password, hashedPassword, (err, isValid) => {
       callback(err, isValid, { details: 'credentials' })
@@ -29,7 +31,12 @@ exports.register = (server, options, next) => {
       description: 'register a new nhs user',
       auth: 'admin',
       handler: (request, reply) => {
-        request.cookieAuth.set({ details: { username: request.payload.username } })
+        const adminObj = Object.assign({}, request.payload, {
+          eventsCreated: [],
+          email: request.payload.adminId
+        })
+
+        request.cookieAuth.set({ details: { adminId: request.payload.adminId } })
         reply.redirect('/')
       }
     }
