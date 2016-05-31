@@ -21,8 +21,9 @@ const getEvents = require('./routes/nhsViews/get_events.js')
 // custom plugins
 const Register = require('./routes/nhsViews/register.js')
 const Login = require('./routes/nhsViews/login.js')
+const AttachRedis = require('./attachRedis.js')
 
-const Plugins = [ HapiAuthBasic, Cookie, Inert, Vision, Register, Login ]
+const Plugins = [ AttachRedis, HapiAuthBasic, Cookie, Inert, Vision, Register, Login ]
 const Routes = [
   Dashboard,
   ResourceHandler,

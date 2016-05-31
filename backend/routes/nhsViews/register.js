@@ -1,7 +1,5 @@
 require('env2')('config.env')
 const Bcrypt = require('bcrypt')
-const client = require('../../db/client.js')
-const db = require('../../db/db_nhs.js')
 
 exports.register = (server, options, next) => {
 
@@ -35,9 +33,18 @@ exports.register = (server, options, next) => {
           eventsCreated: [],
           email: request.payload.adminId
         })
+        const client = server.app.client
+        const nhs = server.app.nhs
 
-        request.cookieAuth.set({ details: { adminId: request.payload.adminId } })
-        reply.redirect('/')
+        nhs.addAdmin(client, adminObj)
+          .then((res) => {
+            console.log(res, 'redis response')
+            request.cookieAuth.set({ details: { adminId: request.payload.adminId } })
+            reply.redirect('/')
+          })
+          .catch((err) => {
+            reply(err)
+          })
       }
     }
   } ])
