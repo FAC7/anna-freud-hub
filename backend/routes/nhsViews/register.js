@@ -27,7 +27,7 @@ exports.register = (server, options, next) => {
     method: 'POST',
     config: {
       description: 'register a new nhs user',
-      // auth: 'admin',
+      auth: 'admin',
       handler: (request, reply) => {
         reply(request.payload)
       }
