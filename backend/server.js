@@ -4,6 +4,7 @@ const Hapi = require('hapi')
 // server plugins
 const Inert = require('inert')
 const Vision = require('vision')
+const HapiAuthBasic = require('hapi-auth-basic')
 
 // server routes
 const Dashboard = require('./routes/nhsViews/Dashboard.js')
@@ -20,7 +21,7 @@ const getEvents = require('./routes/nhsViews/get_events.js')
 const Register = require('./routes/nhsViews/register.js')
 const Login = require('./routes/nhsViews/login.js')
 
-const Plugins = [ Inert, Vision, Register, Login ]
+const Plugins = [ HapiAuthBasic, Inert, Vision, Register, Login ]
 const Routes = [
   Dashboard,
   ResourceHandler,
