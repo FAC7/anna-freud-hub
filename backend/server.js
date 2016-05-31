@@ -4,6 +4,8 @@ const Hapi = require('hapi')
 // server plugins
 const Inert = require('inert')
 const Vision = require('vision')
+const HapiAuthBasic = require('hapi-auth-basic')
+const Cookie = require('hapi-auth-cookie')
 
 // server routes
 const Dashboard = require('./routes/nhsViews/Dashboard.js')
@@ -16,7 +18,11 @@ const userEvents = require('./routes/YSU-routes/user_events.js')
 const addEvent = require('./routes/nhsViews/add_event.js')
 const getEvents = require('./routes/nhsViews/get_events.js')
 
-const Plugins = [ Inert, Vision ]
+// custom plugins
+const Register = require('./routes/nhsViews/register.js')
+const Login = require('./routes/nhsViews/login.js')
+
+const Plugins = [ HapiAuthBasic, Cookie, Inert, Vision, Register, Login ]
 const Routes = [
   Dashboard,
   ResourceHandler,
