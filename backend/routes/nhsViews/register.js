@@ -29,9 +29,11 @@ exports.register = (server, options, next) => {
       description: 'register a new nhs user',
       auth: 'admin',
       handler: (request, reply) => {
+        const password = Bcrypt.hashSync(request.payload.password, 6)
         const adminObj = Object.assign({}, request.payload, {
           eventsCreated: [],
-          email: request.payload.adminId
+          email: request.payload.adminId,
+          password: password
         })
         const client = server.app.client
         const nhs = server.app.nhs

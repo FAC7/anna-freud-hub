@@ -16,6 +16,10 @@ db.addAdmin = (client, adminObj) => {
 db.getAdmin = (client, adminId) => {
   return client.HGETALLAsync(adminId)
     .then((data) => helpers.parseArrayKeys([ 'eventsCreated' ], data))
+    .catch((res) => {
+      console.log(res, 'res from catch')
+      return null
+    })
 }
 
 db.toggleAdminEventsCreated = (client, eventId, adminId) => {

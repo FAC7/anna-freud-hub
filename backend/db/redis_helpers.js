@@ -16,15 +16,23 @@ const addArrayItem = (key, data, newItem) => {
 
 // returns a fresh copy of data object with parsed array keys
 helpers.parseArrayKeys = (keys, data) => {
-  const formattedArrays = {}
-  keys.forEach(key => {formattedArrays[key] = JSON.parse(data[key])})
-  return Object.assign({}, data, formattedArrays)
+  if (data) {
+    const formattedArrays = {}
+    keys.forEach(key => {formattedArrays[key] = JSON.parse(data[key])})
+    return Object.assign({}, data, formattedArrays)
+  } else {
+    return null
+  }
 }
 
 // returns a fresh copy of data object with updated array value
 helpers.updateArrayKey = (key, id, data) => {
-  const i = data[key].indexOf(id)
-  return i > -1 ? removeArrayItem(key, data, i) : addArrayItem(key, data, id)
+  if (data) {
+    const i = data[key].indexOf(id)
+    return i > -1 ? removeArrayItem(key, data, i) : addArrayItem(key, data, id)
+  } else {
+    return null
+  }
 }
 
 // updates the array of all eventIds
