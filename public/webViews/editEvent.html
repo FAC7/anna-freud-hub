@@ -1,7 +1,7 @@
 <p class="subtitle">Edit details about your event</p>
 <section class='container'>
   <div class='col-xs-10 col-xs-push-1'>
-    <form event-form class="event-form" action='/editevent' method='POST'>
+    <form event-form class="event-form" action='/editevent/{{event.eventId}}' method='POST'>
       {{> inputs}}
       </br>
       <p>Click any of the boxes which describe your event</p>
