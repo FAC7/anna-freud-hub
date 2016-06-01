@@ -1,5 +1,6 @@
 require('env2')('config.env')
 const Bcrypt = require('bcrypt')
+const Joi = require('joi')
 
 exports.register = (server, options, next) => {
 
@@ -44,9 +45,23 @@ exports.register = (server, options, next) => {
             request.cookieAuth.set({ details: { adminId: request.payload.adminId } })
             reply.redirect('/')
           })
-          .catch((err) => {
-            reply(err)
+          .catch(reply)
+      },
+      validate: {
+        payload: {
+          // Nelft.nhs.uk, Walthamforest.gov.uk or Waltham.sch.uk
+          firstName: Joi.string().required(),
+          lastName: Joi.string().required(),
+          adminId: Joi.string().email()
+                      .regex(/@nelft\.nhs\.uk|walthamforest\.gov\.uk|waltham\.sch\.uk/i)
+                      .required(),
+          password: Joi.string().min(6).required()
+        },
+        failAction: (request, reply) => {
+          reply.view('register', {
+            error: 'please enter valid nhs email address, and a password of min length 6'
           })
+        }
       }
     }
   } ])
