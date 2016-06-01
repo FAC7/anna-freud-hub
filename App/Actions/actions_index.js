@@ -34,3 +34,22 @@ export const getEvents = () => {
       }
     })
 }
+
+export const ADD_USER_TO_ASYNCSTORAGE = 'ADD_USER_TO_ASYNCSTORAGE'
+
+export const addUser = (userObj) => {
+  return {
+    type: ADD_USER_TO_ASYNCSTORAGE,
+    payload: userObj
+  }
+}
+
+export const UPDATE_USER_FIELD = 'UPDATE_USER_FIELD'
+
+export const updateInput = (key, value) => {
+  return {
+    type: UPDATE_USER_FIELD,
+    key: key,
+    value: value
+  }
+}
