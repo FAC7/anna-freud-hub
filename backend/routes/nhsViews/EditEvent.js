@@ -4,7 +4,6 @@ exports.register = (server, options, next) => {
 
   const client = server.app.client
   const events = server.app.events
-  const nhs = server.app.nhs
 
   server.route([ {
     path: '/editevent/{eventId}',

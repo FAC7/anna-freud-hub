@@ -14,7 +14,6 @@ const BookedEvents = require('./routes/YSU-routes/booked_events.js')
 const setInterests = require('./routes/YSU-routes/set_interests.js')
 const signUp = require('./routes/YSU-routes/sign_up.js')
 const userEvents = require('./routes/YSU-routes/user_events.js')
-const getEvents = require('./routes/nhsViews/get_events.js')
 
 // custom plugins
 const AddEvent = require('./routes/nhsViews/AddEvent.js')
@@ -44,7 +43,6 @@ const Routes = [
   setInterests,
   signUp,
   userEvents,
-  getEvents
 ]
 
 module.exports = (client) => { //eslint-disable-line
