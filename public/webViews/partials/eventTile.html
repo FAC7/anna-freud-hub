@@ -1,9 +1,8 @@
-<a href='/editevent/{{this.eventId}}'>
-  <div class='col-md-offset-2 col-sm-offset-2 col-xs-8 col-sm-8 col-md-8 event-tile'>
+<a href="/editevent/{{this.eventId}}">
+  <div class="event-tile">
     <p class="event-title">{{this.title}}</p>
     <br>
-    <span class="event-text event-date">{{this.date}}</span>
-    <span class="event-text event-time">At: {{this.time}}</span>
+    <span class="event-text event-date-time">{{this.date}} at: {{this.time}}</span>
     <span class="event-text event-attending">{{this.attending.length}} people attending</span>
     <br>
   </div>

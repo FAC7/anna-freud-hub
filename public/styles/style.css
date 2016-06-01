@@ -3,6 +3,7 @@
 body {
   font-family: Lucida Grande, Helvetica, Helvetica Neue, Arial;
   background-color: #257AC4;
+
 }
 
 p {
@@ -27,6 +28,12 @@ p {
   font-size: 14px;
   font-weight: lighter;
   /*font-family: Helvetica, Helvetica Neue, Arial;*/
+}
+
+.logout {
+  color: #fff;
+  /*margin-right: 100px;*/
+  font-size: 15px;
 }
 
 /*-----inputs--------*/
@@ -186,22 +193,18 @@ button {
 }
 
 
-
-
 /*--------event dashboard styles---------*/
 .event-tile {
   border: 2px solid white;
   margin-top: 20px;
   color: #fff;
+  padding: 20px;
 
 }
 .event-title {
   font-size: 15px;
 }
-.event-date {
-  font-size: 13px;
-}
-.event-time {
+.event-date-time {
   font-size: 13px;
 }
 .event-attending {
@@ -212,11 +215,9 @@ button {
 .plus-sign {
   font-size: 50px;
   color: white;
-  text-decoration: none;
   width: 60px;
   height: 60px;
 }
-.plus-sign:hover {
-  background-color: white;
-  color: #3790f9
+.add-event {
+  text-decoration: none;
 }
