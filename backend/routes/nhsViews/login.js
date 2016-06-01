@@ -64,6 +64,17 @@ exports.register = (server, options, next) => {
           })
       }
     }
+  }, {
+    path: '/logout',
+    method: 'GET',
+    config: {
+      auth: 'nhs',
+      handler: (request, reply) => {
+        console.log('in logoug')
+        request.cookieAuth.clear()
+        reply.redirect('/')
+      }
+    }
   }
  ])
 
