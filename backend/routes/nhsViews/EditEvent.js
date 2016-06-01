@@ -1,3 +1,4 @@
+const categories = require('../../utils/categories.js')
 exports.register = (server, options, next) => {
 
   const client = server.app.client
@@ -12,7 +13,7 @@ exports.register = (server, options, next) => {
       auth: 'nhs',
       handler: (request, reply) => {
         events.getEvent(client, request.params.eventId)
-          .then(data => reply.view('editEvent', { event: data }))
+          .then(data => reply.view('editEvent', { event: data, categories: categories }))
       }
     }
   } ])

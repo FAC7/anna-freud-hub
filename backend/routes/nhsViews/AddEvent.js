@@ -1,11 +1,13 @@
 // first route: get view for adding a new events
 // second route: posting a new event
+const categories = require('../../utils/categories.js')
 
 exports.register = (server, options, next) => {
 
   const client = server.app.client
   const events = server.app.events
   const nhs = server.app.nhs
+
 
   server.route([ {
     path: '/addevent',
@@ -50,20 +52,6 @@ exports.register = (server, options, next) => {
     config: {
       auth: 'nhs',
       handler: (request, reply) => {
-        const categories = [
-          'Fun Activites',
-          'Youth Council',
-          'Wellness',
-          'Sports Clubs',
-          'Youth Groups',
-          'Physical Health',
-          'Mental Health',
-          'Volunteering',
-          'Outdoors',
-          'Cooking',
-          'Art',
-          'Educational'
-        ]
         reply.view('addEvent', { categories: categories })
       }
     }
