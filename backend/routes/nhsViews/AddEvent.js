@@ -14,8 +14,11 @@ exports.register = (server, options, next) => {
       description: 'formats the payload and adds a new event to db',
       auth: 'nhs',
       handler: (request, reply) => {
+        // payload data
         const eventData = request.payload
+        // keys from the payload
         const eventDataKeys = Object.keys(eventData)
+
         const categories = eventDataKeys.filter(key => eventData[key] === 'on')
         const otherData = eventDataKeys.filter(key => eventData[key] !== 'on')
           .reduce((prev, curr) => {
@@ -57,7 +60,6 @@ exports.register = (server, options, next) => {
           'Mental Health',
           'Volunteering',
           'Outdoors',
-          'Cooking',
           'Cooking',
           'Art',
           'Educational'
