@@ -1,5 +1,6 @@
 require('env2')('config.env')
 const Bcrypt = require('bcrypt')
+const Joi = require('joi')
 
 exports.register = (server, options, next) => {
 
@@ -47,6 +48,17 @@ exports.register = (server, options, next) => {
           .catch((err) => {
             reply(err)
           })
+      },
+      validate: {
+        payload: {
+          // Nelft.nhs.uk, Walthamforest.gov.uk or Waltham.sch.uk
+          firstName: Joi.string().required(),
+          lastName: Joi.string().required(),
+          adminId: Joi.string().email()
+                      .regex(/@nelft\.nhs\.uk|walthamforest\.gov\.uk|waltham\.sch\.uk/i)
+                      .required(),
+          password: Joi.string().min(6).required()
+        }
       }
     }
   } ])
