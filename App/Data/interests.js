@@ -1,32 +1,38 @@
 export default [
-  { title: 'Music',
+  { title: 'Fun Activites',
     picUrl: 'http://www.fillmurray.com/150/150'
   },
-  { title: 'Art',
+  { title: 'Youth Council',
     picUrl: 'http://www.fillmurray.com/200/150'
   },
   { title: 'Cooking',
     picUrl: 'http://www.fillmurray.com/150/154'
   },
-  { title: 'Yoga',
+  { title: 'Wellness',
     picUrl: 'http://www.fillmurray.com/150/157'
   },
-  { title: 'Meditation',
-    picUrl: 'http://www.fillmurray.com/180/150'
-  },
-  { title: 'Ultimate Frisbee',
+  { title: 'Sports Clubs',
     picUrl: 'http://www.fillmurray.com/150/190'
   },
-  { title: 'Running',
+  { title: 'Youth Groups',
     picUrl: 'http://www.fillmurray.com/180/155'
   },
-  { title: 'Book Club',
+  { title: 'Physical Health',
     picUrl: 'http://www.fillmurray.com/162/162'
   },
-  { title: 'Dance',
+  { title: 'Mental Health',
     picUrl: 'http://www.fillmurray.com/201/150'
   },
-  { title: 'Coding',
+  { title: 'Volnteering',
     picUrl: 'http://www.fillmurray.com/300/350'
-  }
+  },
+  { title: 'Outdoors',
+    picUrl: 'http://www.fillmurray.com/150/150'
+  },
+  { title: 'Art',
+    picUrl: 'http://www.fillmurray.com/200/150'
+  },
+  { title: 'Educational',
+    picUrl: 'http://www.fillmurray.com/150/154'
+  },
 ]
