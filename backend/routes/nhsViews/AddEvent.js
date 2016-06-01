@@ -20,6 +20,7 @@ exports.register = (server, options, next) => {
       handler: (request, reply) => {
         // payload data
         const eventData = request.payload
+        console.log(eventData)
         // keys from the payload
         const eventDataKeys = Object.keys(eventData)
 
@@ -55,10 +56,25 @@ exports.register = (server, options, next) => {
           postCode: Joi.string().max(8).required(),
           date: Joi.string().required(),
           time: Joi.string().required(),
-          imageUrl: Joi.string().required()
+          imageUrl: Joi.string().required(),
+          FunActivites: Joi.string().optional(),
+          YouthCouncil: Joi.string().optional(),
+          Wellness: Joi.string().optional(),
+          SportsClubs: Joi.string().optional(),
+          YouthGroups: Joi.string().optional(),
+          PhysicalHealth: Joi.string().optional(),
+          MentalHealth: Joi.string().optional(),
+          Volunteering: Joi.string().optional(),
+          Outdoors: Joi.string().optional(),
+          Cooking: Joi.string().optional(),
+          Art: Joi.string().optional(),
+          Educational: Joi.string().optional()
         },
         failAction: (request, reply) => {
-          reply.view('addEvent', { error: 'please fill out all the fields' })
+          reply.view('addEvent', {
+            error: 'please fill out all the fields',
+            categories: categories
+          })
         }
       }
     }
