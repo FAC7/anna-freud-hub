@@ -1,5 +1,6 @@
 // first route: get view for adding a new events
 // second route: posting a new event
+const Joi = require('joi')
 
 exports.register = (server, options, next) => {
 
@@ -40,8 +41,22 @@ exports.register = (server, options, next) => {
         const eventToStore = Object.assign({}, otherData, missingKeysObject)
 
         events.addEvent(client, eventToStore)
-          .then(() => reply.file('./public/success.html'))
           .then(() => nhs.toggleAdminEventsCreated(client, eventId, adminDetails.adminId))
+          .then(() => reply.redirect('/'))
+      },
+      validate: {
+        payload: {
+          title: Joi.string().required(),
+          description: Joi.string().required(),
+          address: Joi.string().required(),
+          postCode: Joi.string().max(8).required(),
+          date: Joi.string().required(),
+          time: Joi.string().required(),
+          imageUrl: Joi.string().required()
+        },
+        failAction: (request, reply) => {
+          reply.view('addEvent', { error: 'please fill out all the fields' })
+        }
       }
     }
   }, {

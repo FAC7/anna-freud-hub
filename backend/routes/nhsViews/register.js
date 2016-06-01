@@ -45,9 +45,7 @@ exports.register = (server, options, next) => {
             request.cookieAuth.set({ details: { adminId: request.payload.adminId } })
             reply.redirect('/')
           })
-          .catch((err) => {
-            reply(err)
-          })
+          .catch(reply)
       },
       validate: {
         payload: {
@@ -58,6 +56,11 @@ exports.register = (server, options, next) => {
                       .regex(/@nelft\.nhs\.uk|walthamforest\.gov\.uk|waltham\.sch\.uk/i)
                       .required(),
           password: Joi.string().min(6).required()
+        },
+        failAction: (request, reply) => {
+          reply.view('register', {
+            error: 'please enter valid nhs email address, and a password of min length 6'
+          })
         }
       }
     }
