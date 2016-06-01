@@ -1,11 +1,10 @@
 <section class='container'>
-  {{> logout}}
   <div class='col-xs-10 col-xs-push-1'>
+    {{> logout}}
       <a href="/addevent" class="add-event">
         <span class="plus-sign"> + </span>
         <p>Add a new event...</p>
       </a>
-
     {{#each events}}
       {{> eventTile this}}
     {{/each}}

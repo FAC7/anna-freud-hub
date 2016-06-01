@@ -32,8 +32,8 @@ p {
 
 .logout {
   color: #fff;
-  /*margin-right: 100px;*/
   font-size: 15px;
+  text-decoration: none;
 }
 
 /*-----inputs--------*/
@@ -199,7 +199,6 @@ button {
   margin-top: 20px;
   color: #fff;
   padding: 20px;
-
 }
 .event-title {
   font-size: 15px;
