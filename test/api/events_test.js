@@ -41,7 +41,7 @@ tape('editEvent edits an existing event', (t) => {
     description: 'an updated description for the event'
   }
 
-  t.plan(4)
+  t.plan(5)
   eventsDB.addEvent(client, mockEvent)
     .then(() => eventsDB.editEvent(client, mockEvent.eventId, updatedDetails))
     .then((res) => {
@@ -51,10 +51,11 @@ tape('editEvent edits an existing event', (t) => {
     })
     .then(() => eventsDB.getEvent(client, mockEvent.eventId))
     .then((data) => {
-      const { title, description, date } = data
+      const { title, description, date, categories } = data
       t.equal(title, updatedDetails.title, 'tile has been updated correctly')
       t.equal(description, updatedDetails.description, 'description has been updated correctly')
-      t.equal(date, mockEvent.date, 'other fields have been left alone correctly')
+      t.equal(date, mockEvent.date, 'date field has been left alone correctly')
+      t.deepEquals(categories, mockEvent.categories, 'categories have been left alone correctly')
     })
 })
 
