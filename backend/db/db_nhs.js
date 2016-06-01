@@ -33,8 +33,8 @@ db.toggleAdminEventsCreated = (client, eventId, adminId) => {
                                  .concat(eventList.slice(eventIndex + 1))
         return client.HSETAsync(adminId, 'eventsCreated', JSON.stringify(updatedEventList))
       } else {
-        const updatedEventList = eventList.concat([ eventId ])
-        return client.HSETAsync(adminId, 'eventsCreated', JSON.stringify(updatedEventList))
+        const addedEventList = eventList.concat([ eventId ])
+        return client.HSETAsync(adminId, 'eventsCreated', JSON.stringify(addedEventList))
       }
     })
 }
