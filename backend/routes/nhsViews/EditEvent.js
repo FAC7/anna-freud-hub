@@ -1,4 +1,5 @@
 const categories = require('../../utils/categories.js')
+const eventSchema = require('../../ValidationSchemas/eventSchema.js')
 exports.register = (server, options, next) => {
 
   const client = server.app.client
@@ -14,6 +15,37 @@ exports.register = (server, options, next) => {
       handler: (request, reply) => {
         events.getEvent(client, request.params.eventId)
           .then(data => reply.view('editEvent', { event: data, categories: categories }))
+      }
+    }
+  }, {
+    path: '/editevent/{eventId}',
+    method: 'POST',
+    config: {
+      description: 'posts updated event details',
+      auth: 'nhs',
+      handler: (request, reply) => {
+        // payload data
+        const eventData = request.payload
+        // keys from the payload
+        const eventDataKeys = Object.keys(eventData)
+        const selectedCategories = eventDataKeys.filter(key => eventData[key] === 'on')
+        const otherData = eventDataKeys.filter(key => eventData[key] !== 'on')
+          .reduce((prev, curr) => {
+            prev[curr] = eventData[curr]
+            return prev
+          }, {})
+        const updatedDetails = Object.assign({}, { categories: selectedCategories }, otherData)
+        events.editEvent(client, request.params.eventId, updatedDetails)
+          .then(() => reply.redirect('/'))
+      },
+      validate: {
+        payload: eventSchema,
+        failAction: (request, reply) => {
+          reply.view('editEvent', {
+            error: 'please fill out all the fields',
+            categories: categories
+          })
+        }
       }
     }
   } ])
