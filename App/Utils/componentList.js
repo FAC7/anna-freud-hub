@@ -8,6 +8,7 @@ import Hub from '../Views/Hub.js'
 import MyEvents from '../Views/MyEvents.js'
 import EventInfo from '../Views/EventInfo.js'
 import Navbar from '../Containers/Navbar.js'
+import Signup from '../Containers/SignupContainer.js'
 
 const componentList = {
   Splash,
@@ -17,7 +18,8 @@ const componentList = {
   MyEvents,
   EventInfo,
   Navbar,
-  NoNavbar
+  NoNavbar,
+  Signup
 }
 
 export default componentList
