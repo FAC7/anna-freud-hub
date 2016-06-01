@@ -5,6 +5,7 @@ exports.register = (server, options, next) => {
 
   const client = server.app.client
   const events = server.app.events
+  const nhs = server.app.nhs
 
   server.route([ {
     path: '/addevent',
@@ -36,7 +37,8 @@ exports.register = (server, options, next) => {
         const eventToStore = Object.assign({}, otherData, missingKeysObject)
 
         events.addEvent(client, eventToStore)
-        .then(() => reply.file('./public/success.html'))
+          .then(() => reply.file('./public/success.html'))
+          .then(() => nhs.toggleAdminEventsCreated(client, eventId, adminDetails.adminId))
       }
     }
   }, {
