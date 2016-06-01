@@ -31,6 +31,12 @@ db.getEvent = (client, eventId) => {
     .then((data) => helpers.parseArrayKeys([ 'attending', 'categories' ], data))
 }
 
+db.editEvent = (client, eventId, updatedDetails) => {
+  return db.getEvent(client, eventId)
+    .then((data) => Object.assign({}, data, updatedDetails))
+    .then((updated) => db.addEvent(client, updated))
+}
+
 // delete event hash and id from eventslist
 db.deleteEvent = (client, eventId) => {
   return client.DELAsync(eventId)

@@ -44,11 +44,11 @@ exports.register = (server, options, next) => {
         nhs.getAdmin(client, adminId)
           .then((data) => {
             if (data === null) {
-              reply('wrong username')
+              reply.view('login', { error: 'Wrong Username' })
             } else {
               bcrypt.compare(password, data.password, (err, isValid) => {
                 if (!isValid) {
-                  reply('wrong password')
+                  reply.view('login', { error: 'Wrong Password' })
                 } else {
                   request.cookieAuth.set({
                     details: {

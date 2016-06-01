@@ -2,9 +2,9 @@ const Handlebars = require('handlebars')
 module.exports = {
   engines: { html: Handlebars },
   relativeTo: __dirname,
-  path: '../webViews',
+  path: '../public/webviews',
   layout: 'default',
-  layoutPath: '../webViews/layout',
-  helpersPath: '../webViews/helpers',
-  partialsPath: '../webViews/partials'
+  layoutPath: '../public/webviews/layout',
+  helpersPath: '../public/webviews/helpers',
+  partialsPath: '../public/webviews/partials'
 }
