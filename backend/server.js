@@ -22,6 +22,7 @@ const Register = require('./routes/nhsViews/register.js')
 const Login = require('./routes/nhsViews/login.js')
 const Dashboard = require('./routes/nhsViews/Dashboard.js')
 const AttachRedis = require('./attachRedis.js')
+const EditEvent = require('./routes/nhsViews/EditEvent.js')
 
 const Plugins = [
   AttachRedis,
@@ -32,7 +33,8 @@ const Plugins = [
   Register,
   Login,
   AddEvent,
-  Dashboard
+  Dashboard,
+  EditEvent
 ]
 
 const Routes = [

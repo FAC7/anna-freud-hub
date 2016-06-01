@@ -1,5 +1,7 @@
 // first route: get view for adding a new events
 // second route: posting a new event
+
+const categories = require('../../utils/categories.js')
 const Joi = require('joi')
 
 exports.register = (server, options, next) => {
@@ -7,6 +9,7 @@ exports.register = (server, options, next) => {
   const client = server.app.client
   const events = server.app.events
   const nhs = server.app.nhs
+
 
   server.route([ {
     path: '/addevent',
@@ -17,10 +20,11 @@ exports.register = (server, options, next) => {
       handler: (request, reply) => {
         // payload data
         const eventData = request.payload
+        console.log(eventData)
         // keys from the payload
         const eventDataKeys = Object.keys(eventData)
 
-        const categories = eventDataKeys.filter(key => eventData[key] === 'on')
+        const selectedCategories = eventDataKeys.filter(key => eventData[key] === 'on')
         const otherData = eventDataKeys.filter(key => eventData[key] !== 'on')
           .reduce((prev, curr) => {
             prev[curr] = eventData[curr]
@@ -35,7 +39,7 @@ exports.register = (server, options, next) => {
           creatorId: adminDetails.adminId,
           creatorFirstName: adminDetails.firstName,
           creatorLastName: adminDetails.lastName,
-          categories: categories,
+          categories: selectedCategories,
           geoLocation: [ '0.48574985798', '0.33454478' ]
         }
         const eventToStore = Object.assign({}, otherData, missingKeysObject)
@@ -52,10 +56,25 @@ exports.register = (server, options, next) => {
           postCode: Joi.string().max(8).required(),
           date: Joi.string().required(),
           time: Joi.string().required(),
-          imageUrl: Joi.string().required()
+          imageUrl: Joi.string().required(),
+          FunActivites: Joi.string().optional(),
+          YouthCouncil: Joi.string().optional(),
+          Wellness: Joi.string().optional(),
+          SportsClubs: Joi.string().optional(),
+          YouthGroups: Joi.string().optional(),
+          PhysicalHealth: Joi.string().optional(),
+          MentalHealth: Joi.string().optional(),
+          Volunteering: Joi.string().optional(),
+          Outdoors: Joi.string().optional(),
+          Cooking: Joi.string().optional(),
+          Art: Joi.string().optional(),
+          Educational: Joi.string().optional()
         },
         failAction: (request, reply) => {
-          reply.view('addEvent', { error: 'please fill out all the fields' })
+          reply.view('addEvent', {
+            error: 'please fill out all the fields',
+            categories: categories
+          })
         }
       }
     }
@@ -65,20 +84,6 @@ exports.register = (server, options, next) => {
     config: {
       auth: 'nhs',
       handler: (request, reply) => {
-        const categories = [
-          'Fun Activites',
-          'Youth Council',
-          'Wellness',
-          'Sports Clubs',
-          'Youth Groups',
-          'Physical Health',
-          'Mental Health',
-          'Volunteering',
-          'Outdoors',
-          'Cooking',
-          'Art',
-          'Educational'
-        ]
         reply.view('addEvent', { categories: categories })
       }
     }

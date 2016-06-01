@@ -1,15 +1,15 @@
 <p>Enter your event name</p>
-<input title type="text" placeholder="event name" name="title" required>
+<input title type="text" placeholder="event name" name="title" value="{{event.title}}" required>
 </br>
 <p>Where is your event going to take place?</p>
-<input address type="text" placeholder="event address" name="address" required>
-<input postCode type="text" placeholder="event postcode" name="postCode" required>
+<input address type="text" placeholder="event address" name="address" value="{{event.address}}" required>
+<input postCode type="text" placeholder="event postcode" name="postCode" value="{{event.postCode}}" required>
 </br>
 <p>What date and time is your event going to happen?</p>
-<input date type="text" placeholder="dd-mm-yy" name="date" required>
-<input time type="text" placeholder="hh:mm" name="time" required>
+<input date type="text" placeholder="dd-mm-yy" name="date" value="{{event.date}}" required>
+<input time type="text" placeholder="hh:mm" name="time" value="{{event.time}}" required>
 </br>
 <p>Please put an image link here for your event</p>
-<input imageUrl type="url" placeholder="http://www.myimage.com" name="imageUrl" required>
+<input imageUrl type="url" placeholder="http://www.myimage.com" name="imageUrl" value="{{event.imageUrl}}" required>
 <p>Please write a description of your event</p>
-<textarea placeholder="description" name="description" required></textarea>
+<textarea placeholder="description" name="description" required>{{event.description}}</textarea>
