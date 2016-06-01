@@ -1,9 +1,8 @@
 const tape = require('tape')
 const client = require('../../backend/db/client.js')({ env: 'TEST' })
-const { mockUser, mockEvent, mockEvent2, mockEvent3 } = require('./mock_data.js')
+const { mockEvent } = require('./mock_data.js')
 
 const eventsDB = require('../../backend/db/db_events.js')
-const ysuDB = require('../../backend/db/db_ysu.js')
 
 tape('flush database before tests run', (t) => {
   t.plan(1)
@@ -33,6 +32,29 @@ tape('deleteEvent removes from eventsList and removes the event hash', (t) => {
       const actual = data.indexOf(mockEvent.eventId) === -1
       const expected = true
       t.equal(actual, expected, 'key has been deteded from eventsList')
+    })
+})
+
+tape('editEvent edits an existing event', (t) => {
+  const updatedDetails = {
+    title: 'A new title for the event',
+    description: 'an updated description for the event'
+  }
+
+  t.plan(4)
+  eventsDB.addEvent(client, mockEvent)
+    .then(() => eventsDB.editEvent(client, mockEvent.eventId, updatedDetails))
+    .then((res) => {
+      const actual = res
+      const expected = 'OK'
+      t.equal(actual, expected, 'redis response OK')
+    })
+    .then(() => eventsDB.getEvent(client, mockEvent.eventId))
+    .then((data) => {
+      const { title, description, date } = data
+      t.equal(title, updatedDetails.title, 'tile has been updated correctly')
+      t.equal(description, updatedDetails.description, 'description has been updated correctly')
+      t.equal(date, mockEvent.date, 'other fields have been left alone correctly')
     })
 })
 
