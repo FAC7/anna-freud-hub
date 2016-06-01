@@ -1,10 +1,3 @@
-// const bcrypt = require('bcrypt')
-
-const user = {
-  adminId: 'ivan',
-  password: 'slack'
-}
-
 const bcrypt = require('bcrypt')
 
 exports.register = (server, options, next) => {
@@ -17,13 +10,17 @@ exports.register = (server, options, next) => {
     redirectTo: '/login',
     cookie: 'session',
     isSecure: false,
-    // validateFunc: (request, session, cb) => {
-    //   if (user.adminId === 'ivan') {
-    //     cb(null, true)
-    //   } else {
-    //     cb(null, false)
-    //   }
-    // }
+    validateFunc: (request, session, cb) => {
+      const adminId = session.details.adminId
+      nhs.getAdmin(client, adminId)
+        .then((data) => {
+          if (data.adminId === adminId) {
+            cb(null, true)
+          } else {
+            cb(null, false)
+          }
+        })
+    }
   })
 
   server.route([ {
@@ -53,7 +50,13 @@ exports.register = (server, options, next) => {
                 if (!isValid) {
                   reply('wrong password')
                 } else {
-                  request.cookieAuth.set({ details: { adminId: adminId } })
+                  request.cookieAuth.set({
+                    details: {
+                      adminId: adminId,
+                      firstName: data.firstName,
+                      lastName: data.lastName
+                    }
+                  })
                   reply.redirect('/')
                 }
               })

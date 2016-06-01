@@ -7,7 +7,7 @@ exports.register = (server, options, next) => {
     //check adminId exists, return callback(null, false) if they dont
     const hashedPassword = process.env.ADMIN_PASSWORD
     Bcrypt.compare(password, hashedPassword, (err, isValid) => {
-      callback(err, isValid, { details: 'credentials' })
+      callback(err, isValid, { adminId: adminId })
     })
   }
   server.auth.strategy('admin', 'basic', { validateFunc: validateAdmin })
