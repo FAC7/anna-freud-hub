@@ -19,6 +19,7 @@ componentLoader[routes.LOGIN] = {
 componentLoader[routes.HUB] = {
   component: componentList.Hub,
   Navbar: componentList.Navbar,
+  Title: componentList.Title,
   authRequired: false
 }
 
