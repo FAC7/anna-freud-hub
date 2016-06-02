@@ -155,6 +155,32 @@ tape('toggleEventAttendingList', (t) => {
     })
 })
 
+// updateUser function stores same object if no changes
+
+
+tape('updateInterests function updates interests', (t) => {
+  t.plan(2)
+
+  const userId = mockUser.userId
+  const newInterests = [ 'Yoga', 'French' ]
+
+  ysuDB.addUser(client, mockUser)
+    .then(() => ysuDB.updateInterests(client, userId, newInterests))
+    .then((response) => {
+      const actual = response
+      const expected = 'OK'
+      t.equal(actual, expected, 'got a response from redis')
+    })
+    .then(() => ysuDB.getUser(client, userId))
+    .then((data) => {
+      const actual = data.interests
+      const expected = newInterests
+      t.deepEqual(actual, expected, 'updateInterests updates interests')
+    })
+})
+
+//updateUser updates eventsAttending?? not needed?
+
 tape('teardown', (t) => {
   client.FLUSHDBAsync() // eslint-disable-line
     .then(() => client.QUITAsync()) // eslint-disable-line
