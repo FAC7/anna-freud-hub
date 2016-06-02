@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import SignUp from '../Components/Signup.js'
 import { updateInput } from '../Actions/actions_index.js'
 import { AsyncStorage } from 'react-native'
+import { newRoute } from '../Actions/actions_routing.js'
+import routes from '../Utils/routes.js'
 
 class SignUpContainer extends Component {
 
@@ -12,17 +14,15 @@ class SignUpContainer extends Component {
       method: 'POST',
       body: JSON.stringify(userObj)
     })
-    .then(d => d.json())
-    .then((res) => console.log(res, 'response from server'))
-    .catch((err) => console.log(err))
+    .then(() => this.props.newRoute(routes.INTERESTS))
   }
 
   render () {
     return (
-      <SignUp {...this.props} submitDetails={this.submitDetails} />
+      <SignUp {...this.props} submitDetails={this.submitDetails.bind(this)} />
     )
   }
 }
 
 const mapStateToProps = state => ({ ...state })
-export default connect(mapStateToProps, { updateInput })(SignUpContainer)
+export default connect(mapStateToProps, { updateInput, newRoute })(SignUpContainer)
