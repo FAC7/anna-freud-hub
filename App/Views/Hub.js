@@ -29,7 +29,6 @@ class Hub extends Component {
   // TODO make each event go to correct event info with setRoute()
 
   render () {
-    // console.log('allevents------', this.props.allEvents)
     return (
       <View style={styles.mainContainer}>
         <ScrollView>

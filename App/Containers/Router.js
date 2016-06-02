@@ -21,7 +21,6 @@ class Router extends Component {
   }
 
   render () {
-    console.log(this.props.events)
     const { route } = this.props
     const DisplayComponent = componentLoader[route].component
     const Navbar = componentLoader[route].Navbar
