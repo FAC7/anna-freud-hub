@@ -13,12 +13,17 @@ import interests from '../Data/interests.js'
 
 
 class InterestsList extends React.Component {
-  constructor () {
-    super()
-    this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
-    this.state = {
-      dataSource: this.ds.cloneWithRows(interests)
-    }
+  // constructor () {
+  //   super()
+  //   this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+  //   this.state = {
+  //     dataSource: this.ds.cloneWithRows(interests)
+  //   }
+  // }
+
+  updateDataSource () {
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+    return ds.cloneWithRows(interests)
   }
 
   render () {
@@ -26,7 +31,7 @@ class InterestsList extends React.Component {
       <ListView
         renderFooter={() => <View style={styles.footer} />}
         contentContainerStyle={styles.container}
-        dataSource={this.state.dataSource}
+        dataSource={this.updateDataSource()}
         renderRow={(rowData) => {
           return (
             <Tile
