@@ -9,6 +9,7 @@ import Hub from '../Views/Hub.js'
 import MyEvents from '../Views/MyEvents.js'
 import EventInfo from '../Views/EventInfo.js'
 import Navbar from '../Containers/Navbar.js'
+import TitleWithBack from '../Containers/TitleWithBack.js'
 
 const componentList = {
   Splash,
@@ -19,7 +20,8 @@ const componentList = {
   EventInfo,
   Navbar,
   NoNavbar,
-  Title
+  Title,
+  TitleWithBack
 }
 
 export default componentList

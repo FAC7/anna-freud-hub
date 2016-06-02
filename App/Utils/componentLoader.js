@@ -39,7 +39,7 @@ componentLoader[routes.MY_EVENTS] = {
 componentLoader[routes.EVENT_INFO] = {
   component: componentList.EventInfo,
   Navbar: componentList.NoNavbar,
-  Title: componentList.Title,
+  Title: componentList.TitleWithBack,
   titleContent: 'Event Information',
   authRequired: false
 }
