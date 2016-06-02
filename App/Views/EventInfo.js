@@ -19,7 +19,6 @@ class EventInfo extends Component {
   render () {
     return (
       <View>
-        <Text style={styles.title}>  EVENT INFO </Text>
         <TouchableHighlight onPress={this.setRoute.bind(this)}>
           <Text> CLICK TO GO BACK </Text>
         </TouchableHighlight>
@@ -31,10 +30,4 @@ class EventInfo extends Component {
 export default connect(null, { goBack })(EventInfo)
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 60,
-    color: 'blue'
-  }
 })

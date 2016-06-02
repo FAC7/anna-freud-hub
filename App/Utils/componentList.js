@@ -1,6 +1,7 @@
 // components
 import Splash from '../Components/Splash.js'
 import NoNavbar from '../Components/NoNavbar.js'
+import Title from '../Components/Title.js'
 // containers
 import Interests from '../Views/Interests.js'
 import Login from '../Views/Login.js'
@@ -8,6 +9,7 @@ import Hub from '../Views/Hub.js'
 import MyEvents from '../Views/MyEvents.js'
 import EventInfo from '../Views/EventInfo.js'
 import Navbar from '../Containers/Navbar.js'
+import TitleWithBack from '../Containers/TitleWithBack.js'
 
 const componentList = {
   Splash,
@@ -17,7 +19,9 @@ const componentList = {
   MyEvents,
   EventInfo,
   Navbar,
-  NoNavbar
+  NoNavbar,
+  Title,
+  TitleWithBack
 }
 
 export default componentList
