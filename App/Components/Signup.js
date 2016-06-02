@@ -61,6 +61,9 @@ export default class SignUp extends React.Component {
           autoCorrect={false}
           onChangeText={text => this.props.updateInput('dateOfBirth', text)}
         />
+      <TouchableHighlight onPress={this.props.submit}>
+          <Text>Submit</Text>
+        </TouchableHighlight>
       </View>
     )
   }
