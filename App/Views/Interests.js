@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import {
-  Text,
   View,
   StyleSheet,
   TouchableHighlight,
-  AsyncStorage
+  LayoutAnimation,
+  AsyncStorage,
+  Text
 } from 'react-native'
 import { connect } from 'react-redux'
 
@@ -24,16 +25,27 @@ class Interests extends Component {
           this.props.newRoute(routes.SIGNUP)
         }}
         >
-          <Text style={styles.title}>LogOut</Text>
+          <Text>LogOut</Text>
         </TouchableHighlight>
-        <Text style={styles.title}>Choose Your Interests</Text>
         <InterestsList />
+        <TouchableHighlight
+          style={styles.menu}
+          onPress={() => {
+            LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+            AsyncStorage.setItem('interests', JSON.stringify(this.props.chosenInterests))
+            // TODO need to send data off to server
+            this.props.newRoute(routes.HUB)
+          }}
+        >
+          <Text style={styles.menuItem}>Submit</Text>
+        </TouchableHighlight>
       </View>
     )
   }
 }
 
-const mapStateToProps = state => ({ ...state })
+
+const mapStateToProps = (state) => ({ ...state })
 
 export default connect(mapStateToProps, { newRoute })(Interests)
 
@@ -41,12 +53,22 @@ const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: '#fff',
     flex: 1,
-    marginTop: 40
   },
-  title: {
+  menu: {
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: 60,
+    backgroundColor: 'rgb(186, 214, 255)'
+  },
+  menuItem: {
+    color: 'rgb(42, 123, 231)',
     textAlign: 'center',
-    fontSize: 24,
-    color: '#6076C0',
-    marginBottom: 20
+    fontSize: 15,
+    flex: 1
   }
 })

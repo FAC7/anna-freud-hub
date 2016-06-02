@@ -17,14 +17,20 @@ class Router extends Component {
           this.props.newRoute(routes.HUB) :
           this.props.newRoute(routes.SIGNUP)
       })
+    this.props.getEvents()
   }
 
   render () {
-    this.props.getEvents() //TODO Move this somewhere better
-    const DisplayComponent = componentLoader[this.props.route].component
-    const Navbar = componentLoader[this.props.route].Navbar
+    console.log(this.props.events)
+    const { route } = this.props
+    const DisplayComponent = componentLoader[route].component
+    const Navbar = componentLoader[route].Navbar
+    const Title = componentLoader[route].Title
+    const titleContent = componentLoader[route].titleContent
+
     return (
       <View style={styles.mainContainer}>
+        <Title title={titleContent} />
         <DisplayComponent />
         <Navbar />
       </View>
@@ -35,7 +41,8 @@ class Router extends Component {
 const mapStateToProps = (state) => {
   return {
     route: state.router.name,
-    history: state.router.history
+    history: state.router.history,
+    events: state.allEvents
   }
 }
 
