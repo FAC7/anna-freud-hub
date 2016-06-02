@@ -10,17 +10,18 @@ import routes from '../Utils/routes.js'
 class Router extends Component {
 
   componentWillMount () {
-    AsyncStorage.getItem('userinfo')
-      .then(d => JSON.parse(d))
-      .then(data => {
-        return data ?
-          this.props.newRoute(routes.HUB) :
-          this.props.newRoute(routes.SIGNUP)
-      })
+    // AsyncStorage.getItem('userinfo')
+    //   .then(d => JSON.parse(d))
+    //   .then(data => {
+    //     return data ?
+    //       this.props.newRoute(routes.HUB) :
+    //       this.props.newRoute(routes.SIGNUP)
+    //   })
+    this.props.getEvents()
   }
 
   render () {
-    this.props.getEvents() //TODO Move this somewhere better
+    console.log(this.props.events)
     const { route } = this.props
     const DisplayComponent = componentLoader[route].component
     const Navbar = componentLoader[route].Navbar
@@ -40,7 +41,8 @@ class Router extends Component {
 const mapStateToProps = (state) => {
   return {
     route: state.router.name,
-    history: state.router.history
+    history: state.router.history,
+    events: state.allEvents
   }
 }
 
