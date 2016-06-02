@@ -4,7 +4,8 @@ import {
   StyleSheet,
   ScrollView,
   LayoutAnimation,
-  ListView
+  ListView,
+  Text
 } from 'react-native'
 
 import { connect } from 'react-redux'
@@ -14,12 +15,9 @@ import Tile from '../Components/Tile.js'
 
 class Hub extends Component {
 
-  constructor (props) {
-    super(props)
-    this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
-    this.state = {
-      dataSource: this.ds.cloneWithRows(props.allEvents)
-    }
+  updateDataSource () {
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+    return ds.cloneWithRows(this.props.allEvents)
   }
 
   setRoute (route) {
@@ -30,14 +28,14 @@ class Hub extends Component {
   // TODO make each event go to correct event info with setRoute()
 
   render () {
-    console.log('allevents------', this.props.allEvents)
+    // console.log('allevents------', this.props.allEvents)
     return (
       <View style={styles.mainContainer}>
         <ScrollView>
-          <ListView
+          {this.props.allEvents.length > 0 ? <ListView
             renderFooter={() => <View style={styles.footer} />}
             contentContainerStyle={styles.container}
-            dataSource={this.state.dataSource}
+            dataSource={this.updateDataSource()}
             renderRow={(rowData) => {
               return (
                 <Tile
@@ -46,7 +44,7 @@ class Hub extends Component {
                 />
               )
             }}
-          />
+          /> : <Text>Loading</Text> }
         </ScrollView>
       </View>
     )
