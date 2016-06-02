@@ -12,7 +12,6 @@ const ResourceHandler = require('./routes/nhsViews/ResourceHandler.js')
 const BookEvent = require('./routes/YSU-routes/book_event.js')
 const BookedEvents = require('./routes/YSU-routes/booked_events.js')
 const setInterests = require('./routes/YSU-routes/set_interests.js')
-const signUp = require('./routes/YSU-routes/sign_up.js')
 const userEvents = require('./routes/YSU-routes/user_events.js')
 
 // custom plugins
@@ -20,6 +19,7 @@ const AddEvent = require('./routes/nhsViews/AddEvent.js')
 const Register = require('./routes/nhsViews/register.js')
 const Login = require('./routes/nhsViews/login.js')
 const Dashboard = require('./routes/nhsViews/Dashboard.js')
+const AddUser = require('./routes/YSU-routes/add_user.js')
 const AttachRedis = require('./attachRedis.js')
 const EditEvent = require('./routes/nhsViews/EditEvent.js')
 
@@ -32,6 +32,7 @@ const Plugins = [
   Register,
   Login,
   AddEvent,
+  AddUser,
   Dashboard,
   EditEvent
 ]
@@ -41,7 +42,6 @@ const Routes = [
   BookEvent,
   BookedEvents,
   setInterests,
-  signUp,
   userEvents,
 ]
 

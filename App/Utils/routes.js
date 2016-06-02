@@ -4,7 +4,8 @@ const routes = {
   HUB: 'HUB',
   MY_EVENTS: 'My Events',
   EVENT_INFO: 'Event Info',
-  SPLASH: 'Splash'
+  SPLASH: 'Splash',
+  SIGNUP: 'Signup'
 }
 
 export default routes

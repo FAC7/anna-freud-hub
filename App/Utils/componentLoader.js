@@ -52,4 +52,10 @@ componentLoader[routes.INTERESTS] = {
   authRequired: false
 }
 
+componentLoader[routes.SIGNUP] = {
+  component: componentList.Signup,
+  Navbar: componentList.NoNavbar,
+  authRequired: false
+}
+
 export default componentLoader

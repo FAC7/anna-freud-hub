@@ -2,8 +2,8 @@ import { NEW_ROUTE, GO_BACK } from '../Actions/actions_routing.js'
 import routes from '../Utils/routes.js'
 
 const initialState = {
-  name: routes.INTERESTS,
-  history: [ routes.INTERESTS ]
+  name: routes.HUB,
+  history: [ routes.HUB ]
 }
 
 export default (state = initialState, action) => {
