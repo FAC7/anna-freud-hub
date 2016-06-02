@@ -1,11 +1,21 @@
-// This route should fetch all the events for a particular userId
-// (the ones that match his interests)
+exports.register = (server, options, next) => {
+  const ysu = server.app.ysu
+  const client = server.app.client
+  server.route({
+    path: '/setinterests/{userId}',
+    method: 'GET',
+    handler: (request, reply) => {
+      const newInterests = JSON.parse(request.payload)
+      const userId = request.params.userId
 
-module.exports = {
-  path: '/interests/{userId}',
-  method: 'POST',
-  handler: (request, reply) => {
-    const userId = request.params.userId
-    reply('Interests for' + userId)
-  }
+      ysu.updateInterests(client, userId, newInterests)
+        .then(() => reply('interests set'))
+        .catch((err) => reply(err))
+    }
+  })
+  return next()
+}
+
+exports.register.attributes = {
+  name: 'set interests'
 }

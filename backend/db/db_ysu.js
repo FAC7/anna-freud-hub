@@ -31,4 +31,14 @@ db.toggleUserAttending = (client, userId, eventId) => {
     .then((updatedData) => db.addUser(client, updatedData))
 }
 
+//updates interests array
+db.updateInterests = (client, userId, newInterestArr) => {
+  return db.getUser(client, userId)
+    .then(data => {
+      const newInterestObj = { interests: newInterestArr }
+      const newUserObj = Object.assign({}, data, newInterestObj)
+      return db.addUser(client, newUserObj)
+    })
+}
+
 module.exports = db
