@@ -16,6 +16,7 @@ import Tile from '../Components/Tile.js'
 class Hub extends Component {
 
   updateDataSource () {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
     return ds.cloneWithRows(this.props.allEvents)
   }
