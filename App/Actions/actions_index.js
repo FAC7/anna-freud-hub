@@ -17,7 +17,7 @@ const errorObj = {
 
 export const GET_EVENTS = 'GET_EVENTS'
 export const getEvents = () => {
-  const url = 'http://localhost:4000/api/events' //TODO change to herokes
+  const url = 'http://localhost:4000/events' //TODO change to herokes
   return fetch(url)
     .then(response => response.json())
     .then(events => {

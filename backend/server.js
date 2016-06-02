@@ -23,6 +23,7 @@ const AddUser = require('./routes/YSU-routes/add_user.js')
 const AttachRedis = require('./attachRedis.js')
 const EditEvent = require('./routes/nhsViews/EditEvent.js')
 const SetInterests = require('./routes/YSU-routes/set_interests.js')
+const GetEvents = require('./routes/YSU-routes/get_events.js')
 
 const Plugins = [
   AttachRedis,
@@ -36,7 +37,8 @@ const Plugins = [
   AddUser,
   Dashboard,
   EditEvent,
-  SetInterests
+  SetInterests,
+  GetEvents
 ]
 
 const Routes = [
