@@ -55,6 +55,8 @@ componentLoader[routes.INTERESTS] = {
 componentLoader[routes.SIGNUP] = {
   component: componentList.Signup,
   Navbar: componentList.NoNavbar,
+  Title: componentList.NoNavbar,
+  titleContent: null,
   authRequired: false
 }
 

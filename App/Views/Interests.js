@@ -7,16 +7,26 @@ import {
   AsyncStorage,
   Text
 } from 'react-native'
-
 import { connect } from 'react-redux'
-import routes from '../Utils/routes.js'
+
 import { newRoute } from '../Actions/actions_routing.js'
+import routes from '../Utils/routes.js'
+
 import InterestsList from '../Components/InterestsList.js'
+
+// TODO send log out down as a prop function
 
 class Interests extends Component {
   render () {
     return (
       <View style={styles.mainContainer}>
+        <TouchableHighlight onPress={() => {
+          AsyncStorage.clear()
+          this.props.newRoute(routes.SIGNUP)
+        }}
+        >
+          <Text>LogOut</Text>
+        </TouchableHighlight>
         <InterestsList />
         <TouchableHighlight
           style={styles.menu}
@@ -33,6 +43,7 @@ class Interests extends Component {
     )
   }
 }
+
 
 const mapStateToProps = (state) => ({ ...state })
 
