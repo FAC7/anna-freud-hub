@@ -18,7 +18,7 @@ const errorObj = {
 export const GET_EVENTS = 'GET_EVENTS'
 export const getEvents = () => {
 
-  const url = 'http://annafreudhub.herokuapp.com/events' //TODO change to herokes
+  const url = 'http://annafreudhub.herokuapp.com/events'
 
   return fetch(url)
     .then(response => response.json())
