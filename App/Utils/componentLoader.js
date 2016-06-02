@@ -23,8 +23,8 @@ componentLoader[routes.LOGIN] = {
 componentLoader[routes.HUB] = {
   component: componentList.Hub,
   Navbar: componentList.Navbar,
-  Title: componentList.NoNavbar,
-  titleContent: 'Select Your Interests',
+  Title: componentList.Title,
+  titleContent: 'Events Near You',
   authRequired: false
 }
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {
-  Text,
   View,
   StyleSheet,
   ScrollView,
@@ -34,9 +33,7 @@ class Hub extends Component {
     console.log('allevents------', this.props.allEvents)
     return (
       <View style={styles.mainContainer}>
-        <Text style={styles.title}>Events Near You</Text>
         <ScrollView>
-
           <ListView
             renderFooter={() => <View style={styles.footer} />}
             contentContainerStyle={styles.container}
@@ -50,7 +47,6 @@ class Hub extends Component {
               )
             }}
           />
-
         </ScrollView>
       </View>
     )
@@ -70,11 +66,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     flex: 1,
     marginTop: 40
-  },
-  title: {
-    textAlign: 'center',
-    fontSize: 24,
-    color: '#6076C0'
   },
   container: {
     flex: 1

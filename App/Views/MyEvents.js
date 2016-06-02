@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {
-  Text,
   View,
   StyleSheet,
   ScrollView,
@@ -32,7 +31,6 @@ class MyEvents extends Component {
   render () {
     return (
       <View style={styles.mainContainer}>
-        <Text style={styles.title}> My Events </Text>
         <ScrollView>
           <ListView
             renderFooter={() => <View style={styles.footer} />}
@@ -58,15 +56,6 @@ export default connect(null, { newRoute })(MyEvents)
 const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: '#fff',
-    flex: 1,
-    marginTop: 40
-  },
-  title: {
-    textAlign: 'center',
-    fontSize: 24,
-    color: '#6076C0'
-  },
-  container: {
     flex: 1
   },
   footer: {

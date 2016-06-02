@@ -13,6 +13,7 @@ class Router extends Component {
     const Navbar = componentLoader[route].Navbar
     const Title = componentLoader[route].Title
     const titleContent = componentLoader[route].titleContent
+
     return (
       <View style={styles.mainContainer}>
         <Title title={titleContent} />
