@@ -43,7 +43,6 @@ const Routes = [
   ResourceHandler,
   BookEvent,
   BookedEvents,
-  setInterests,
   userEvents,
 ]
 
