@@ -19,7 +19,6 @@ componentLoader[routes.LOGIN] = {
 componentLoader[routes.HUB] = {
   component: componentList.Hub,
   Navbar: componentList.Navbar,
-  Title: componentList.Title,
   authRequired: false
 }
 
@@ -38,6 +37,7 @@ componentLoader[routes.EVENT_INFO] = {
 componentLoader[routes.INTERESTS] = {
   component: componentList.Interests,
   Navbar: componentList.Navbar,
+  Title: componentList.Title,
   authRequired: false
 }
 

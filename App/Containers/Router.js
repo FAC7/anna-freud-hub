@@ -11,8 +11,10 @@ class Router extends Component {
     const { route } = this.props
     const DisplayComponent = componentLoader[route].component
     const Navbar = componentLoader[route].Navbar
+    const Title = componentLoader[route].Title
     return (
       <View style={styles.mainContainer}>
+        <Title />
         <DisplayComponent />
         <Navbar />
       </View>
