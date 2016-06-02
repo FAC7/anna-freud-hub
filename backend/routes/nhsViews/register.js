@@ -41,7 +41,6 @@ exports.register = (server, options, next) => {
 
         nhs.addAdmin(client, adminObj)
           .then((res) => {
-            console.log(res, 'redis response')
             request.cookieAuth.set({ details: { adminId: request.payload.adminId } })
             reply.redirect('/')
           })

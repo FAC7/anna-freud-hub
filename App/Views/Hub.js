@@ -29,23 +29,24 @@ class Hub extends Component {
   // TODO make each event go to correct event info with setRoute()
 
   render () {
-    // console.log('allevents------', this.props.allEvents)
+    console.log(this.props.allEvents, 'all events----')
     return (
       <View style={styles.mainContainer}>
         <ScrollView>
-          {this.props.allEvents.length > 0 ? <ListView
-            renderFooter={() => <View style={styles.footer} />}
-            contentContainerStyle={styles.container}
-            dataSource={this.updateDataSource()}
-            renderRow={(rowData) => {
-              return (
-                <Tile
-                  event={rowData}
-                  linkRoute={() => this.setRoute('Event Info')}
-                />
-              )
-            }}
-          /> : <Text>Loading</Text> }
+          {this.props.allEvents.length > 0 ?
+            <ListView
+              renderFooter={() => <View style={styles.footer} />}
+              contentContainerStyle={styles.container}
+              dataSource={this.updateDataSource()}
+              renderRow={(rowData) => {
+                return (
+                  <Tile
+                    event={rowData}
+                    linkRoute={() => this.setRoute('Event Info')}
+                  />
+                )
+              }}
+            /> : <Text>Loading</Text>}
         </ScrollView>
       </View>
     )

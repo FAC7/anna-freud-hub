@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     color: '#6076C0',
   },
   titleContainer: {
-    flex: 1,
+    // flex: 1,
     flexDirection: 'row',
     marginBottom: 20,
     marginTop: 40

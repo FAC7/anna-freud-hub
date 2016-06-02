@@ -5,15 +5,13 @@ import {
   Text,
   TextInput,
   TouchableHighlight,
-  Dimensions,
-  DatePickerIOS
+  Dimensions
 } from 'react-native'
 
 const { width } = Dimensions.get('window')
 
 export default class SignUp extends React.Component {
   render () {
-    console.log(this.props.signup)
     const { signup } = this.props
     return (
       <View style={styles.container}>
