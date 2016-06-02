@@ -38,12 +38,12 @@ export default (props) => {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    margin: 20,
+    // margin: 20,
     backgroundColor: '#257AC4',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     flexWrap: 'wrap',
-    marginTop: 30,
+    marginBottom: 30,
     height: 280
   },
   topInfoContainer: {

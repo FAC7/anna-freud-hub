@@ -21,10 +21,15 @@ class Router extends Component {
 
   render () {
     this.props.getEvents() //TODO Move this somewhere better
-    const DisplayComponent = componentLoader[this.props.route].component
-    const Navbar = componentLoader[this.props.route].Navbar
+    const { route } = this.props
+    const DisplayComponent = componentLoader[route].component
+    const Navbar = componentLoader[route].Navbar
+    const Title = componentLoader[route].Title
+    const titleContent = componentLoader[route].titleContent
+
     return (
       <View style={styles.mainContainer}>
+        <Title title={titleContent} />
         <DisplayComponent />
         <Navbar />
       </View>
