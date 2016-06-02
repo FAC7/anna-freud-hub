@@ -11,15 +11,19 @@ exports.register = (server, options, next) => {
     cookie: 'session',
     isSecure: false,
     validateFunc: (request, session, cb) => {
-      const adminId = session.details.adminId
-      nhs.getAdmin(client, adminId)
+      if (session) {
+        const adminId = session.details.adminId
+        nhs.getAdmin(client, adminId)
         .then((data) => {
-          if (data.adminId === adminId) {
+          if (data && data.adminId === adminId) {
             cb(null, true)
           } else {
             cb(null, false)
           }
         })
+      } else {
+        cb(null, false)
+      }
     }
   })
 
