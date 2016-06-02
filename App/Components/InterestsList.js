@@ -13,13 +13,6 @@ import interests from '../Data/interests.js'
 
 
 class InterestsList extends React.Component {
-  // constructor () {
-  //   super()
-  //   this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
-  //   this.state = {
-  //     dataSource: this.ds.cloneWithRows(interests)
-  //   }
-  // }
 
   updateDataSource () {
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
