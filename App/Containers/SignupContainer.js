@@ -8,12 +8,21 @@ import { AsyncStorage } from 'react-native'
 
 
 class SignUpContainer extends Component {
+
   submitDetails (userObj) {
-    AsyncStorage.setItem('userinfo', JSON.stringify(userObj))
+    // AsyncStorage.setItem('userinfo', JSON.stringify(userObj))
+    fetch('http://localhost:4000/adduser', {
+      method: 'POST',
+      body: JSON.stringify(userObj)
+    })
+    .then(d => d.json())
+    .then((res) => console.log(res, 'response from server'))
+    .catch((err) => console.log(err))
   }
+
   render () {
     return (
-      <SignUp {...this.props} />
+      <SignUp {...this.props} submitDetails={this.submitDetails} />
     )
   }
 }

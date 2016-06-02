@@ -14,6 +14,7 @@ const { width } = Dimensions.get('window')
 export default class SignUp extends React.Component {
   render () {
     console.log(this.props.signup)
+    const { signup } = this.props
     return (
       <View style={styles.container}>
         <View style={styles.textContainer}>
@@ -24,12 +25,14 @@ export default class SignUp extends React.Component {
             style={[ styles.inputText, styles.twoInput, { marginRight: 10 } ]}
             placeholder='First Name'
             autoCorrect={false}
+            value={signup.firstName}
             onChangeText={text => this.props.updateInput('firstName', text)}
           />
           <TextInput
             style={[ styles.inputText, styles.twoInput ]}
             placeholder='Last Name'
             autoCorrect={false}
+            value={signup.lastName}
             onChangeText={text => this.props.updateInput('lastName', text)}
           />
         </View>
@@ -38,30 +41,27 @@ export default class SignUp extends React.Component {
           placeholder='Email'
           autoCorrect={false}
           autoCapitalize={'none'}
+          value={signup.email}
           onChangeText={text => this.props.updateInput('email', text)}
-        />
-        <TextInput
-          style={styles.inputText}
-          placeholder='Password'
-          autoCorrect={false}
-          autoCapitalize={'none'}
-          onChangeText={text => this.props.updateInput('password', text)}
-          secureTextEntry
         />
         <TextInput
           style={styles.inputText}
           placeholder='Postcode'
           autoCorrect={false}
           autoCapitalize={'characters'}
+          value={signup.postCode}
           onChangeText={text => this.props.updateInput('postCode', text)}
         />
         <TextInput
           style={styles.inputText}
           placeholder='Date of Birth'
           autoCorrect={false}
-          onChangeText={text => this.props.updateInput('dateOfBirth', text)}
+          value={signup.DOB}
+          onChangeText={text => this.props.updateInput('DOB', text)}
         />
-      <TouchableHighlight onPress={this.props.submit}>
+        <TouchableHighlight
+          onPress={() => this.props.submitDetails(this.props.signup)}
+        >
           <Text>Submit</Text>
         </TouchableHighlight>
       </View>
