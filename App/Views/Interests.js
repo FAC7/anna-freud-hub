@@ -7,35 +7,52 @@ import {
   AsyncStorage,
   Text
 } from 'react-native'
-import { connect } from 'react-redux'
 
+import { connect } from 'react-redux'
 import { newRoute } from '../Actions/actions_routing.js'
 import routes from '../Utils/routes.js'
 
 import InterestsList from '../Components/InterestsList.js'
-
 // TODO send log out down as a prop function
 
 class Interests extends Component {
+
+  setInterests () {
+    const chosenInterests = this.props.chosenInterests
+    //set to async storage
+    AsyncStorage.setItem('interests', JSON.stringify(chosenInterests))
+    //send data to db
+    AsyncStorage.getItem('userinfo')
+      .then(data => {
+        const interestObj = {
+          userId: 'ysu:' + JSON.parse(data).email,
+          interests: chosenInterests
+        }
+        fetch('http://localhost:4000/setinterests', {
+          method: 'POST',
+          body: JSON.stringify(interestObj)
+        })
+      })
+    //change route
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+    this.props.newRoute(routes.HUB)
+  }
+
   render () {
     return (
       <View style={styles.mainContainer}>
-        <TouchableHighlight onPress={() => {
-          AsyncStorage.clear()
-          this.props.newRoute(routes.SIGNUP)
-        }}
+        <TouchableHighlight
+          onPress={() => {
+            AsyncStorage.clear()
+            this.props.newRoute(routes.SIGNUP)
+          }}
         >
           <Text>LogOut</Text>
         </TouchableHighlight>
         <InterestsList />
         <TouchableHighlight
           style={styles.menu}
-          onPress={() => {
-            LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
-            AsyncStorage.setItem('interests', JSON.stringify(this.props.chosenInterests))
-            // TODO need to send data off to server
-            this.props.newRoute(routes.HUB)
-          }}
+          onPress={() => this.setInterests()}
         >
           <Text style={styles.menuItem}>Submit</Text>
         </TouchableHighlight>

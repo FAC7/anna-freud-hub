@@ -1,11 +1,14 @@
 import { NEW_ROUTE, GO_BACK } from '../Actions/actions_routing.js'
 import routes from '../Utils/routes.js'
 
+// const initialState = {
+//   name: routes.HUB,
+//   history: [ routes.HUB ]
+// }
 const initialState = {
-  name: routes.HUB,
-  history: [ routes.HUB ]
+  name: routes.SIGNUP,
+  history: [ routes.SIGNUP ]
 }
-
 // const initialState = {
 //   name: routes.INTERESTS,
 //   history: [ routes.INTERESTS ]

@@ -15,7 +15,8 @@ exports.register = (server, options, next) => {
         const userDetails = JSON.parse(request.payload)
         const missingDetails = {
           userId: 'ysu:' + userDetails.email,
-          interests: []
+          interests: [],
+          eventsAttending: []
         }
         const userObj = Object.assign({}, userDetails, missingDetails)
         ysu.addUser(client, userObj)
