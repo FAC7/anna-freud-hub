@@ -14,14 +14,14 @@ export default ({ toggleAttending }) => {
       <Text style={styles.title}>Are you going?</Text>
       <View style={styles.attendingChoice}>
         <TouchableHighlight
-          onPress={() => toggleAttending()}
+          onPress={toggleAttending}
           underlayColor={'#fff'}
           style={styles.yesContainer}
         >
           <Text style={styles.text}>YES</Text>
         </TouchableHighlight>
         <TouchableHighlight
-          onPress={() => toggleAttending()}
+          onPress={toggleAttending}
           underlayColor={'#fab5b5'}
           style={styles.noContainer}
         >
