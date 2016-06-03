@@ -10,6 +10,8 @@ import {
 
 import { connect } from 'react-redux'
 
+import icon from '../Assets/Icons/attending.png'
+
 class EventInfo extends Component {
   render () {
     return (
@@ -24,8 +26,14 @@ class EventInfo extends Component {
             <Text style={styles.infoHeaders}>People Attending</Text>
           </View>
           <View style={styles.infoContentContainer}>
-            <Text style={styles.address}>{this.props.activeEvent.address}</Text>
-            <Text>{this.props.activeEvent.attending.length}</Text>
+            <View style={styles.addressContainer}>
+              <Text style={styles.address}>{this.props.activeEvent.address}</Text>
+              <Text style={styles.postCode}>{this.props.activeEvent.postCode}</Text>
+            </View>
+            <View style={styles.attendingContent}>
+              <Image source={icon} style={styles.icon} />
+              <Text style={styles.attendingNumber}>{this.props.activeEvent.attending.length}</Text>
+            </View>
           </View>
         </View>
 
@@ -57,8 +65,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#257AC4',
   },
   address: {
-    height: 50,
-    color: 'white'
+    color: 'white',
+    fontSize: 12
   },
   infoHeadersContainer: {
     justifyContent: 'space-between',
@@ -69,11 +77,30 @@ const styles = StyleSheet.create({
   },
   infoHeaders: {
     color: 'white',
-    fontSize: 20
+    fontSize: 17
   },
   infoContentContainer: {
     justifyContent: 'space-between',
     flexDirection: 'row',
     padding: 10
+  },
+  attendingContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 5
+  },
+  icon: {
+    width: 18,
+    height: 18
+  },
+  attendingNumber: {
+    paddingLeft: 5,
+    color: '#fff',
+    fontSize: 20
+  },
+  postCode: {
+    color: '#fff',
+    fontSize: 12
+
   }
 })

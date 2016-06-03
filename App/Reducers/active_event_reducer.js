@@ -1,7 +1,7 @@
 import { ACTIVE_EVENT } from '../Actions/actions_index.js'
 const initialState = {
   address: '17 Hillmarton Road',
-  attending: [ 1, 2, 3 ],
+  attending: [ 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3 ],
   categories: [ 'Wellness', 'Physical Health' ],
   creatorEmail: 'admin@walthamforest.gov.uk',
   creatorFirstName: 'Mr',
