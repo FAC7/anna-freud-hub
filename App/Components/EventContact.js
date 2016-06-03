@@ -13,14 +13,20 @@ export default ({ contactAddress }) => {
 const styles = StyleSheet.create({
   contactContainer: {
     backgroundColor: '#030468',
-    height: 50
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   title: {
+    margin: 10,
     color: '#fff',
-    fontSize: 20
+    fontSize: 14,
+    paddingTop: 10,
+    paddingBottom: 10
   },
   contactAddress: {
     color: '#fff',
-    fontSize: 17
+    fontSize: 10,
+    marginRight: 10,
+    alignSelf: 'center'
   }
 })

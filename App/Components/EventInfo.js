@@ -20,7 +20,7 @@ class EventInfo extends Component {
           source={{ uri: this.props.activeEvent.imageUrl }}
         />
         <EventAddress event={this.props.activeEvent} />
-        <EventContact event={this.props.activeEvent} />
+        <EventContact contactAddress={this.props.activeEvent.creatorEmail} />
 
         <View>
           <Text>{this.props.activeEvent.creatorEmail}</Text>
