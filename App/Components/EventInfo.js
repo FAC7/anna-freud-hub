@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import {
   Text,
   View,
-  TouchableHighlight,
-  LayoutAnimation,
   StyleSheet,
   Image
 } from 'react-native'
@@ -11,8 +9,14 @@ import {
 import { connect } from 'react-redux'
 
 import EventAddress from './EventAddress.js'
+import EventContact from './EventContact.js'
+import SetAttending from './SetAttending.js'
 
 class EventInfo extends Component {
+  toggleAttending () {
+
+  }
+
   render () {
     return (
       <View style={styles.mainContainer}>
@@ -21,10 +25,8 @@ class EventInfo extends Component {
           source={{ uri: this.props.activeEvent.imageUrl }}
         />
         <EventAddress event={this.props.activeEvent} />
-
-        <View>
-          <Text>{this.props.activeEvent.creatorEmail}</Text>
-        </View>
+        <EventContact contactAddress={this.props.activeEvent.creatorEmail} />
+        <SetAttending toggleAttending={this.toggleAttending}/>
       </View>
     )
   }
