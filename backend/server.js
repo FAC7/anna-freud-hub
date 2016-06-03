@@ -11,7 +11,6 @@ const Cookie = require('hapi-auth-cookie')
 const ResourceHandler = require('./routes/nhsViews/ResourceHandler.js')
 const BookEvent = require('./routes/YSU-routes/book_event.js')
 const BookedEvents = require('./routes/YSU-routes/booked_events.js')
-const setInterests = require('./routes/YSU-routes/set_interests.js')
 const userEvents = require('./routes/YSU-routes/user_events.js')
 
 // custom plugins
@@ -24,6 +23,7 @@ const AttachRedis = require('./attachRedis.js')
 const EditEvent = require('./routes/nhsViews/EditEvent.js')
 const SetInterests = require('./routes/YSU-routes/set_interests.js')
 const GetEvents = require('./routes/YSU-routes/get_events.js')
+const ToggleAttending = require('./routes/YSU-routes/toggle_attending.js')
 
 const Plugins = [
   AttachRedis,
@@ -38,7 +38,8 @@ const Plugins = [
   Dashboard,
   EditEvent,
   SetInterests,
-  GetEvents
+  GetEvents,
+  ToggleAttending
 ]
 
 const Routes = [
