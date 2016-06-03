@@ -55,3 +55,11 @@ export const updateInput = (key, value) => {
     value: value
   }
 }
+
+export const ACTIVE_EVENT = 'ACTIVE_EVENT'
+export const activeEvent = (event) => {
+  return {
+    type: ACTIVE_EVENT,
+    payload: event
+  }
+}
