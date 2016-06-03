@@ -60,7 +60,7 @@ export const ACTIVE_EVENT = 'ACTIVE_EVENT'
 export const activeEvent = (event) => {
   return {
     type: ACTIVE_EVENT,
-    payload: event
+    payload: event.title
   }
 }
 
