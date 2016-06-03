@@ -10,13 +10,13 @@ import routes from '../Utils/routes.js'
 class Router extends Component {
 
   componentWillMount () {
-    AsyncStorage.getItem('userinfo')
-      .then(d => JSON.parse(d))
-      .then(data => {
-        return data ?
-          this.props.newRoute(routes.HUB) :
-          this.props.newRoute(routes.SIGNUP)
-      })
+    // AsyncStorage.getItem('userinfo')
+    //   .then(d => JSON.parse(d))
+    //   .then(data => {
+    //     return data ?
+    //       this.props.newRoute(routes.HUB) :
+    //       this.props.newRoute(routes.SIGNUP)
+    //   })
     this.props.getEvents()
   }
 
