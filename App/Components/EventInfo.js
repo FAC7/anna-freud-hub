@@ -10,22 +10,7 @@ import {
 
 import { connect } from 'react-redux'
 
-// const this.props.activeEvent = {
-//   address: '17 Hillmarton Road',
-//   attending: [ 1, 2, 3 ],
-//   categories: [ 'Wellness', 'Physical Health' ],
-//   creatorEmail: 'admin@walthamforest.gov.uk',
-//   creatorFirstName: 'Mr',
-//   creatorId: 'admin@walthamforest.gov.uk',
-//   creatorLastName: 'Admin',
-//   date: '14-08-16',
-//   description: 'Come and meditate guys!',
-//   eventId: 'Let\'s Meditate!:58698',
-//   imageUrl: 'http://www.cfshealth.com/wp-content/uploads/2015/10/meditate-girl.jpg',
-//   postCode: 'E2 0SY',
-//   time: '19:00',
-//   title: 'Let\'s Meditate!'
-// }
+import EventAddress from './EventAddress.js'
 
 class EventInfo extends Component {
   render () {
@@ -35,16 +20,8 @@ class EventInfo extends Component {
           style={styles.image}
           source={{ uri: this.props.activeEvent.imageUrl }}
         />
-        <View>
-          <View>
-            <Text>
-              {this.props.activeEvent.address}
-            </Text>
-            <Text>
-              {this.props.activeEvent.attending.length}
-            </Text>
-          </View>
-        </View>
+        <EventAddress event={this.props.activeEvent} />
+
         <View>
           <Text>{this.props.activeEvent.creatorEmail}</Text>
         </View>
