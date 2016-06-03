@@ -1,46 +1,43 @@
 import React, { Component } from 'react'
 import {
-  Text,
   View,
-  TouchableHighlight,
-  LayoutAnimation,
   StyleSheet,
-  Image
+  Image,
+  AsyncStorage
 } from 'react-native'
 
 import { connect } from 'react-redux'
 
 import EventAddress from './EventAddress.js'
+import EventContact from './EventContact.js'
+import SetAttending from './SetAttending.js'
+
+import { toggleAttending } from '../Actions/actions_index.js'
 
 class EventInfo extends Component {
 
-  toggleAttending () {
-    // const userId
-    const url = 'http://annafreudhub.herokuapp.com/toggleattending'
-    const postObj = {
-      method: 'POST',
-      body: {
-        eventId: this.props.activeEvent.eventId
-      }
-    }
-    fetch(url)
+  toggleAttendingState (eventId) {
+    AsyncStorage.getItem('userinfo')
+      .then(data => JSON.parse(data))
+      .then((userObj) => {
+        const userId = userObj.email
+        this.props.toggleAttending(eventId, userId)
+      })
   }
+
   render () {
+    const { activeEvent } = this.props
     return (
       <View style={styles.mainContainer}>
         <Image
           style={styles.image}
-          source={{ uri: this.props.activeEvent.imageUrl }}
+          source={{ uri: activeEvent.imageUrl }}
         />
-        <EventAddress event={this.props.activeEvent} />
-
-        <TouchableHighlight onPress={() => this.toggleAttending()}>
-          <Text>Attending?</Text>
-        </TouchableHighlight>
-
-        <View>
-          <Text>{this.props.activeEvent.creatorEmail}</Text>
-        </View>
+        <EventAddress event={activeEvent} />
+        <EventContact contactAddress={activeEvent.creatorEmail} />
+        <SetAttending
+          toggleAttending={this.toggleAttendingState.bind(this, activeEvent.eventId)}
+        />
       </View>
     )
   }
@@ -48,11 +45,11 @@ class EventInfo extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    activeEvent: state.activeEvent
+    ...state
   }
 }
 
-export default connect(mapStateToProps)(EventInfo)
+export default connect(mapStateToProps, { toggleAttending })(EventInfo)
 
 const styles = StyleSheet.create({
   mainContainer: {
