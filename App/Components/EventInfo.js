@@ -11,6 +11,7 @@ import { connect } from 'react-redux'
 import EventAddress from './EventAddress.js'
 import EventContact from './EventContact.js'
 import SetAttending from './SetAttending.js'
+import EventDetails from './EventDetails.js'
 
 import { toggleAttending } from '../Actions/actions_index.js'
 
@@ -39,6 +40,7 @@ class EventInfo extends Component {
         <SetAttending
           toggleAttending={this.toggleAttendingState.bind(this, eventObj.eventId)}
         />
+        <EventDetails description={eventObj.description} />
       </View>
     )
   }
