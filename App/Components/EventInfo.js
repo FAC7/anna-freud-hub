@@ -10,8 +10,13 @@ import { connect } from 'react-redux'
 
 import EventAddress from './EventAddress.js'
 import EventContact from './EventContact.js'
+import SetAttending from './SetAttending.js'
 
 class EventInfo extends Component {
+  toggleAttending () {
+
+  }
+
   render () {
     return (
       <View style={styles.mainContainer}>
@@ -21,10 +26,7 @@ class EventInfo extends Component {
         />
         <EventAddress event={this.props.activeEvent} />
         <EventContact contactAddress={this.props.activeEvent.creatorEmail} />
-
-        <View>
-          <Text>{this.props.activeEvent.creatorEmail}</Text>
-        </View>
+        <SetAttending toggleAttending={this.toggleAttending}/>
       </View>
     )
   }

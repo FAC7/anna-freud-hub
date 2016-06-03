@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
     margin: 10,
     color: '#fff',
     fontSize: 14,
-    paddingTop: 10,
-    paddingBottom: 10
+    paddingTop: 5,
+    paddingBottom: 5
   },
   contactAddress: {
     color: '#fff',
