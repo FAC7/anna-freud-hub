@@ -20,23 +20,24 @@ class EventInfo extends Component {
     AsyncStorage.getItem('userinfo')
       .then(data => JSON.parse(data))
       .then((userObj) => {
-        const userId = userObj.email
+        const userId = 'ysu:' + userObj.email
         this.props.toggleAttending(eventId, userId)
       })
   }
 
   render () {
-    const { activeEvent } = this.props
+    const { activeEvent } = this.props //event title
+    const eventObj = this.props.allEvents.filter((event) => event.title === activeEvent)[0]
     return (
       <View style={styles.mainContainer}>
         <Image
           style={styles.image}
-          source={{ uri: activeEvent.imageUrl }}
+          source={{ uri: eventObj.imageUrl }}
         />
-        <EventAddress event={activeEvent} />
-        <EventContact contactAddress={activeEvent.creatorEmail} />
+        <EventAddress event={eventObj} />
+        <EventContact contactAddress={eventObj.creatorEmail} />
         <SetAttending
-          toggleAttending={this.toggleAttendingState.bind(this, activeEvent.eventId)}
+          toggleAttending={this.toggleAttendingState.bind(this, eventObj.eventId)}
         />
       </View>
     )
