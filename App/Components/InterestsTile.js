@@ -8,12 +8,17 @@ import {
 } from 'react-native'
 import Dimensions from 'Dimensions'
 const { width } = Dimensions.get('window')
+import tick from '../Assets/Icons/tick.png'
 
 export default ({ setInterest, interest, chosenInterests }) => {
 
   const ActiveClass = chosenInterests.indexOf(interest.title) > -1 ?
-  { opacity: 0.8 } :
-  { opacity: 0.4 }
+  { opacity: 0.4 } :
+  { opacity: 1 }
+
+  const visibleTick = chosenInterests.indexOf(interest.title) > -1 ?
+  { opacity: 1 } :
+  { opacity: 0 }
 
   return (
     <TouchableHighlight
@@ -29,6 +34,10 @@ export default ({ setInterest, interest, chosenInterests }) => {
           source={{ uri: interest.picUrl }}
         />
         <Text style={styles.subTitle}>{interest.title}</Text>
+        <Image
+          style={[ styles.tick, visibleTick ]}
+          source={tick}
+        />
       </View>
 
     </TouchableHighlight>
@@ -39,9 +48,17 @@ const styles = StyleSheet.create({
   tileImage: {
     height: 150
   },
+  tick: {
+    height: 50,
+    width: 50,
+    left: (width / 4) - 30,
+    top: 40,
+    position: 'absolute'
+  },
   subTitle: {
     color: '#fff',
     position: 'absolute',
+    fontWeight: 'bold',
     bottom: 10,
     left: 10,
     backgroundColor: 'transparent'
