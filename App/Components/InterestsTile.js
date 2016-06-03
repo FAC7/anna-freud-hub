@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 import Dimensions from 'Dimensions'
 const { width } = Dimensions.get('window')
-// import tick from '../Assets/Icons/tick.png'
+import tick from '../Assets/Icons/tick.png'
 
 export default ({ setInterest, interest, chosenInterests }) => {
 
@@ -27,7 +27,6 @@ export default ({ setInterest, interest, chosenInterests }) => {
         setInterest(interest.title)
       }}
     >
-{/*
       <View>
         <Image
           style={[ styles.tileImage, ActiveClass ]}
@@ -39,7 +38,6 @@ export default ({ setInterest, interest, chosenInterests }) => {
           source={tick}
         />
       </View>
-*/}
     </TouchableHighlight>
   )
 }
