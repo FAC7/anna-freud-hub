@@ -40,7 +40,7 @@ class EventInfo extends Component {
         <SetAttending
           toggleAttending={this.toggleAttendingState.bind(this, eventObj.eventId)}
         />
-        <EventDetails event={eventObj} />
+        <EventDetails description={eventObj.description} />
       </View>
     )
   }
