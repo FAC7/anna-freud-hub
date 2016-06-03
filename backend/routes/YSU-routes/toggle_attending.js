@@ -7,8 +7,9 @@ exports.register = (server, options, next) => {
     path: '/toggleattending',
     method: 'POST',
     handler: (request, reply) => {
-      const userId = request.payload.userId
-      const eventId = request.payload.eventId
+      const payload = JSON.parse(request.payload)
+      const userId = payload.userId
+      const eventId = payload.eventId
       events.toggleEventAttendingList(client, eventId, userId)
         .then((res) => reply(res))
     }

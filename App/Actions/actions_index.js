@@ -67,21 +67,21 @@ export const activeEvent = (event) => {
 export const TOGGLE_ATTENDING = 'TOGGLE_ATTENDING'
 export const toggleAttending = (eventId, userId) => {
   const url = 'http://annafreudhub.herokuapp.com/toggleattending'
-  const postObj = {
-    method: 'POST',
-    body: {
-      eventId,
-      userId
-    }
+  const body = {
+    eventId,
+    userId
   }
-  return fetch(url, JSON.stringify(postObj))
-    .then(() => {
-      return {
-        type: TOGGLE_ATTENDING,
-        payload: {
-          eventId,
-          userId
-        }
+  return fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(body)
+  })
+  .then(() => {
+    return {
+      type: TOGGLE_ATTENDING,
+      payload: {
+        eventId,
+        userId
       }
-    })
+    }
+  })
 }
