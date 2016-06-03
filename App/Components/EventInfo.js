@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import {
   Text,
   View,
-  TouchableHighlight,
-  LayoutAnimation,
   StyleSheet,
   Image
 } from 'react-native'
@@ -11,6 +9,7 @@ import {
 import { connect } from 'react-redux'
 
 import EventAddress from './EventAddress.js'
+import EventContact from './EventContact.js'
 
 class EventInfo extends Component {
   render () {
@@ -21,6 +20,7 @@ class EventInfo extends Component {
           source={{ uri: this.props.activeEvent.imageUrl }}
         />
         <EventAddress event={this.props.activeEvent} />
+        <EventContact event={this.props.activeEvent} />
 
         <View>
           <Text>{this.props.activeEvent.creatorEmail}</Text>
