@@ -74,7 +74,7 @@ export const toggleAttending = (eventId, userId) => {
       userId
     }
   }
-  fetch(url, postObj)
+  return fetch(url, JSON.stringify(postObj))
     .then(() => {
       return {
         type: TOGGLE_ATTENDING,
