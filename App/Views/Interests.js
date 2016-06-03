@@ -28,7 +28,7 @@ class Interests extends Component {
           userId: 'ysu:' + JSON.parse(data).email,
           interests: chosenInterests
         }
-        fetch('http://localhost:4000/setinterests', {
+        fetch('http://annafreudhub.herokuapp.com/setinterests', {
           method: 'POST',
           body: JSON.stringify(interestObj)
         })
