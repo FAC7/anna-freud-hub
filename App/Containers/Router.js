@@ -11,7 +11,6 @@ class Router extends Component {
 
   componentWillMount () {
     AsyncStorage.getItem('userinfo')
-      .then(d => JSON.parse(d))
       .then(data => {
         return data ?
           this.props.newRoute(routes.HUB) :

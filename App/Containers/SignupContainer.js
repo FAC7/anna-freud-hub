@@ -10,7 +10,7 @@ class SignUpContainer extends Component {
 
   submitDetails (userObj) {
     AsyncStorage.setItem('userinfo', JSON.stringify(userObj))
-    fetch('http://localhost:4000/adduser', {
+    fetch('http://annafreudhub.herokuapp.com/adduser', {
       method: 'POST',
       body: JSON.stringify(userObj)
     })
