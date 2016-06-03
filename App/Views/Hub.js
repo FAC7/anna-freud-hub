@@ -10,6 +10,7 @@ import {
 
 import { connect } from 'react-redux'
 import { newRoute } from '../Actions/actions_routing.js'
+import { activeEvent } from '../Actions/actions_index.js'
 
 import Tile from '../Components/Tile.js'
 
@@ -21,8 +22,9 @@ class Hub extends Component {
     return ds.cloneWithRows(this.props.allEvents)
   }
 
-  setRoute (route) {
+  setRoute (route, event) {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+    this.props.activeEvent(event)
     this.props.newRoute(route)
   }
 
@@ -42,7 +44,7 @@ class Hub extends Component {
                 return (
                   <Tile
                     event={rowData}
-                    linkRoute={() => this.setRoute('Event Info')}
+                    linkRoute={() => this.setRoute('Event Info', rowData)}
                   />
                 )
               }}
@@ -59,7 +61,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { newRoute })(Hub)
+export default connect(mapStateToProps, { newRoute, activeEvent })(Hub)
 
 const styles = StyleSheet.create({
   mainContainer: {
