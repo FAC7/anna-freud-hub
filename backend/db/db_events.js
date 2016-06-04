@@ -28,7 +28,7 @@ db.addEvent = (client, eventObj) => {
 // get a single event object from an eventId
 db.getEvent = (client, eventId) => {
   return client.HGETALLAsync(eventId) // eslint-disable-line
-    .then((data) => helpers.parseArrayKeys([ 'attending', 'categories' ], data))
+    .then((data) => helpers.parseArrayKeys([ 'attending', 'categories', 'geoLocation' ], data))
 }
 
 db.editEvent = (client, eventId, updatedDetails) => {
