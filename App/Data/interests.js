@@ -6,7 +6,7 @@ export default [
     picUrl: 'http://www.islingtontribune.com/sites/all/files/nj_islington/imagecache/main_img/images/news/07_islington_youth_council.jpg'
   },
   { title: 'Cooking',
-    picUrl: 'http://www.surechef.com/wp-content/uploads/2013/09/cooking-college.jpg'
+    picUrl: 'http://www.carlagoldenwellness.com/wp-content/uploads/2012/10/fruits_veg.jpg'
   },
   { title: 'Wellness',
     picUrl: 'http://www.cfshealth.com/wp-content/uploads/2015/10/meditate-girl.jpg'

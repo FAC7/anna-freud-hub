@@ -1,10 +1,15 @@
-import { connect } from 'react-redux'
 import React, { Component } from 'react'
+import {
+  AsyncStorage,
+  LayoutAnimation
+} from 'react-native'
+
 import SignUp from '../Components/Signup.js'
-import { updateInput, addUserToStore } from '../Actions/actions_index.js'
-import { AsyncStorage } from 'react-native'
-import { newRoute } from '../Actions/actions_routing.js'
+
 import routes from '../Utils/routes.js'
+import { updateInput, addUserToStore } from '../Actions/actions_index.js'
+import { connect } from 'react-redux'
+import { newRoute } from '../Actions/actions_routing.js'
 
 class SignUpContainer extends Component {
 
@@ -17,7 +22,10 @@ class SignUpContainer extends Component {
       method: 'POST',
       body: JSON.stringify(userObj)
     })
-    .then(() => this.props.newRoute(routes.INTERESTS))
+    .then(() => {
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+      return this.props.newRoute(routes.INTERESTS)
+    })
   }
 
   render () {
