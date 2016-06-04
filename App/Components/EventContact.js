@@ -19,14 +19,15 @@ const styles = StyleSheet.create({
   title: {
     margin: 10,
     color: '#fff',
-    fontSize: 14,
+    fontSize: 16,
     paddingTop: 5,
     paddingBottom: 5
   },
   contactAddress: {
     color: '#fff',
-    fontSize: 10,
+    fontSize: 14,
     marginRight: 10,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    fontWeight: 'bold'
   }
 })

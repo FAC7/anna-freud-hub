@@ -23,7 +23,7 @@ export default (props) => {
       </View>
 
       <View style={styles.bottomInfoContainer}>
-        <Text style={styles.distance}>{props.event.postCode}</Text>
+        <Text style={styles.address}>{props.event.address}</Text>
         <TouchableHighlight
           onPress={props.linkRoute}
           style={styles.detailsButton}
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     flexWrap: 'wrap',
     marginBottom: 30,
-    height: 280
+    height: 260
   },
   topInfoContainer: {
     flex: 1,
@@ -84,25 +84,25 @@ const styles = StyleSheet.create({
   bottomInfoContainer: {
     marginLeft: 18,
     marginTop: 12,
-    height: 80,
+    height: 60,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
   },
-  distance: {
-    fontSize: 24,
+  address: {
+    fontSize: 16,
     color: '#fff'
   },
   detailsButton: {
     width: 100,
-    height: 80,
+    height: 60,
     backgroundColor: '#cee8fe',
     justifyContent: 'center',
     alignItems: 'center'
   },
   detailsButtonText: {
     color: '#04396c',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500'
   }
 })

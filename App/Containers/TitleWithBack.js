@@ -25,26 +25,36 @@ class TitleWithBack extends Component {
         <TouchableHighlight onPress={this.setRoute.bind(this)}>
           <Text style={styles.back}> {'<'} </Text>
         </TouchableHighlight>
-        <Text style={styles.title}>{this.props.title}</Text>
+        <Text style={styles.title}>{this.props.activeEvent}</Text>
+        <Text style={styles.divider}>...</Text>
       </View>
     )
   }
 }
 
-export default connect(null, { goBack, getEvents })(TitleWithBack)
+const mapStateToProps = (state) => ({ ...state })
+
+export default connect(mapStateToProps, { goBack, getEvents })(TitleWithBack)
 
 const styles = StyleSheet.create({
   title: {
     // alignItems: 'center', TODO fix alignment of title in this component
     fontSize: 24,
-    color: '#6076C0'
+    color: '#6076C0',
+    marginLeft: -10
   },
   back: {
-    fontSize: 24,
+    fontSize: 30,
+    marginLeft: 10,
     color: '#6076C0',
+  },
+  divider: {
+    color: 'transparent'
   },
   titleContainer: {
     // flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
     flexDirection: 'row',
     marginBottom: 20,
     marginTop: 40
