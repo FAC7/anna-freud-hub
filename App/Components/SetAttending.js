@@ -8,24 +8,24 @@ import {
 } from 'react-native'
 
 
-export default ({ toggleAttending }) => {
+export default (props) => {
+  console.log(props)
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Are you going?</Text>
       <View style={styles.attendingChoice}>
         <TouchableHighlight
-          onPress={toggleAttending}
+          onPress={props.toggleAttending}
           underlayColor={'#fff'}
-          style={styles.yesContainer}
         >
-          <Text style={styles.text}>YES</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={toggleAttending}
-          underlayColor={'#fab5b5'}
-          style={styles.noContainer}
-        >
-          <Text style={styles.text}>NO </Text>
+          <View style={styles.attendingChoice}>
+            <View style={styles.yesContainer}>
+              <Text style={styles.text}>YES</Text>
+            </View>
+            <View style={styles.noContainer}>
+              <Text style={styles.text}>NO </Text>
+            </View>
+          </View>
         </TouchableHighlight>
       </View>
     </View>
