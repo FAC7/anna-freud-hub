@@ -60,4 +60,12 @@ componentLoader[routes.SIGNUP] = {
   authRequired: false
 }
 
+componentLoader[routes.INTRO] = {
+  component: componentList.Intro,
+  Navbar: componentList.NoNavbar,
+  Title: componentList.NoNavbar,
+  titleContent: null,
+  authRequired: false
+}
+
 export default componentLoader

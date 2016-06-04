@@ -11,6 +11,7 @@ import EventInfo from '../Components/EventInfo.js'
 import Navbar from '../Containers/Navbar.js'
 import Signup from '../Containers/SignupContainer.js'
 import TitleWithBack from '../Containers/TitleWithBack.js'
+import Intro from '../Components/Intro.js'
 
 const componentList = {
   Splash,
@@ -23,7 +24,8 @@ const componentList = {
   NoNavbar,
   Signup,
   Title,
-  TitleWithBack
+  TitleWithBack,
+  Intro
 }
 
 export default componentList
