@@ -46,7 +46,7 @@ componentLoader[routes.EVENT_INFO] = {
 
 componentLoader[routes.INTERESTS] = {
   component: componentList.Interests,
-  Navbar: componentList.NoNavbar,
+  Navbar: componentList.Navbar,
   Title: componentList.Title,
   titleContent: 'Select Your Interests',
   authRequired: false
