@@ -38,7 +38,6 @@ class Interests extends Component {
     })
     //change route
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
-    this.props.newRoute(routes.HUB)
   }
 
   render () {
