@@ -43,25 +43,26 @@ const styles = StyleSheet.create({
   title: {
     marginLeft: 10,
     color: '#fff',
-    fontSize: 14,
+    fontSize: 16,
   },
   attendingChoice: {
     flexDirection: 'row',
-    width: 100,
+    width: 120,
   },
   yesContainer: {
     backgroundColor: '#d1cece',
     flex: 1,
-    padding: 10
+    padding: 15
   },
   noContainer: {
     backgroundColor: '#d1cece',
     flex: 1,
-    padding: 10
+    padding: 15
   },
   text: {
     textAlign: 'center',
-    color: 'white'
+    color: 'white',
+    fontWeight: 'bold'
   },
   red: {
     backgroundColor: 'red'

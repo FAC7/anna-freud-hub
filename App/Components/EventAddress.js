@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#257AC4',
   },
   address: {
-    color: 'white',
-    fontSize: 12
+    color: '#fff',
+    fontSize: 16
   },
   infoHeadersContainer: {
     justifyContent: 'space-between',
@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
     paddingLeft: 10
   },
   infoHeaders: {
-    color: 'white',
-    fontSize: 17
+    color: '#fff',
+    fontSize: 23
   },
   infoContentContainer: {
     justifyContent: 'space-between',
@@ -63,6 +63,6 @@ const styles = StyleSheet.create({
   },
   postCode: {
     color: '#fff',
-    fontSize: 12
+    fontSize: 16
   }
 })

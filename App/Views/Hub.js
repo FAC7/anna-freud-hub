@@ -65,8 +65,7 @@ export default connect(mapStateToProps, { newRoute, activeEvent })(Hub)
 const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: '#fff',
-    flex: 1,
-    marginTop: 40
+    flex: 1
   },
   container: {
     flex: 1
