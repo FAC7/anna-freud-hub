@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   StatusBar,
   Animated,
-  Easing
+  Easing,
+  LayoutAnimation
 } from 'react-native'
 
 import { connect } from 'react-redux'
@@ -52,7 +53,10 @@ class Intro extends Component {
           <Text style={styles.subTitle}>{introText.p1}</Text>
         </Animated.View>
         <TouchableOpacity
-          onPress={() => this.props.newRoute(routes.SIGNUP)}
+          onPress={() => {
+            LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+            this.props.newRoute(routes.SIGNUP)
+          }}
         >
           <Animated.View style={bounce3}>
             <Image
