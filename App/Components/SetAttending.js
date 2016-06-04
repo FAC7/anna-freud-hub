@@ -9,7 +9,8 @@ import {
 
 
 export default (props) => {
-  console.log(props)
+  const yes = props.isAttending ? styles.green : {}
+  const no = props.isAttending ? {} : styles.red
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Are you going?</Text>
@@ -19,10 +20,10 @@ export default (props) => {
           underlayColor={'#fff'}
         >
           <View style={styles.attendingChoice}>
-            <View style={styles.yesContainer}>
+            <View style={[ styles.yesContainer, yes ]}>
               <Text style={styles.text}>YES</Text>
             </View>
-            <View style={styles.noContainer}>
+            <View style={[ styles.noContainer, no ]}>
               <Text style={styles.text}>NO </Text>
             </View>
           </View>
@@ -54,12 +55,18 @@ const styles = StyleSheet.create({
     padding: 10
   },
   noContainer: {
-    backgroundColor: '#F98585',
+    backgroundColor: '#d1cece',
     flex: 1,
     padding: 10
   },
   text: {
     textAlign: 'center',
     color: 'white'
+  },
+  red: {
+    backgroundColor: 'red'
+  },
+  green: {
+    backgroundColor: 'green'
   }
 })

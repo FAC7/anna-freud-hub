@@ -20,6 +20,7 @@ class EventInfo extends Component {
   render () {
     const { activeEvent, userDetails } = this.props //event title
     const eventObj = this.props.allEvents.filter((event) => event.title === activeEvent)[0]
+    const isAttending = eventObj.attending.indexOf('ysu:' + this.props.userDetails.email) > -1
     return (
       <View style={styles.mainContainer}>
         <Image
@@ -30,9 +31,9 @@ class EventInfo extends Component {
         <EventContact contactAddress={eventObj.creatorEmail} />
         <SetAttending
           toggleAttending={() => {
-            console.log('toggle attending called')
             this.props.toggleAttending(eventObj.eventId, 'ysu:' + userDetails.email)
           }}
+          isAttending={isAttending}
         />
         <EventDetails description={eventObj.description} />
       </View>
@@ -40,11 +41,8 @@ class EventInfo extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    ...state
-  }
-}
+const mapStateToProps = (state) => ({ ...state })
+
 
 export default connect(mapStateToProps, { toggleAttending })(EventInfo)
 
