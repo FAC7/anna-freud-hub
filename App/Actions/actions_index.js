@@ -18,7 +18,9 @@ const errorObj = {
 export const GET_EVENTS = 'GET_EVENTS'
 export const getEvents = () => {
 
-  const url = 'http://annafreudhub.herokuapp.com/events'
+  // const url = 'http://annafreudhub.herokuapp.com/events'
+  const url = 'http://localhost:4000/events'
+
 
   return fetch(url)
     .then(response => response.json())
@@ -65,7 +67,8 @@ export const activeEvent = (event) => {
 
 export const TOGGLE_ATTENDING = 'TOGGLE_ATTENDING'
 export const toggleAttending = (eventId, userId) => {
-  const url = 'http://annafreudhub.herokuapp.com/toggleattending'
+  // const url = 'http://annafreudhub.herokuapp.com/toggleattending'
+  const url = 'http://localhost:4000/toggleattending'
   const body = {
     eventId,
     userId
