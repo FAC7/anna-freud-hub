@@ -16,7 +16,7 @@ class Router extends Component {
           this.props.newRoute(routes.HUB)
           this.props.addUserToStore(data)
         } else {
-          this.props.newRoute(routes.SIGNUP)
+          this.props.newRoute(routes.INTRO)
         }
       })
     this.props.getEvents()
