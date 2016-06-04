@@ -4,7 +4,8 @@ import {
   View,
   Image,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  StatusBar
 } from 'react-native'
 
 import { connect } from 'react-redux'
@@ -17,6 +18,9 @@ class Intro extends Component {
   render () {
     return (
       <View style={styles.container}>
+        <StatusBar
+          barStyle='light-content'
+        />
         <Text style={styles.title}>HUB</Text>
         <Text style={styles.subTitle}>{introText.p1}</Text>
         <Image
