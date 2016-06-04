@@ -9,11 +9,13 @@ import {
 
 import { connect } from 'react-redux'
 import { goBack } from '../Actions/actions_routing.js'
+import { getEvents } from '../Actions/actions_index.js'
 
 
 class TitleWithBack extends Component {
   setRoute () {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+    this.props.getEvents()
     this.props.goBack()
   }
 
@@ -29,7 +31,7 @@ class TitleWithBack extends Component {
   }
 }
 
-export default connect(null, { goBack })(TitleWithBack)
+export default connect(null, { goBack, getEvents })(TitleWithBack)
 
 const styles = StyleSheet.create({
   title: {

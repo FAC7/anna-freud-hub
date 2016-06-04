@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { View, StyleSheet, AsyncStorage } from 'react-native'
 
 import componentLoader from '../Utils/componentLoader.js'
-import { getEvents } from '../Actions/actions_index.js'
+import { getEvents, addUserToStore } from '../Actions/actions_index.js'
 import { newRoute } from '../Actions/actions_routing.js'
 import routes from '../Utils/routes.js'
 
@@ -12,9 +12,12 @@ class Router extends Component {
   componentWillMount () {
     AsyncStorage.getItem('userinfo')
       .then(data => {
-        return data ?
-          this.props.newRoute(routes.HUB) :
+        if (data) {
+          this.props.newRoute(routes.HUB)
+          this.props.addUserToStore(data)
+        } else {
           this.props.newRoute(routes.SIGNUP)
+        }
       })
     this.props.getEvents()
   }
@@ -44,7 +47,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { getEvents, newRoute })(Router)
+export default connect(mapStateToProps, { getEvents, newRoute, addUserToStore })(Router)
 
 const styles = StyleSheet.create({
   mainContainer: {
