@@ -5,7 +5,9 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  StatusBar
+  StatusBar,
+  Animated,
+  Easing
 } from 'react-native'
 
 import { connect } from 'react-redux'
@@ -15,22 +17,49 @@ import introText from '../Data/IntroText.js'
 import arrow from '../Assets/Icons/arrow.png'
 
 class Intro extends Component {
+
+  constructor () {
+    super()
+    this.state = {
+      bounce: [
+        new Animated.Value(0),
+        new Animated.Value(0),
+        new Animated.Value(0)
+      ]
+    }
+  }
+
+  componentDidMount () {
+    Animated.stagger(500,
+      this.state.bounce.map((val) => Animated.timing(val, {
+        toValue: 1,
+        easing: Easing.elastic(2),
+        duration: 3000
+      }))).start()
+  }
+
   render () {
+    const bounce1 = { opacity: this.state.bounce[0] }
+    const bounce2 = { opacity: this.state.bounce[1] }
+    const bounce3 = { opacity: this.state.bounce[2] }
     return (
       <View style={styles.container}>
         <StatusBar
           barStyle='light-content'
         />
-        <Text style={styles.title}>HUB</Text>
-        <Text style={styles.subTitle}>{introText.p1}</Text>
-        <Image
-          source={arrow}
-          style={styles.arrow}
-        />
+        <Animated.Text style={[ styles.title, bounce1 ]}>HUB</Animated.Text>
+        <Animated.View style={bounce2}>
+          <Text style={styles.subTitle}>{introText.p1}</Text>
+        </Animated.View>
         <TouchableOpacity
           onPress={() => this.props.newRoute(routes.SIGNUP)}
         >
-          <Text style={styles.text}>Signup</Text>
+          <Animated.View style={bounce3}>
+            <Image
+              source={arrow}
+              style={styles.arrow}
+            />
+          </Animated.View>
         </TouchableOpacity>
       </View>
     )
@@ -65,9 +94,5 @@ const styles = StyleSheet.create({
   arrow: {
     width: 50,
     height: 50
-  },
-  text: {
-    marginTop: 10,
-    color: '#fff'
   }
 })

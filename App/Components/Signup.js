@@ -6,7 +6,8 @@ import {
   TextInput,
   TouchableOpacity,
   Dimensions,
-  ScrollView
+  ScrollView,
+  StatusBar
 } from 'react-native'
 
 const { width } = Dimensions.get('window')
@@ -16,6 +17,9 @@ export default class SignUp extends React.Component {
     const { signup } = this.props
     return (
       <View style={styles.outerContainer}>
+        <StatusBar
+          barStyle='light-content'
+        />
         <ScrollView
           contentContainerStyle={styles.container}
           keyboardDismissMode={'on-drag'}
