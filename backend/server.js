@@ -24,6 +24,7 @@ const EditEvent = require('./routes/nhsViews/EditEvent.js')
 const SetInterests = require('./routes/YSU-routes/set_interests.js')
 const GetEvents = require('./routes/YSU-routes/get_events.js')
 const ToggleAttending = require('./routes/YSU-routes/toggle_attending.js')
+const DeleteEvent = require('./routes/nhsViews/deleteEvent.js')
 
 const Plugins = [
   AttachRedis,
@@ -39,7 +40,8 @@ const Plugins = [
   EditEvent,
   SetInterests,
   GetEvents,
-  ToggleAttending
+  ToggleAttending,
+  DeleteEvent
 ]
 
 const Routes = [
