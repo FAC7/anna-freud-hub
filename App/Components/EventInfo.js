@@ -17,17 +17,8 @@ import { toggleAttending } from '../Actions/actions_index.js'
 
 class EventInfo extends Component {
 
-  toggleAttendingState (eventId) {
-    AsyncStorage.getItem('userinfo')
-      .then(data => JSON.parse(data))
-      .then((userObj) => {
-        const userId = 'ysu:' + userObj.email
-        this.props.toggleAttending(eventId, userId)
-      })
-  }
-
   render () {
-    const { activeEvent } = this.props //event title
+    const { activeEvent, userDetails } = this.props //event title
     const eventObj = this.props.allEvents.filter((event) => event.title === activeEvent)[0]
     return (
       <View style={styles.mainContainer}>
@@ -38,7 +29,10 @@ class EventInfo extends Component {
         <EventAddress event={eventObj} />
         <EventContact contactAddress={eventObj.creatorEmail} />
         <SetAttending
-          toggleAttending={this.toggleAttendingState.bind(this, eventObj.eventId)}
+          toggleAttending={() => {
+            console.log('toggle attending called')
+            this.props.toggleAttending(eventObj.eventId, 'ysu:' + userDetails.email)
+          }}
         />
         <EventDetails description={eventObj.description} />
       </View>

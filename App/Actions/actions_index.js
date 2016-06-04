@@ -39,9 +39,10 @@ export const getEvents = () => {
 
 export const ADD_USER_TO_STORE = 'ADD_USER_TO_STORE'
 export const addUserToStore = (userObj) => {
+  const parsedUserObj = typeof userObj === 'string' ? JSON.parse(userObj) : userObj
   return {
     type: ADD_USER_TO_STORE,
-    payload: userObj
+    payload: parsedUserObj
   }
 }
 
@@ -69,11 +70,21 @@ export const toggleAttending = (eventId, userId) => {
     eventId,
     userId
   }
+  console.log(body, 'request body')
   return fetch(url, {
     method: 'POST',
     body: JSON.stringify(body)
   })
   .then(() => {
+    return {
+      type: TOGGLE_ATTENDING,
+      payload: {
+        eventId,
+        userId
+      }
+    }
+  })
+  .catch(() => {
     return {
       type: TOGGLE_ATTENDING,
       payload: {
