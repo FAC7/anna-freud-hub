@@ -1,7 +1,16 @@
-<a class="btn red" href="/login">Login</a>
-<a class="btn purple" href="/register">Register</a>
-<form action="/login" method="POST">
-  {{> usernamePassword}}
-  <button type="submit">Login</button>
-  <p>{{error}}</p>
-</form>
+<div class='signup col-xs-10 col-xs-offset-1'>
+  <p class="subtitle">Login to add or edit your events</p>
+  <!-- <a class="btn bar" href="/login">Login</a>
+  <a class="btn blue" href="/register">Register</a> -->
+  <form action="/login" method="POST">
+    {{> usernamePassword}}
+    <div class="btn-container">
+      <button class="block-btn" type="submit">Login</button>
+      <div class="arrow">
+        <img src="/images/arrow.png" alt="arrow" />
+      </div>
+    </div>
+    <p>{{error}}</p>
+  </form>
+  <p class="subtitle">Don't have an account? Register below to make one</p>
+</div>

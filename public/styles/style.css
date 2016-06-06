@@ -1,7 +1,7 @@
 /*-----general styles--------*/
 
 body {
-  font-family: Lucida Grande, Helvetica, Helvetica Neue, Arial;
+  font-family: Lato, Helvetica, Helvetica Neue, Arial;
   background-color: #257AC4;
 
 }
@@ -27,7 +27,7 @@ p {
   margin-bottom: 40px;
   font-size: 14px;
   font-weight: lighter;
-  /*font-family: Helvetica, Helvetica Neue, Arial;*/
+  font-weight: 500  ;
 }
 
 .logout {
@@ -36,20 +36,40 @@ p {
   text-decoration: none;
 }
 
+/*------signup-------*/
+
+.signup {
+  text-align: center;
+}
+
 /*-----inputs--------*/
 
-input,
 textarea {
   margin: 0 0 30px;
   border: none;
   padding: 10px 15px;
-  border-radius: 2px;
   outline: none;
+}
+
+input {
+  border: none;
+  padding: 15px;
+  outline: none;
+  min-width: 250px;
 }
 
 textarea {
   width: 100%;
   min-height: 120px;
+}
+
+.input-center {
+  border: none;
+  padding: 15px;
+  outline: none;
+  min-width: 250px;
+  display: block;
+  margin: 0 auto;
 }
 
 /*-------checkboxes---------*/
@@ -139,6 +159,30 @@ button {
 
 /*--------buttons---------*/
 
+.btn-container {
+  max-width: 250px;
+  padding: 25px;
+  background-color: #002C60;
+  margin: 0 auto;
+  position: relative;
+}
+
+.btn-container button  {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: transparent;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 14px;
+  font-weight: 100;
+  outline: none;
+  padding: 16px 170px 16px 16px;
+  box-sizing: border-box;
+}
+
 .btn {
   padding: 15px 30px;
   font-size: 15px;
@@ -189,6 +233,20 @@ button {
 
 .blue:hover {
   background-color: #0959b8;
+}
+
+
+/*---------icons---------*/
+
+.arrow {
+  width: 18px;
+  position: absolute;
+  right: 20px;
+  top: 17px;
+}
+
+.arrow img {
+  width: 100%;
 }
 
 
