@@ -230,6 +230,10 @@ button {
   padding: 10px 20px;
   background-color: #002C60;
   color: #fff;
+  display: block;
+  width: 125px;
+  text-align: center;
+  margin: 0 auto;
   letter-spacing: 4px;
   font-size: 12px;
   font-weight: 200;
@@ -246,12 +250,20 @@ button {
   bottom: 0;
 }
 
+.add {
+  position: absolute;
+  top: 30px;
+  right: 15px;
+  width: 60px;
+  background-color: #002C60;
+}
+
 .edit {
-  right: 75px;
+  right: 60px;
 }
 
 .delete {
-  right: 15px;
+  right: 0px;
 }
 
 .click-box {
@@ -282,10 +294,19 @@ button {
   width: 100%;
 }
 
+.plus {
+  width: 24px;
+  margin: 14px auto;
+}
+
+.plus img {
+  width: 100%;
+}
+
 .attending {
   width: 35px;
   float: right;
-  margin: 13px 24px 0 0;
+  margin: 18px 32px 0 0;
 }
 
 .attending img {
@@ -307,14 +328,14 @@ button {
 /*--------event dashboard styles---------*/
 
 .attending-container {
-  width: 100px;
+  width: 111px;
   float: right;
 }
 
 .number-attending {
   color: #002C60;
-  margin: 17px 0 0 17px;
-  font-size: 21px;
+  margin: 17px 0 0 0;
+  font-size: 26px;
   position: absolute;
 }
 
@@ -323,8 +344,9 @@ button {
 }
 
 .event-tile {
+  position: relative;
   background-color: #fff;
-  margin-top: 20px;
+  margin-top: 50px;
   color: #fff;
 }
 
@@ -341,8 +363,8 @@ button {
 
 .event-data {
   position: absolute;
-  font-size: 18px;
-  margin: 16px 0;
+  font-size: 25px;
+  margin: 14px 0;
   color: #333;
 }
 
