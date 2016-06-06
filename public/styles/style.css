@@ -34,6 +34,11 @@ p {
   color: #fff;
   font-size: 15px;
   text-decoration: none;
+  position: fixed;
+  top: 35px;
+  right: 40px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
 /*------signup-------*/
@@ -88,6 +93,10 @@ textarea {
 }
 
 /*-------checkboxes---------*/
+
+input:-webkit-autofill {
+  background-color: #fff;
+}
 
 input[type="checkbox"] {
   -webkit-appearance: none;
@@ -231,6 +240,34 @@ button {
   background-color: #508DFF;
 }
 
+.click-box-link {
+  display: block;
+  position: absolute;
+  bottom: 0;
+}
+
+.edit {
+  right: 75px;
+}
+
+.delete {
+  right: 15px;
+}
+
+.click-box {
+  background-color: #002C60;
+  width: 60px;
+  height: 50px;
+  float: right;
+}
+
+.click-box p {
+  font-size: 8px;
+  text-align: center;
+  margin: 30px 0 0;
+  letter-spacing: 2px;
+}
+
 
 /*---------icons---------*/
 
@@ -245,16 +282,79 @@ button {
   width: 100%;
 }
 
+.attending {
+  width: 35px;
+  float: right;
+  margin: 13px 24px 0 0;
+}
+
+.attending img {
+  width: 100%;
+}
+
+.icon-small {
+  width: 13px;
+  position: absolute;
+  left: 22px;
+  top: 10px;
+}
+
+.icon-small img {
+  width: 100%;
+}
+
 
 /*--------event dashboard styles---------*/
+
+.attending-container {
+  width: 100px;
+  float: right;
+}
+
+.number-attending {
+  color: #002C60;
+  margin: 17px 0 0 17px;
+  font-size: 21px;
+  position: absolute;
+}
+
+.event-link {
+  display: block;
+}
+
 .event-tile {
-  border: 2px solid white;
+  background-color: #fff;
   margin-top: 20px;
   color: #fff;
-  padding: 20px;
 }
-.event-title {
+
+.event-heading {
+  background-color: #002C60;
+  height: 65px;
+}
+
+.event-heading p {
+  margin: 0;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.event-data {
+  position: absolute;
+  font-size: 18px;
+  margin: 16px 0;
+  color: #333;
+}
+
+.event-data-small {
+  position: absolute;
   font-size: 15px;
+  margin: 16px 0;
+  color: #9D9D9D;
+}
+
+.two-line {
+  margin-top: 8px;
 }
 .event-date-time {
   font-size: 13px;

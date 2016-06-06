@@ -1,12 +1,8 @@
-<section class='container'>
-  <div class='col-xs-10 col-xs-push-1'>
-    {{> logout}}
-      <a href="/addevent" class="add-event">
-        <span class="plus-sign"> + </span>
-        <p>Add a new event...</p>
-      </a>
-    {{#each events}}
-      {{> eventTile this}}
-    {{/each}}
-  </div>
-<section>
+{{> logout}}
+<p class="subtitle">Add, edit or review your events</p>
+  <!-- <a href="/addevent" class="add-event">
+    <span class="plus-sign"> + </span>
+  </a> -->
+{{#each events}}
+  {{> eventTile this}}
+{{/each}}
