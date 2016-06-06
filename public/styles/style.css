@@ -154,6 +154,7 @@ button {
 /*--------buttons---------*/
 
 .btn-container-large {
+  cursor: pointer;
   min-width: 250px;
   max-width: 425px;
   width: 50%;
@@ -165,6 +166,7 @@ button {
 }
 
 .btn-container-large button  {
+  cursor: pointer;
   position: absolute;
   left: 0;
   top: 0;
@@ -181,6 +183,7 @@ button {
 }
 
 .btn-container-small {
+  cursor: pointer;
   max-width: 250px;
   padding: 25px;
   background-color: #002C60;
@@ -190,6 +193,7 @@ button {
 }
 
 .btn-container-small button  {
+  cursor: pointer;
   position: absolute;
   left: 0;
   top: 0;
@@ -201,7 +205,7 @@ button {
   font-size: 14px;
   font-weight: 100;
   outline: none;
-  padding: 16px 170px 16px 16px;
+  padding: 16px 83% 16px 16px;
   box-sizing: border-box;
 }
 
@@ -213,7 +217,7 @@ button {
 
 .btn-small {
   text-decoration: none;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   padding: 10px 20px;
   background-color: #002C60;
   color: #fff;
