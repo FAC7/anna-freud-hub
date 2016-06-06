@@ -256,6 +256,11 @@ button {
   right: 15px;
   width: 60px;
   background-color: #002C60;
+  transition: 0.3s ease;
+}
+
+.add:hover {
+  background-color: #A8C6FF;
 }
 
 .edit {
@@ -271,6 +276,11 @@ button {
   width: 60px;
   height: 50px;
   float: right;
+  transition: 0.3s ease;
+}
+
+.click-box:hover {
+  background-color: #A8C6FF;
 }
 
 .click-box p {
