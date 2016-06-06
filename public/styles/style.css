@@ -325,6 +325,12 @@ button {
 }
 
 
+@media (max-width: 856px) {
+  .collapse {
+    width: 0!important;
+  }
+}
+
 /*--------event dashboard styles---------*/
 
 .attending-container {
