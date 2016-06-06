@@ -95,7 +95,7 @@ textarea {
 /*-------checkboxes---------*/
 
 input:-webkit-autofill {
-  background-color: #fff;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
 input[type="checkbox"] {
