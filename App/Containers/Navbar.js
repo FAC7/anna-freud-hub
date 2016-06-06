@@ -17,6 +17,10 @@ import routes from '../Utils/routes.js'
 
 class Navbar extends Component {
 
+  highlightIcon (route, currentRoute) {
+    return route === currentRoute ? { tintColor: '#fff' } : {}
+  }
+
   setRoute (route) {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
     this.props.newRoute(route)
@@ -29,7 +33,7 @@ class Navbar extends Component {
           onPress={() => this.setRoute(routes.INTERESTS)}
         >
           <Image
-            style={styles.icon}
+            style={[ styles.icon, this.highlightIcon(routes.INTERESTS, this.props.router.name) ]}
             source={settingsIcon}
           />
         </TouchableOpacity>
@@ -37,7 +41,7 @@ class Navbar extends Component {
           onPress={() => this.setRoute(routes.HUB)}
         >
           <Image
-            style={styles.icon}
+            style={[ styles.icon, this.highlightIcon(routes.HUB, this.props.router.name) ]}
             source={hubIcon}
           />
         </TouchableOpacity>
@@ -45,7 +49,7 @@ class Navbar extends Component {
           onPress={() => this.setRoute(routes.MY_EVENTS)}
         >
           <Image
-            style={styles.icon}
+            style={[ styles.icon, this.highlightIcon(routes.MY_EVENTS, this.props.router.name) ]}
             source={myEventsIcon}
           />
         </TouchableOpacity>
