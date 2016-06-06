@@ -1,5 +1,5 @@
 <div class='col-xs-6 col-sm-4 col-md-2 checkbox-container'>
-  <input name={{formatAttribute this}} type="checkbox" />
+  <input name={{formatAttribute this.category}} type="checkbox" {{#if this.selected}}checked{{/if}}/>
   <br/>
-  <span class="checkbox-title">{{this}}</span>
+  <span class="checkbox-title">{{this.category}}</span>
 </div>

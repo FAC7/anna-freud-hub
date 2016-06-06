@@ -13,7 +13,14 @@ exports.register = (server, options, next) => {
       auth: 'nhs',
       handler: (request, reply) => {
         events.getEvent(client, request.params.eventId)
-          .then(data => reply.view('editEvent', { event: data, categories: categories }))
+          .then(data => {
+            const isSelected = categories.map(cat =>
+              data.categories.indexOf(cat) > -1 ?
+              { category: cat, selected: true } :
+              { category: cat, selected: false }
+            )
+            reply.view('editEvent', { event: data, categories: isSelected })
+          })
       }
     }
   }, {
