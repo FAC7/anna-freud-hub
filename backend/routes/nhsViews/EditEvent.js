@@ -14,7 +14,8 @@ exports.register = (server, options, next) => {
       handler: (request, reply) => {
         events.getEvent(client, request.params.eventId)
           .then(data => {
-            const isSelected = categories.map(cat =>
+            const cats = categories.map(cat => cat.split(' ').join(''))
+            const isSelected = cats.map(cat =>
               data.categories.indexOf(cat) > -1 ?
               { category: cat, selected: true } :
               { category: cat, selected: false }
