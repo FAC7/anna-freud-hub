@@ -43,14 +43,6 @@ class Interests extends Component {
   render () {
     return (
       <View style={styles.mainContainer}>
-        <TouchableHighlight
-          onPress={() => {
-            AsyncStorage.clear()
-            this.props.newRoute(routes.SIGNUP)
-          }}
-        >
-          <Text>LogOut</Text>
-        </TouchableHighlight>
         <InterestsList />
         <TouchableHighlight
           style={styles.menu}
