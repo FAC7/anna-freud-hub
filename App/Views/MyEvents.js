@@ -16,12 +16,15 @@ import Tile from '../Components/Tile.js'
 
 class MyEvents extends Component {
 
-  updateDataSource () {
-    const myEvents = this.props.allEvents.filter((event) => {
+  myEvents () {
+    return this.props.allEvents.filter((event) => {
       return event.attending.indexOf('ysu:' + this.props.userDetails.email) > -1
     })
+  }
+
+  updateDataSource () {
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
-    return ds.cloneWithRows(myEvents)
+    return ds.cloneWithRows(this.myEvents())
   }
 
   setRoute (route, event) {
@@ -33,7 +36,7 @@ class MyEvents extends Component {
   render () {
     return (
       <View style={styles.mainContainer}>
-        <ScrollView>
+        {this.myEvents().length > 0 ? <ScrollView>
           <ListView
             renderFooter={() => <View style={styles.footer} />}
             contentContainerStyle={styles.container}
@@ -47,7 +50,7 @@ class MyEvents extends Component {
               )
             }}
           />
-        </ScrollView>
+        </ScrollView> : <View />}
       </View>
     )
   }
