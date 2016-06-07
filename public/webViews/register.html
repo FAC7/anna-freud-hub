@@ -1,9 +1,14 @@
-<a class="btn red" href="/login">Login</a>
-<a class="btn purple" href="/register">Register</a>
+<p class="subtitle">Enter your details and start creating events</p>
 <form action="/register" method="POST">
-  {{> usernamePassword}}
-  <input name="firstName" placeholder="first name" />
-  <input name="lastName" placeholder="last name" />
-  <button type="submit">Register</button>
+  <input class="input-center-large" type="text" name="adminId" placeholder="enter your nhs email" required>
+  <input class="input-center-large" type="password" name="password" placeholder="enter a password" required>
+  <input class="input-center-large" name="firstName" placeholder="first name" />
+  <input class="input-center-large" name="lastName" placeholder="last name" />
+  <div class="btn-container-large">
+    <button type="submit">REGISTER</button>
+    <div class="arrow">
+      <img src="/images/arrow.png" alt="arrow" />
+    </div>
+  </div>
   <p class="error">{{error}}</p>
 </form>

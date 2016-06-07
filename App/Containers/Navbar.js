@@ -3,14 +3,23 @@ import { connect } from 'react-redux'
 import {
   View,
   StyleSheet,
-  Text,
+  Image,
+  TouchableOpacity,
   LayoutAnimation
 } from 'react-native'
+
+import settingsIcon from '../Assets/Icons/settings.png'
+import hubIcon from '../Assets/Icons/hub.png'
+import myEventsIcon from '../Assets/Icons/myEvents.png'
 
 import { newRoute } from '../Actions/actions_routing.js'
 import routes from '../Utils/routes.js'
 
 class Navbar extends Component {
+
+  highlightIcon (route, currentRoute) {
+    return route === currentRoute ? { tintColor: '#fff' } : {}
+  }
 
   setRoute (route) {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
@@ -20,24 +29,30 @@ class Navbar extends Component {
   render () {
     return (
       <View style={styles.menu}>
-        <Text
-          style={styles.menuItem}
+        <TouchableOpacity
           onPress={() => this.setRoute(routes.INTERESTS)}
         >
-          Interests
-        </Text>
-        <Text
-          style={styles.menuItem}
+          <Image
+            style={[ styles.icon, this.highlightIcon(routes.INTERESTS, this.props.router.name) ]}
+            source={settingsIcon}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
           onPress={() => this.setRoute(routes.HUB)}
         >
-          HUB
-        </Text>
-        <Text
-          style={styles.menuItem}
+          <Image
+            style={[ styles.icon, this.highlightIcon(routes.HUB, this.props.router.name) ]}
+            source={hubIcon}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
           onPress={() => this.setRoute(routes.MY_EVENTS)}
         >
-          My Events
-        </Text>
+          <Image
+            style={[ styles.icon, this.highlightIcon(routes.MY_EVENTS, this.props.router.name) ]}
+            source={myEventsIcon}
+          />
+        </TouchableOpacity>
       </View>
     )
   }
@@ -53,7 +68,7 @@ export default connect(mapStateToProps, { newRoute })(Navbar)
 
 const styles = StyleSheet.create({
   menu: {
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
     flexDirection: 'row',
     position: 'absolute',
@@ -63,10 +78,8 @@ const styles = StyleSheet.create({
     height: 60,
     backgroundColor: 'rgb(186, 214, 255)'
   },
-  menuItem: {
-    color: 'rgb(42, 123, 231)',
-    textAlign: 'center',
-    fontSize: 15,
-    flex: 1
+  icon: {
+    width: 25,
+    height: 25
   }
 })

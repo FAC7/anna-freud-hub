@@ -5,7 +5,8 @@ const routes = {
   MY_EVENTS: 'My Events',
   EVENT_INFO: 'Event Info',
   SPLASH: 'Splash',
-  SIGNUP: 'Signup'
+  SIGNUP: 'Signup',
+  INTRO: 'Intro'
 }
 
 export default routes

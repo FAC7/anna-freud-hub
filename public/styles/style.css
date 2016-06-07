@@ -1,13 +1,17 @@
 /*-----general styles--------*/
 
 body {
-  font-family: Lucida Grande, Helvetica, Helvetica Neue, Arial;
+  font-family: Lato, Helvetica, Helvetica Neue, Arial;
   background-color: #257AC4;
 
 }
 
 p {
   color: #fff;
+}
+
+a {
+  text-decoration: none;
 }
 
 
@@ -19,7 +23,7 @@ p {
   color: #fff;
   font-weight: normal;
   letter-spacing: 7px;
-  margin: 40px 0 20px;
+  margin: 11vh 0 20px;
 }
 
 .subtitle {
@@ -27,24 +31,50 @@ p {
   margin-bottom: 40px;
   font-size: 14px;
   font-weight: lighter;
-  /*font-family: Helvetica, Helvetica Neue, Arial;*/
+  font-weight: 500  ;
 }
 
 .logout {
   color: #fff;
-  font-size: 15px;
+  font-size: 11px;
   text-decoration: none;
+  position: fixed;
+  top: 35px;
+  right: 40px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.error {
+  text-align: center;
+  color: #FF941F;
+  font-size: 18px;
+}
+
+/*------signup-------*/
+
+.signup {
+  text-align: center;
 }
 
 /*-----inputs--------*/
 
-input,
+form.login {
+  margin-bottom: 40px;
+}
+
 textarea {
   margin: 0 0 30px;
   border: none;
   padding: 10px 15px;
-  border-radius: 2px;
   outline: none;
+}
+
+input {
+  border: none;
+  padding: 15px;
+  outline: none;
+  min-width: 250px;
 }
 
 textarea {
@@ -52,7 +82,31 @@ textarea {
   min-height: 120px;
 }
 
+.input-center-small {
+  border: none;
+  padding: 15px;
+  outline: none;
+  min-width: 250px;
+  display: block;
+  margin: 0 auto;
+}
+
+.input-center-large {
+  border: none;
+  padding: 15px;
+  outline: none;
+  min-width: 250px;
+  max-width: 425px;
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
 /*-------checkboxes---------*/
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
 
 input[type="checkbox"] {
   -webkit-appearance: none;
@@ -60,7 +114,8 @@ input[type="checkbox"] {
   margin: 0;
   background: #fff;
   outline: none;
-  transition: 0.3s ease;
+  transition: background 0.3s ease;
+  min-width: initial;
 }
 
 input[type="checkbox"]:checked {
@@ -73,27 +128,6 @@ input[type="checkbox"]:checked ~ .checkbox-title {
 
 button {
   text-align: center;
-}
-
-.message {
-  transition: 0.3s ease;
-  opacity: 1;
-  margin: 0 20px;
-  display: inline-block;
-  color: #FFFFFF;
-  box-sizing: border-box;
-  padding: 18px 18px;
-  border-radius: 7px;
-}
-
-.error {
-  background-color: #B63434;
-  border: 2px solid #FFD4D4;
-}
-
-.success {
-  background-color: #47cf49;
-  border: 2px solid #e8feea;
 }
 
 .hidden {
@@ -115,19 +149,19 @@ button {
 }
 
 .submit-btn {
-  border: none;
+  border: 2px solid #fff;
+  font-weight: 300;
   padding: 20px 30px;
   background-color: rgb(0, 34, 113);
   color: #fff;
   font-size: 17px;
   margin-bottom: 80px;
-  border-radius: 9.2px;
-  transition: 0.3s ease;
+  transition: background-color 0.3s ease;
   outline: none;
 }
 
 .submit-btn:hover {
-  background-color: rgb(54, 189, 55);
+  background-color:  #508DFF;
 }
 
 @media (max-width: 767px) {
@@ -139,68 +173,240 @@ button {
 
 /*--------buttons---------*/
 
-.btn {
-  padding: 15px 30px;
-  font-size: 15px;
-  text-decoration: none;
-  box-sizing: border-box;
-  margin: 0 20px;
-  border-radius: 3px;
-  font-weight: 100;
-  letter-spacing: 2.7px;
-  text-transform: uppercase;
-  border: none;
-  outline: none;
-  box-shadow: 0px 2px 8px 0px rgb(220, 220, 220);
+.btn-container-large {
+  cursor: pointer;
+  min-width: 250px;
+  max-width: 425px;
+  width: 50%;
+  padding: 25px;
+  background-color: #002C60;
+  margin: 0 auto;
+  position: relative;
+  transition: background-color 0.3s ease;
 }
 
-.small {
+.btn-container-large button  {
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: transparent;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 14px;
+  font-weight: 100;
+  outline: none;
+  padding: 16px 170px 16px 16px;
+  box-sizing: border-box;
+}
+
+.btn-container-small {
+  cursor: pointer;
+  max-width: 250px;
+  padding: 25px;
+  background-color: #002C60;
+  margin: 0 auto;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.btn-container-small button  {
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: transparent;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 14px;
+  font-weight: 100;
+  outline: none;
+  padding: 16px 83% 16px 16px;
+  box-sizing: border-box;
+}
+
+.btn-container-small:hover,
+.btn-container-large:hover {
+  background-color: #508DFF;
+}
+
+
+.btn-small {
+  text-decoration: none;
+  border: 1px solid #fff;
   padding: 10px 20px;
-  margin: 10px;
+  background-color: #002C60;
+  color: #fff;
+  display: block;
+  width: 125px;
+  text-align: center;
+  margin: 0 auto;
+  letter-spacing: 4px;
   font-size: 12px;
+  font-weight: 200;
+  transition: background-color 0.3s ease;
+}
+
+.btn-small:hover {
+  background-color: #508DFF;
+}
+
+.click-box-link {
+  display: block;
+  position: absolute;
+  bottom: 0;
+}
+
+.add {
+  position: absolute;
+  top: 30px;
+  right: 15px;
+  width: 60px;
+  background-color: #002C60;
+  transition: 0.3s ease;
+}
+
+.add:hover {
+  background-color: #A8C6FF;
+}
+
+.edit {
+  right: 60px;
+}
+
+.delete {
+  right: 0px;
+}
+
+.click-box {
+  background-color: #002C60;
+  width: 60px;
+  height: 50px;
+  float: right;
+  transition: 0.3s ease;
+}
+
+.click-box:hover {
+  background-color: #A8C6FF;
+}
+
+.click-box p {
+  font-size: 8px;
+  text-align: center;
+  margin: 30px 0 0;
   letter-spacing: 2px;
 }
 
-.red {
-  background-color: #FF695E;
-  color: #fff;
-  transition: background-color 0.2s ease;
+
+/*---------icons---------*/
+
+.arrow {
+  width: 18px;
+  position: absolute;
+  right: 20px;
+  top: 17px;
 }
 
-.red:hover {
-  background-color: #EF2E2E;
+.arrow img {
+  width: 100%;
 }
 
-.purple {
-  background-color: #9268FB;
-  color: #fff;
-  transition: background-color 0.2s ease;
+.plus {
+  width: 24px;
+  margin: 14px auto;
 }
 
-.purple:hover {
-  background-color: #6416b3;
+.plus img {
+  width: 100%;
 }
 
-.blue {
-  background-color: #3790f9;
-  color: #fff;
-  transition: background-color 0.2s ease;
+.attending {
+  width: 35px;
+  float: right;
+  margin: 18px 32px 0 0;
 }
 
-.blue:hover {
-  background-color: #0959b8;
+.attending img {
+  width: 100%;
 }
 
+.icon-small {
+  width: 13px;
+  position: absolute;
+  left: 22px;
+  top: 10px;
+}
+
+.icon-small img {
+  width: 100%;
+}
+
+.col-xs-2.collapse {
+  max-width: 140px;
+}
+
+@media (max-width: 856px) {
+  .collapse {
+    width: 0!important;
+  }
+}
 
 /*--------event dashboard styles---------*/
-.event-tile {
-  border: 2px solid white;
-  margin-top: 20px;
-  color: #fff;
-  padding: 20px;
+
+.attending-container {
+  width: 111px;
+  float: right;
 }
-.event-title {
+
+.number-attending {
+  color: #002C60;
+  margin: 17px 0 0 0;
+  font-size: 26px;
+  position: absolute;
+}
+
+.event-link {
+  display: block;
+}
+
+.event-tile {
+  position: relative;
+  background-color: #fff;
+  margin-top: 50px;
+  color: #fff;
+}
+
+.event-heading {
+  background-color: #002C60;
+  height: 65px;
+}
+
+.event-heading p {
+  margin: 0;
+  padding: 21px;
+  text-align: left;
+}
+
+.event-data {
+  position: absolute;
+  font-size: 25px;
+  margin: 14px 0;
+  color: #333;
+}
+
+.event-data-small {
+  position: absolute;
   font-size: 15px;
+  margin: 16px 0;
+  color: #9D9D9D;
+}
+
+.two-line {
+  margin-top: 8px;
 }
 .event-date-time {
   font-size: 13px;

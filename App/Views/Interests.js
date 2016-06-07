@@ -17,44 +17,36 @@ import InterestsList from '../Components/InterestsList.js'
 
 class Interests extends Component {
 
+  componentWillUnmount () {
+    this.setInterests()
+  }
+
   setInterests () {
     const chosenInterests = this.props.chosenInterests
     //set to async storage
     AsyncStorage.setItem('interests', JSON.stringify(chosenInterests))
     //send data to db
-    AsyncStorage.getItem('userinfo')
-      .then(data => {
-        const interestObj = {
-          userId: 'ysu:' + JSON.parse(data).email,
-          interests: chosenInterests
-        }
-        // const url = 'http://annafreudhub.herokuapp.com/setinterests'
-        const url = 'http://localhost:4000/setinterests'
-        fetch(url, {
-          method: 'POST',
-          body: JSON.stringify(interestObj)
-        })
-      })
+    const interestObj = {
+      userId: 'ysu:' + this.props.userDetails.email,
+      interests: chosenInterests
+    }
+    // const url = 'http://annafreudhub.herokuapp.com/setinterests'
+    const url = 'http://localhost:4000/setinterests'
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(interestObj)
+    })
     //change route
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
-    this.props.newRoute(routes.HUB)
   }
 
   render () {
     return (
       <View style={styles.mainContainer}>
-        <TouchableHighlight
-          onPress={() => {
-            AsyncStorage.clear()
-            this.props.newRoute(routes.SIGNUP)
-          }}
-        >
-          <Text>LogOut</Text>
-        </TouchableHighlight>
         <InterestsList />
         <TouchableHighlight
           style={styles.menu}
-          onPress={() => this.setInterests()}
+          onPress={() => this.props.newRoute(routes.HUB)}
         >
           <Text style={styles.menuItem}>Submit</Text>
         </TouchableHighlight>
@@ -71,7 +63,7 @@ export default connect(mapStateToProps, { newRoute })(Interests)
 const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: '#fff',
-    flex: 1,
+    flex: 1
   },
   menu: {
     justifyContent: 'space-between',
@@ -80,12 +72,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     right: 0,
-    bottom: 0,
+    bottom: 60,
     height: 60,
-    backgroundColor: 'rgb(186, 214, 255)'
+    backgroundColor: '#031f39'
   },
   menuItem: {
-    color: 'rgb(42, 123, 231)',
+    color: '#fff',
     textAlign: 'center',
     fontSize: 15,
     flex: 1

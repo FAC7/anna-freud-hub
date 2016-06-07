@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap'
   },
   footer: {
-    height: 90,
+    height: 140,
     width: 500
   }
 })

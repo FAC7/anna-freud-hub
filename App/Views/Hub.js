@@ -28,8 +28,6 @@ class Hub extends Component {
     this.props.newRoute(route)
   }
 
-  // TODO make each event go to correct event info with setRoute()
-
   render () {
     return (
       <View style={styles.mainContainer}>
@@ -47,7 +45,7 @@ class Hub extends Component {
                   />
                 )
               }}
-            /> : <Text>Loading</Text>}
+            /> : <View />}
         </ScrollView>
       </View>
     )

@@ -1,10 +1,15 @@
-import { connect } from 'react-redux'
 import React, { Component } from 'react'
+import {
+  AsyncStorage,
+  LayoutAnimation
+} from 'react-native'
+
 import SignUp from '../Components/Signup.js'
-import { updateInput, addUserToStore } from '../Actions/actions_index.js'
-import { AsyncStorage } from 'react-native'
-import { newRoute } from '../Actions/actions_routing.js'
+
 import routes from '../Utils/routes.js'
+import { updateInput, addUserToStore, isLoading } from '../Actions/actions_index.js'
+import { connect } from 'react-redux'
+import { newRoute } from '../Actions/actions_routing.js'
 
 class SignUpContainer extends Component {
 
@@ -13,11 +18,16 @@ class SignUpContainer extends Component {
     AsyncStorage.setItem('userinfo', JSON.stringify(userObj))
     // const url = 'http://annafreudhub.herokuapp.com/adduser'
     const url = 'http://localhost:4000/adduser'
+    this.props.isLoading(true)
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(userObj)
     })
-    .then(() => this.props.newRoute(routes.INTERESTS))
+    .then(() => {
+      this.props.isLoading(false)
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+      return this.props.newRoute(routes.INTERESTS)
+    })
   }
 
   render () {
@@ -28,4 +38,9 @@ class SignUpContainer extends Component {
 }
 
 const mapStateToProps = state => ({ ...state })
-export default connect(mapStateToProps, { updateInput, newRoute, addUserToStore })(SignUpContainer)
+export default connect(mapStateToProps, {
+  updateInput,
+  newRoute,
+  addUserToStore,
+  isLoading
+})(SignUpContainer)

@@ -6,6 +6,7 @@ import componentLoader from '../Utils/componentLoader.js'
 import { getEvents, addUserToStore } from '../Actions/actions_index.js'
 import { newRoute } from '../Actions/actions_routing.js'
 import routes from '../Utils/routes.js'
+import Loading from '../Components/Loader.js'
 
 class Router extends Component {
 
@@ -16,7 +17,7 @@ class Router extends Component {
           this.props.newRoute(routes.HUB)
           this.props.addUserToStore(data)
         } else {
-          this.props.newRoute(routes.SIGNUP)
+          this.props.newRoute(routes.INTRO)
         }
       })
     this.props.getEvents()
@@ -29,13 +30,13 @@ class Router extends Component {
     const Title = componentLoader[route].Title
     const titleContent = componentLoader[route].titleContent
 
-    return (
+    return this.props.events.length > 0 ?
       <View style={styles.mainContainer}>
         <Title title={titleContent} />
         <DisplayComponent />
         <Navbar />
       </View>
-    )
+     : <Loading />
   }
 }
 
