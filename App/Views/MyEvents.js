@@ -3,8 +3,7 @@ import {
   View,
   StyleSheet,
   ScrollView,
-  ListView,
-  LayoutAnimation
+  ListView
 } from 'react-native'
 
 import { connect } from 'react-redux'
@@ -28,7 +27,6 @@ class MyEvents extends Component {
   }
 
   setRoute (route, event) {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
     this.props.activeEvent(event)
     this.props.newRoute(route)
   }

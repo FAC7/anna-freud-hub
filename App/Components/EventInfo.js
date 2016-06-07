@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {
-  View,
   StyleSheet,
   ScrollView,
+  LayoutAnimation,
   Image
 } from 'react-native'
 
@@ -37,6 +37,7 @@ class EventInfo extends Component {
         <EventContact contactAddress={eventObj.creatorEmail} />
         <SetAttending
           toggleAttending={() => {
+            LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
             this.props.isLoading(true)
             this.props.toggleAttending(
               eventObj.eventId, 'ysu:' + userDetails.email,

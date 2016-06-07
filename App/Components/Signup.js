@@ -9,16 +9,21 @@ import {
   ScrollView,
   StatusBar
 } from 'react-native'
+import Spinner from 'react-native-loading-spinner-overlay'
 
 const { width } = Dimensions.get('window')
 
 export default class SignUp extends React.Component {
   render () {
-    const { signup } = this.props
+    const { signup, loading } = this.props
     return (
       <View style={styles.outerContainer}>
         <StatusBar
           barStyle='light-content'
+        />
+        <Spinner
+          visible={loading}
+          overlayColor='rgba(61, 177, 242, 0.41)'
         />
         <ScrollView
           contentContainerStyle={styles.container}
