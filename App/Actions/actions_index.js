@@ -65,20 +65,28 @@ export const activeEvent = (event) => {
   }
 }
 
+export const IS_LOADING = 'IS_LOADING'
+export const isLoading = (bool) => {
+  return {
+    type: IS_LOADING,
+    payload: bool
+  }
+}
+
 export const TOGGLE_ATTENDING = 'TOGGLE_ATTENDING'
-export const toggleAttending = (eventId, userId) => {
+export const toggleAttending = (eventId, userId, cb) => {
   // const url = 'http://annafreudhub.herokuapp.com/toggleattending'
   const url = 'http://localhost:4000/toggleattending'
   const body = {
     eventId,
     userId
   }
-  console.log(body, 'request body')
   return fetch(url, {
     method: 'POST',
     body: JSON.stringify(body)
   })
   .then(() => {
+    cb(false) // sets loading to false
     return {
       type: TOGGLE_ATTENDING,
       payload: {
@@ -88,6 +96,7 @@ export const toggleAttending = (eventId, userId) => {
     }
   })
   .catch(() => {
+    cb(false) // sets loading to false
     return {
       type: TOGGLE_ATTENDING,
       payload: {

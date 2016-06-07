@@ -5,6 +5,7 @@ import router from './routing_reducer.js'
 import allEvents from './all_events_reducer.js'
 import signup from './sign_up_reducer.js'
 import activeEvent from './active_event_reducer.js'
+import loading from './loading_reducer.js'
 
 const rootReducer = combineReducers({
   chosenInterests,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   router,
   allEvents,
   signup,
-  activeEvent
+  activeEvent,
+  loading
 })
 
 export default rootReducer
