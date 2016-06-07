@@ -1,10 +1,56 @@
-<a href="/editevent/{{this.eventId}}">
-  <div class="event-tile">
-    <p class="event-title">{{this.title}}</p>
-    <br>
-    <span class="event-text event-date-time">{{this.date}} at: {{this.time}}</span>
-    <span class="event-text event-attending">{{this.attending.length}} people attending</span>
-    <br>
-    <a href="/deleteevent/{{this.eventId}}"><p>delete event</p></a>
+<div class="event-tile">
+  <div class="row">
+    <div class="col-xs-2 collapse">
+      <div class="event-heading">
+        <p>Title</p>
+      </div>
+    </div>
+    <div class="col-xs-8">
+      <p class="event-data">{{this.title}}</p>
+    </div>
+    <div class="attending-container">
+      <div class="attending">
+        <img src="/images/attending.png" />
+      </div>
+      <p class="number-attending">{{this.attending.length}}</p>
+    </div>
   </div>
-</a>
+
+  <div class="row">
+    <div class="col-xs-2 collapse">
+      <div class="event-heading">
+        <p>Date</p>
+      </div>
+    </div>
+    <div class="col-xs-8">
+      <p class="event-data-small">{{this.date}} at {{this.time}}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 collapse">
+      <div class="event-heading">
+        <p>Location</p>
+      </div>
+    </div>
+    <div class="col-xs-8">
+      <p class="event-data-small two-line">{{this.address}}<br/>{{this.postCode}}</p>
+    </div>
+  </div>
+  <a class="click-box-link delete" href="/deleteevent/{{this.eventId}}">
+    <div class="click-box">
+      <div class="icon-small">
+        <img src="/images/bin.png" />
+      </div>
+      <p>DELETE</p>
+    </div>
+  </a>
+  <a class="click-box-link edit" href="/editevent/{{this.eventId}}">
+    <div class="click-box">
+      <div class="icon-small">
+        <img src="/images/edit.png" />
+      </div>
+      <p>EDIT</p>
+    </div>
+  </a>
+</div>

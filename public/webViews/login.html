@@ -1,7 +1,16 @@
-<a class="btn red" href="/login">Login</a>
-<a class="btn purple" href="/register">Register</a>
-<form action="/login" method="POST">
-  {{> usernamePassword}}
-  <button type="submit">Login</button>
-  <p>{{error}}</p>
+<p class="subtitle">Login to add or edit your events</p>
+<!-- <a class="btn bar" href="/login">Login</a>
+<a class="btn blue" href="/register">Register</a> -->
+<form class="login" action="/login" method="POST">
+  <input class="input-center-small" type="text" name="adminId" placeholder="enter your nhs email" required>
+  <input class="input-center-small" type="password" name="password" placeholder="enter a password" required>
+  <div class="btn-container-small">
+    <button type="submit">Login</button>
+    <div class="arrow">
+      <img src="/images/arrow.png" alt="arrow" />
+    </div>
+  </div>
+  <p class="error">{{error}}</p>
 </form>
+<p class="subtitle">Don't have an account? Register below to make one</p>
+<a class="btn-small" href="/register">REGISTER</a>

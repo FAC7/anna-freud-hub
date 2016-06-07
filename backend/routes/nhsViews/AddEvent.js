@@ -2,7 +2,6 @@
 // second route: posting a new event
 
 const categories = require('../../utils/categories.js')
-const Joi = require('joi')
 const eventSchema = require('../../ValidationSchemas/eventSchema.js')
 
 exports.register = (server, options, next) => {
@@ -64,7 +63,8 @@ exports.register = (server, options, next) => {
     config: {
       auth: 'nhs',
       handler: (request, reply) => {
-        reply.view('addEvent', { categories: categories })
+        const cats = categories.map(cat => ({ category: cat, selected: false }))
+        reply.view('addEvent', { categories: cats })
       }
     }
   } ])
