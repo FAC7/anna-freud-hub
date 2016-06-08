@@ -65,9 +65,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   red: {
-    backgroundColor: 'red'
+    backgroundColor: '#ff4444'
   },
   green: {
-    backgroundColor: 'green'
+    backgroundColor: '#27b038'
   }
 })
