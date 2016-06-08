@@ -27,7 +27,7 @@ export default class SignUp extends React.Component {
         />
         <ScrollView
           contentContainerStyle={styles.container}
-          keyboardDismissMode={'on-drag'}
+          keyboardDismissMode='interactive'
         >
           <View style={styles.textContainer}>
             <Text style={styles.text}>Signup to browse all the events in your local area.</Text>
