@@ -14,6 +14,12 @@ a {
   text-decoration: none;
 }
 
+.main-container {
+  max-width: 750px;
+  margin: 0 auto;
+  width: 80%;
+  position: relative;
+}
 
 /*-----text styles--------*/
 
@@ -273,8 +279,8 @@ button {
 
 .add {
   position: absolute;
-  top: 30px;
-  right: 15px;
+  top: 18px;
+  right: 0;
   width: 60px;
   background-color: #002C60;
   transition: 0.3s ease;
