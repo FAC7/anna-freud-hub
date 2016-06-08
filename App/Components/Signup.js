@@ -14,6 +14,18 @@ import Spinner from 'react-native-loading-spinner-overlay'
 const { width } = Dimensions.get('window')
 
 export default class SignUp extends React.Component {
+
+  validate (details) {
+    const emptyFields = Object.keys(details)
+      .filter(field => !details[field])
+
+    if (emptyFields.length > 0) {
+      return false
+    } else {
+      this.props.submitDetails(details)
+    }
+  }
+
   render () {
     const { signup, loading } = this.props
     return (
@@ -73,7 +85,7 @@ export default class SignUp extends React.Component {
             onChangeText={text => this.props.updateInput('DOB', text)}
           />
           <TouchableOpacity
-            onPress={() => this.props.submitDetails(this.props.signup)}
+            onPress={() => this.validate(this.props.signup)}
           >
             <Text style={styles.submit}>Submit</Text>
           </TouchableOpacity>
