@@ -51,14 +51,10 @@ const Routes = [
   userEvents,
 ]
 
-module.exports = (client) => { //eslint-disable-line
+const server = new Hapi.Server()
+server.connection({ port: process.env.PORT || 4000 })
+server.register(Plugins, err => {if (err) console.log(err)})
+server.views(require('./viewSettings.js'))
+server.route(Routes)
 
-  const server = new Hapi.Server()
-
-  server.connection({ port: process.env.PORT || 4000 })
-  server.register(Plugins, err => {if (err) console.log(err)})
-  server.views(require('./viewSettings.js'))
-  server.route(Routes)
-
-  return server
-}
+module.exports = server
