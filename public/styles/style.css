@@ -16,7 +16,7 @@ a {
 
 .main-container {
   max-width: 750px;
-  margin: 0 auto;
+  margin: 0 auto 80px;
   width: 80%;
   position: relative;
 }
