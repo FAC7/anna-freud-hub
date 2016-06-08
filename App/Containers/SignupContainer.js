@@ -16,8 +16,8 @@ class SignUpContainer extends Component {
   submitDetails (userObj) {
     this.props.addUserToStore(userObj)
     AsyncStorage.setItem('userinfo', JSON.stringify(userObj))
-    // const url = 'http://annafreudhub.herokuapp.com/adduser'
-    const url = 'http://localhost:4000/adduser'
+    const url = 'http://annafreudhub.herokuapp.com/adduser'
+    // const url = 'http://localhost:4000/adduser'
     this.props.isLoading(true)
     fetch(url, {
       method: 'POST',

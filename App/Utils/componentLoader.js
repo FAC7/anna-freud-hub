@@ -4,14 +4,6 @@ import routes from './routes.js'
 
 const componentLoader = {}
 
-componentLoader[routes.SPLASH] = {
-  component: componentList.Splash,
-  Navbar: componentList.NoNavbar,
-  Title: componentList.NoNavbar,
-  titleContent: null,
-  authRequired: false
-}
-
 componentLoader[routes.LOGIN] = {
   component: componentList.Login,
   Navbar: componentList.NoNavbar,
