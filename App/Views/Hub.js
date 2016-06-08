@@ -4,17 +4,20 @@ import {
   StyleSheet,
   ScrollView,
   LayoutAnimation,
-  ListView,
-  Text
+  ListView
 } from 'react-native'
 
 import { connect } from 'react-redux'
 import { newRoute } from '../Actions/actions_routing.js'
-import { activeEvent } from '../Actions/actions_index.js'
+import { activeEvent, getEvents } from '../Actions/actions_index.js'
 
 import Tile from '../Components/Tile.js'
 
 class Hub extends Component {
+
+  componentWillMount () {
+    this.props.getEvents()
+  }
 
   updateDataSource () {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
@@ -58,7 +61,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { newRoute, activeEvent })(Hub)
+export default connect(mapStateToProps, { newRoute, activeEvent, getEvents })(Hub)
 
 const styles = StyleSheet.create({
   mainContainer: {
