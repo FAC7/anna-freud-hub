@@ -85,3 +85,8 @@ fastlane
 *.p12
 fastlane/report.xml
 ios/main.jsbundle
+
+App
+test
+ios
+index.ios.js
