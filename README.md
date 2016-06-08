@@ -47,11 +47,11 @@ Service users can install an iPhone app, built in *React Native*.  NHS workers c
 * Link to google maps.
 * Intro sequence after splash screen.
 
-## iOS Mockups (young service user)
+## iOS Mockups (Young Person)
 
 ![hub-wireframes](https://cloud.githubusercontent.com/assets/12462448/15356921/9af50126-1cf3-11e6-8756-b061a9cedec0.png)
 
-## Webview Mockups (nhs clinician)
+## Webview Mockups (Event Organiser)
 
 The clinician will first see the login screen and can either login or register for a new account
 

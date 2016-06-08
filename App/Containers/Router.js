@@ -16,11 +16,11 @@ class Router extends Component {
         if (data) {
           this.props.newRoute(routes.HUB)
           this.props.addUserToStore(data)
-          this.props.getEvents()
         } else {
           this.props.newRoute(routes.INTRO)
         }
       })
+    this.props.getEvents()
   }
 
   render () {
