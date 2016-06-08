@@ -13,7 +13,7 @@ exports.register = (server, options, next) => {
         const adminId = request.auth.credentials.details.adminId
         nhs.getAdmin(client, adminId)
           .then(data => events.getEvents(client, data.eventsCreated))
-          .then(data => reply.view('dashboard', { events: data }))
+          .then(data => reply.view('dashboard', { events: data.reverse() }))
       }
     }
   })
