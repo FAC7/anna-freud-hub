@@ -47,9 +47,23 @@ Service users can install an iPhone app, built in *React Native*.  NHS workers c
 * Link to google maps.
 * Intro sequence after splash screen.
 
-## iOS Mockups (Young Person)
+## iOS Initial Mockups (Young Person)
 
 ![hub-wireframes](https://cloud.githubusercontent.com/assets/12462448/15356921/9af50126-1cf3-11e6-8756-b061a9cedec0.png)
+
+### Final Demo of the iOS app:
+
+The user can log into the app by entering their details
+
+![ezgif com-crop](https://cloud.githubusercontent.com/assets/14013616/15903079/db98632a-2da2-11e6-9de0-7d645812516e.gif)
+
+The user can then select their interests
+
+![ezgif com-crop 1](https://cloud.githubusercontent.com/assets/14013616/15903085/df625bdc-2da2-11e6-9af1-f960590586ab.gif)
+
+After selecting their interests, the user can then browse a list of events, see more details and choose whether to attend the event or not
+
+![ezgif com-crop 2](https://cloud.githubusercontent.com/assets/14013616/15903092/e7db0b74-2da2-11e6-88a8-0146a6e9dd41.gif)
 
 ## Webview Mockups (Event Organiser)
 
