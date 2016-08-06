@@ -1,9 +1,4 @@
-const createServer = require('./server.js')
-const createClient = require('./db/client.js')
-
-// pass redis client into server
-const client = createClient()
-const server = createServer(client)
+const server = require('./server.js')
 
 server.start((err) => {
   if (err) {
@@ -12,3 +7,7 @@ server.start((err) => {
     console.log('server listening on port: ' + server.info.port)
   }
 })
+
+// const table = server.table()
+// const paths = table.map(item => item.table.map(i => ({ path: i.path, method: i.method })))
+// console.log(paths)

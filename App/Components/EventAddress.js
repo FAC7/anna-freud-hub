@@ -19,6 +19,9 @@ export default ({ event }) => {
           <Text style={styles.attendingNumber}>{event.attending.length}</Text>
         </View>
       </View>
+      <View style={styles.infoContentContainer}>
+        <Text style={styles.address}>{event.time} on {event.date}</Text>
+      </View>
     </View>
   )
 }

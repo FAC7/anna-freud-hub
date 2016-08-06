@@ -3,7 +3,9 @@ import {
   StyleSheet,
   ScrollView,
   LayoutAnimation,
-  Image
+  Image,
+  View,
+  Text
 } from 'react-native'
 
 import { connect } from 'react-redux'
@@ -24,30 +26,32 @@ class EventInfo extends Component {
     const eventObj = this.props.allEvents.filter((event) => event.title === activeEvent)[0]
     const isAttending = eventObj.attending.indexOf('ysu:' + this.props.userDetails.email) > -1
     return (
-      <ScrollView contentContainerStyle={styles.mainContainer}>
-        <Spinner
-          visible={this.props.loading}
-          overlayColor='rgba(61, 177, 242, 0.41)'
-        />
-        <Image
-          style={styles.image}
-          source={{ uri: eventObj.imageUrl }}
-        />
-        <EventAddress event={eventObj} />
-        <EventContact contactAddress={eventObj.creatorEmail} />
-        <SetAttending
-          toggleAttending={() => {
-            LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
-            this.props.isLoading(true)
-            this.props.toggleAttending(
-              eventObj.eventId, 'ysu:' + userDetails.email,
-              this.props.isLoading
-            )
-          }}
-          isAttending={isAttending}
-        />
-        <EventDetails description={eventObj.description} />
-      </ScrollView>
+      <View style={styles.mainContainer}>
+        <ScrollView contentContainerStyle={styles.contentContainer}>
+          <Spinner
+            visible={this.props.loading}
+            overlayColor='rgba(61, 177, 242, 0.41)'
+            />
+          <Image
+            style={styles.image}
+            source={{ uri: eventObj.imageUrl }}
+            />
+          <EventAddress event={eventObj} />
+          <EventContact contactAddress={eventObj.creatorEmail} />
+          <SetAttending
+            toggleAttending={() => {
+              LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+              this.props.isLoading(true)
+              this.props.toggleAttending(
+                eventObj.eventId, 'ysu:' + userDetails.email,
+                this.props.isLoading
+              )
+            }}
+            isAttending={isAttending}
+            />
+          <EventDetails description={eventObj.description} />
+        </ScrollView>
+      </View>
     )
   }
 }
@@ -59,8 +63,11 @@ export default connect(mapStateToProps, { toggleAttending, isLoading })(EventInf
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 1,
-    justifyContent: 'flex-start'
+    flex: 1
+  },
+  contentContainer: {
+    justifyContent: 'flex-start',
+    paddingBottom: 40
   },
   image: {
     height: 250,

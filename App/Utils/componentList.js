@@ -1,5 +1,4 @@
 // components
-import Splash from '../Components/Splash.js'
 import NoNavbar from '../Components/NoNavbar.js'
 import Title from '../Components/Title.js'
 // containers
@@ -14,7 +13,6 @@ import TitleWithBack from '../Containers/TitleWithBack.js'
 import Intro from '../Components/Intro.js'
 
 const componentList = {
-  Splash,
   Interests,
   Login,
   Hub,

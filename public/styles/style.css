@@ -14,6 +14,12 @@ a {
   text-decoration: none;
 }
 
+.main-container {
+  max-width: 750px;
+  margin: 0 auto 80px;
+  width: 80%;
+  position: relative;
+}
 
 /*-----text styles--------*/
 
@@ -32,6 +38,14 @@ a {
   font-size: 14px;
   font-weight: lighter;
   font-weight: 500  ;
+}
+
+.subtitle-add {
+  text-align: center;
+  margin-top: 120px;
+  font-size: 14px;
+  font-weight: lighter;
+  font-weight: 500;
 }
 
 .logout {
@@ -89,6 +103,7 @@ textarea {
   min-width: 250px;
   display: block;
   margin: 0 auto;
+  border-radius: 0;
 }
 
 .input-center-large {
@@ -100,6 +115,7 @@ textarea {
   width: 50%;
   display: block;
   margin: 0 auto;
+  border-radius: 0;
 }
 
 /*-------checkboxes---------*/
@@ -263,11 +279,22 @@ button {
 
 .add {
   position: absolute;
-  top: 30px;
-  right: 15px;
+  top: 18px;
+  right: 0;
   width: 60px;
   background-color: #002C60;
   transition: 0.3s ease;
+}
+
+.add-center {
+  position: absolute;
+  top: 65px;
+  width: 60px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  background-color: #002C60;
+  transition: background-color 0.3s ease;
 }
 
 .add:hover {

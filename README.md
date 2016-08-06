@@ -47,6 +47,38 @@ Service users can install an iPhone app, built in *React Native*.  NHS workers c
 * Link to google maps.
 * Intro sequence after splash screen.
 
-## Initial Mockups
+## iOS Initial Mockups (Young Person)
 
 ![hub-wireframes](https://cloud.githubusercontent.com/assets/12462448/15356921/9af50126-1cf3-11e6-8756-b061a9cedec0.png)
+
+### Final Demo of the iOS app:
+
+The user can log into the app by entering their details
+
+![ezgif com-crop](https://cloud.githubusercontent.com/assets/14013616/15903079/db98632a-2da2-11e6-9de0-7d645812516e.gif)
+
+The user can then select their interests
+
+![ezgif com-crop 1](https://cloud.githubusercontent.com/assets/14013616/15903085/df625bdc-2da2-11e6-9af1-f960590586ab.gif)
+
+After selecting their interests, the user can then browse a list of events, see more details and choose whether to attend the event or not
+
+![ezgif com-crop 2](https://cloud.githubusercontent.com/assets/14013616/15903092/e7db0b74-2da2-11e6-88a8-0146a6e9dd41.gif)
+
+## Webview Mockups (Event Organiser)
+
+The clinician will first see the login screen and can either login or register for a new account
+
+![hub-login](https://cloud.githubusercontent.com/assets/14013616/15893799/f647329c-2d79-11e6-8e53-b305dac5a9ac.jpg)
+
+The clinician and register their details here
+
+![hub-register](https://cloud.githubusercontent.com/assets/14013616/15893800/f6495ce8-2d79-11e6-8157-cac57bc8d658.jpg)
+
+After logging in the clinician will be able to review their created events (see how many people are attending), edit them, delete them or add a new event
+
+![hub-dashboard](https://cloud.githubusercontent.com/assets/14013616/15893798/f6419b70-2d79-11e6-9125-5e2a3582209e.jpg)
+
+Adding or editing an event will bring up this screen
+
+![hub-add-event](https://cloud.githubusercontent.com/assets/14013616/15893797/f62fb7ac-2d79-11e6-94d1-9abf0c9e4c7a.jpg)

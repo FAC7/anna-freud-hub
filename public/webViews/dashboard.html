@@ -1,8 +1,6 @@
 {{> logout}}
 <p class="subtitle">Add, edit or review your events</p>
-  <!-- <a href="/addevent" class="add-event">
-    <span class="plus-sign"> + </span>
-  </a> -->
+{{#if events}}
   <a class="add" href="/addevent">
     <div class="add-click-box">
       <div class="plus">
@@ -10,6 +8,17 @@
       </div>
     </div>
   </a>
+{{else}}
+  <a class="add-center" href="/addevent">
+    <div class="add-click-box">
+      <div class="plus">
+        <img src="/images/plus.png" />
+      </div>
+    </div>
+  </a>
+  <p class="subtitle-add">Click the plus to add an event</p>
+{{/if}}
+
 {{#each events}}
   {{> eventTile this}}
 {{/each}}

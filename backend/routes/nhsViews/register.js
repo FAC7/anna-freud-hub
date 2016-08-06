@@ -48,17 +48,14 @@ exports.register = (server, options, next) => {
       },
       validate: {
         payload: {
-          // Nelft.nhs.uk, Walthamforest.gov.uk or Waltham.sch.uk
           firstName: Joi.string().required(),
           lastName: Joi.string().required(),
-          adminId: Joi.string().email()
-                      .regex(/@nelft\.nhs\.uk|walthamforest\.gov\.uk|waltham\.sch\.uk/i)
-                      .required(),
+          adminId: Joi.string().email().required(),
           password: Joi.string().min(6).required()
         },
         failAction: (request, reply) => {
           reply.view('register', {
-            error: 'please enter valid nhs email address, and a password of min length 6'
+            error: 'please enter a valid email address, and a password of min length 6'
           })
         }
       }

@@ -17,10 +17,11 @@ const styles = StyleSheet.create({
   },
   description: {
     color: '#000',
+    flex: 1,
     fontSize: 14,
     alignSelf: 'center',
-    paddingTop: 14,
-    paddingLeft: 10,
-    paddingRight: 14
+    paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20
   }
 })
